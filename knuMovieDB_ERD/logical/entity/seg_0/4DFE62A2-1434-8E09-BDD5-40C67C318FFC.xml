@@ -1,0 +1,44 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4DFE62A2-1434-8E09-BDD5-40C67C318FFC" name="MOVIE">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 02:09:13 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Movie_id" id="40B15C06-577D-9E6E-2851-A8874AC14BC8">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 02:11:41 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="49C02733-6617-7892-21E6-A802A35CB86F" name="Movie_id">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 02:12:12 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<newElementsIDs>40B15C06-577D-9E6E-2851-A8874AC14BC8</newElementsIDs>
+<usedAttributes>
+<attributeRef>40B15C06-577D-9E6E-2851-A8874AC14BC8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
