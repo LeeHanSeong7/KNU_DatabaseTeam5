@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="EB589469-2452-0F58-07D4-607ABF845A99">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 01:34:31 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

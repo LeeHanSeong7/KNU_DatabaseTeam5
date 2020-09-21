@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="67E5C384-E302-F3EA-E73F-55E76342B952">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 01:34:31 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

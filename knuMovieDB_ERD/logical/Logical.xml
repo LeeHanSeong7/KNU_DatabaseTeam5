@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="17FE2EC4-27A4-D1BD-A48C-0C3F0C0C7EC6" mainViewID="26B62329-9BFC-84CE-1A41-DFFA16F71837">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 01:34:31 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="knuMovieDB_ERD" id="D4DB285B-658C-D7B9-C2E4-079D50DC4BE1" version="3.5">
+<createdBy>leo</createdBy>
+<createdTime>2020-09-21 01:34:31 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>D4DB285B-658C-D7B9-C2E4-079D50DC4BE1</designId>
+</OSDM_Design>
