@@ -1,0 +1,34 @@
+ACTOR
+- name
+- date of birth
+
+- age -> Derived attributes 인데 modeler에선 어떻게 표기하는지 모르겠음
+-> https://erwin.com/bookshelf/9.8.00/Bookshelf_Files/HTML/erwin%20Overview/index.htm?toc.htm?3649.html
+에 따르면 파생 속성은 직접 저장하지 않는게 좋다고 함.
+
+-Cast Works(출연작품)
+-> 아마도 movie entity 와의 relationship으로 표현해야 할듯 appeared in ??
+
+-country (국적)
+
+------ 여기 밑에는 굳이 필요한가 싶기는 함.
+-gender
+-weight
+-tall? 키를 나타내고 싶었음
+
+key attribute는 뭘로 하지??
+
+ACCOUNT
+-email
+-Phone number
+-password
+-Favorite content -> 이것도 MOVIE entity or EPISODE 와의 relationship으로 표현해야 하지 않을까
+-Content being watched -> 이것도?
+-nickname
+-membership -> Composite attribute 어케 하는지 모르겠다. 세부 항목으로 
+ -Membership type
+ -Credit card information
+ -Payment date 등
+-Viewable device (시청가능 디바이스)  -> 이건 어.. 그.. 뭐냐.. week entity로 해도 될듯?
+-평가는 rating과의 관계로 해야 할듯?
+

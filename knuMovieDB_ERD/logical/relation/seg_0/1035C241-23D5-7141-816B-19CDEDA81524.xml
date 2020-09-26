@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MAKES" directorySegmentName="seg_0" id="1035C241-23D5-7141-816B-19CDEDA81524">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<sourcePk>0073E4B7-0E6E-F69F-8B11-3B717F6569EC</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>A702A501-D96F-AA34-8CD1-E518EB68C73E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>4C37E8F3-54DA-F4C9-463F-0653D32EFFAA</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="953D9FB2-3A53-8333-E754-FD605F0B82CA" name="ACCOUNT">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="email" id="6FB5BE7D-4701-F3A4-024D-FE979D55EBF1">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>4523C2EF-4D7B-3F02-A888-D0FB7481FC4E</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone number " id="35A48B62-9DBD-12A3-30CD-F79A6F9FA899">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>B49FB717-16E8-4229-B589-C494FC252098</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password" id="58E5DFFA-4FF8-3635-C712-491EB40811D1">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>544AD537-CE9D-1A1B-12C3-625BED220A2F</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nickname" id="14CB64D4-5AAB-FF95-CE4F-7D8031C997F8">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>6193C95D-5588-4A63-7941-C0D819F884DA</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="membership" id="4C53E426-8BD1-FA96-2D41-9E5A7E41FF2A">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>4828181E-D590-E35E-7127-CE95E824D630</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="viewable device " id="1A5CFEE2-0F53-AEEC-FE28-46C35459ADF7">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>5E8C448C-8414-B659-3D44-F61834D6D133</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="credit_card" id="4DAD3A03-0FA2-BD56-1319-9A187CDEC1CE">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:37:40 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5044529E-4F6A-2325-45C6-9711B0AF0F8C" name="Key_1">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-26 12:17:59 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>6FB5BE7D-4701-F3A4-024D-FE979D55EBF1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -5,4 +5,9 @@
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <capitalNames>false</capitalNames>
 <designId>D4DB285B-658C-D7B9-C2E4-079D50DC4BE1</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="2488E2E6-2AB9-D770-4EBE-ABB52D989246">
+<designStoragePath>C:\Users\jkhk7\Desktop\dmd\db_actor_accout</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
 </OSDM_Design>

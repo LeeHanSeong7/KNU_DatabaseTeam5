@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5739649B-A2A5-81A5-336B-E02128E901C8" name="VERSION">
-<createdBy>leo</createdBy>
-<createdTime>2020-09-21 02:10:29 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0F7D4A79-0607-BBBD-2050-4E32595D5D32" name="Movie_localization">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-24 15:31:23 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Version_id" id="FCDA5BF8-B2D7-C084-84D9-AF3EF306A7CF">
+<Attribute name="Movie_name" id="92A682ED-B8C4-E34A-8D3B-FBEA1083FBAA">
 <createdBy>jkhk7</createdBy>
-<createdTime>2020-09-24 15:34:33 UTC</createdTime>
+<createdTime>2020-09-24 15:31:38 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
@@ -26,9 +26,20 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Constraint" id="58F9996C-2B0D-D67C-B400-479388EDC88D">
+<Attribute name="Thumbnail" id="C4FFF9CD-C39B-5AEB-E06C-81E834B3158B">
 <createdBy>jkhk7</createdBy>
-<createdTime>2020-09-24 15:34:55 UTC</createdTime>
+<createdTime>2020-09-24 15:32:39 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Overview" id="48F426EA-3F92-76A4-B72E-99AD4028C0A9">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-24 15:32:48 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
@@ -38,18 +49,4 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
-<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="D64D7A3A-5E1C-698A-53A4-4431E74A626C" name="Version_id">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-24 15:33:56 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<newElementsIDs>FCDA5BF8-B2D7-C084-84D9-AF3EF306A7CF</newElementsIDs>
-<usedAttributes>
-<attributeRef>FCDA5BF8-B2D7-C084-84D9-AF3EF306A7CF</attributeRef>
-</usedAttributes>
-</identifier>
-</identifiers>
 </Entity>
