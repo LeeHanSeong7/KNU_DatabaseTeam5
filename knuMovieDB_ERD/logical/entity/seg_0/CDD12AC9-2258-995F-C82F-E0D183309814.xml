@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CDD12AC9-2258-995F-C82F-E0D183309814" name="SEASON">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Movie_id" id="2C2D0735-EEE4-DC88-966E-9173CC36601F">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<generatorID>297823D8-164E-E16F-FFC6-7C7BE6844E6D</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>E9BAB720-7B8C-1E05-C0E6-F1802E709CE1</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>7814E687-B49F-7792-1EE0-A90AA6504CF7</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Season_number" id="568F3E38-59EE-E05C-C1A6-4F088AED65C7">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>F9D2802C-A78D-5253-F129-6D14826498F3</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Description" id="81F085A5-B099-91F1-909A-72C454BB052A">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>EEA971F4-0C8E-B4D7-27A9-D392819CECFE</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Episode_count" id="7390CF4F-F632-F4DC-7D90-D032F8A921AD">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>FAC289C3-7A02-BE15-0473-6195C768A584</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Category_id" id="4CFD5626-B5D4-232E-514E-84CDB355520A">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<generatorID>297823D8-164E-E16F-FFC6-7C7BE6844E6D</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>B45815B0-3921-1D13-BDA7-28DFEB91048E</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>CDEA5A6D-A0FA-4BC4-F97C-DDE7387E6FC3</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1E3D6C25-E182-8932-D105-8F0C47AE1D72" name="SEASON PK">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2C2D0735-EEE4-DC88-966E-9173CC36601F</attributeRef>
+<attributeRef>4CFD5626-B5D4-232E-514E-84CDB355520A</attributeRef>
+<attributeRef>568F3E38-59EE-E05C-C1A6-4F088AED65C7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

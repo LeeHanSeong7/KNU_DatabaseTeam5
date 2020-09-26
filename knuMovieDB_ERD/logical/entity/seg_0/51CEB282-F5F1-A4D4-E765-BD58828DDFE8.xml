@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="51CEB282-F5F1-A4D4-E765-BD58828DDFE8" name="MOVIE">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Movie_id" id="7814E687-B49F-7792-1EE0-A90AA6504CF7">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>09CA2EF6-6BB9-ADDA-9E3A-24A6E95AD4DD</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Category_id" id="CDEA5A6D-A0FA-4BC4-F97C-DDE7387E6FC3">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<generatorID>BEF017F3-7E33-3FB8-10ED-919E76E8F487</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>12BCD431-FEF5-46E0-D807-871981E65362</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>D7F6F47C-49E2-AC56-1EE6-8FE59623EFCE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Title" id="2D48204F-4196-03AE-F114-0F638AB92ECE">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>4CECF13F-6B6B-4B50-BA6B-2F7900529083</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Release_date" id="47B49D72-E1A0-FF0A-F08D-57678920EA67">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>3772903C-DC23-3847-AC57-37C7A46AE106</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="63A45A13-0757-588E-5839-5374956D26E4" name="MOVIE PK">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7814E687-B49F-7792-1EE0-A90AA6504CF7</attributeRef>
+<attributeRef>CDEA5A6D-A0FA-4BC4-F97C-DDE7387E6FC3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FAVOR" directorySegmentName="seg_0" id="523D0799-EA4B-2A68-A4DA-E24AFB75933C">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,19 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="GENRE_HAS" directorySegmentName="seg_0" id="4D1F2FF2-929C-9311-54EE-2F590AD205C3">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="GENRE_HAS" directorySegmentName="seg_0" id="B03A569D-50A9-7A44-A4CB-DC078AB3B9CA">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
 </engineerTo>
 <identifying>false</identifying>
 <optionalSource>false</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
-<sourceEntity>908F1F6B-FE2B-A208-DA83-52F79C41E484</sourceEntity>
+<sourceEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>B70F77C9-0544-4D14-AF89-701985683C33</targetEntity>
+<targetEntity>1A335350-17A5-71EC-0894-8483E0C69BE2</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

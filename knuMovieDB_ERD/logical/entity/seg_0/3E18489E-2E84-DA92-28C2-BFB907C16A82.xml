@@ -1,11 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B70F77C9-0544-4D14-AF89-701985683C33" name="GENRE">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="3E18489E-2E84-DA92-28C2-BFB907C16A82" name="CATEGORY">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -16,26 +15,24 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Genre_id" id="78DCAE1D-3A9D-42C6-3705-5AE8C5F2DD22">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<Attribute name="Category_id" id="D7F6F47C-49E2-AC56-1EE6-8FE59623EFCE">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>FD0EA2BB-164F-A096-6547-ACE5E3B61692</importedID>
+<importedID>AB5F56F2-5D6B-C41E-BF64-6C7BF10A6E54</importedID>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
 </engineerTo>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Name" id="C63B8969-7807-D84C-C3CF-6CC633C23CE6">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<Attribute name="Name" id="B4D2F120-1A7F-B385-E152-8CF62C94FDCD">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>2E8FEB67-9B4B-BD6C-1369-A8554F1293F4</importedID>
+<importedID>DC721671-D665-653C-7105-C95E6C4F6C91</importedID>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>
@@ -43,17 +40,16 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="B6F9CE74-58BB-395E-4B45-59C7CFCA6AAD" name="GENRE PK">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-26 12:20:39 UTC</createdTime>
+<identifier id="E91F04CD-F859-9449-AD8A-9C684CCE35C8" name="CATEGORY PK">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-<item key="AD303752-DEAC-EC3F-2427-1DF513DA941B" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>78DCAE1D-3A9D-42C6-3705-5AE8C5F2DD22</attributeRef>
+<attributeRef>D7F6F47C-49E2-AC56-1EE6-8FE59623EFCE</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
