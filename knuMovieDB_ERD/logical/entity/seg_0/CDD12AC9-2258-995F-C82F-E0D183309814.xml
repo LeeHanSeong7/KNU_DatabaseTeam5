@@ -63,19 +63,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Category_id" id="4CFD5626-B5D4-232E-514E-84CDB355520A">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>297823D8-164E-E16F-FFC6-7C7BE6844E6D</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>B45815B0-3921-1D13-BDA7-28DFEB91048E</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>CDEA5A6D-A0FA-4BC4-F97C-DDE7387E6FC3</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="1E3D6C25-E182-8932-D105-8F0C47AE1D72" name="SEASON PK">
@@ -88,7 +75,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>2C2D0735-EEE4-DC88-966E-9173CC36601F</attributeRef>
-<attributeRef>4CFD5626-B5D4-232E-514E-84CDB355520A</attributeRef>
 <attributeRef>568F3E38-59EE-E05C-C1A6-4F088AED65C7</attributeRef>
 </usedAttributes>
 </identifier>

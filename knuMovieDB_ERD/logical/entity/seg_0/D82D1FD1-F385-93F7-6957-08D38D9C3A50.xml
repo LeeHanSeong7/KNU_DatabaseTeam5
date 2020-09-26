@@ -136,19 +136,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Category_id" id="3B510660-CCF2-EF11-5550-B3B7CE334F90">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>00BC780D-1182-7DD4-B67E-462287FED7E7</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>A2F1CC74-67D2-609B-B799-C05DB7B96EA3</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>4CFD5626-B5D4-232E-514E-84CDB355520A</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="4B192997-BFBB-9482-9729-37E0C2DB29C9" name="EPISODE PK">
@@ -162,7 +149,6 @@
 <usedAttributes>
 <attributeRef>EEE68183-757A-E574-9D6F-2209173BCC20</attributeRef>
 <attributeRef>305502DE-997E-918D-E858-4D564571B0B0</attributeRef>
-<attributeRef>3B510660-CCF2-EF11-5550-B3B7CE334F90</attributeRef>
 <attributeRef>013A514A-5D07-4DA8-D91D-EEC16A9CEF8D</attributeRef>
 </usedAttributes>
 </identifier>

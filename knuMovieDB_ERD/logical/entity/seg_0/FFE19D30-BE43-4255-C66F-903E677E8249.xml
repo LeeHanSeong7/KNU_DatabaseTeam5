@@ -52,19 +52,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Category_id" id="E215ADC0-522A-0667-5881-4E661D0C4916">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>9B8290FB-01EA-BA26-8151-B0CA3BC8DD09</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>CDEA5A6D-A0FA-4BC4-F97C-DDE7387E6FC3</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Email" id="FEBF9120-88A1-964E-B4C6-C403FCA49707">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
@@ -89,7 +76,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>106A2CF9-9277-61ED-458D-FD30ED5CCF0C</attributeRef>
-<attributeRef>E215ADC0-522A-0667-5881-4E661D0C4916</attributeRef>
 <attributeRef>FEBF9120-88A1-964E-B4C6-C403FCA49707</attributeRef>
 </usedAttributes>
 </identifier>

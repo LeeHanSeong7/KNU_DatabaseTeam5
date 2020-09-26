@@ -1,17 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CATEGORY_HAS" directorySegmentName="seg_0" id="BEF017F3-7E33-3FB8-10ED-919E76E8F487">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="VIEWER_FAVORS_MOVIE" directorySegmentName="seg_0" id="399BE946-F83C-A530-C3E1-795662276C8C">
 <createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<createdTime>2020-09-26 14:39:58 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<sourcePk>E91F04CD-F859-9449-AD8A-9C684CCE35C8</sourcePk>
-<identifying>true</identifying>
+<identifying>false</identifying>
+<nameOnSource>Viewer</nameOnSource>
+<nameOnTarget>Movie</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
-<sourceCardinality>1</sourceCardinality>
-<sourceEntity>3E18489E-2E84-DA92-28C2-BFB907C16A82</sourceEntity>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
 <targetEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</targetEntity>
 <transferable>true</transferable>

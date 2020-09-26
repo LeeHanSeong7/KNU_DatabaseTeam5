@@ -1,18 +1,20 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FAVOR" directorySegmentName="seg_0" id="523D0799-EA4B-2A68-A4DA-E24AFB75933C">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MOVIE_HAS_CATEGORY" directorySegmentName="seg_0" id="F949AA64-B412-683A-38D8-FF43D92E0AD2">
 <createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<createdTime>2020-09-26 15:00:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <identifying>false</identifying>
+<nameOnSource>Movie</nameOnSource>
+<nameOnTarget>Cartegory</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</targetEntity>
+<targetEntity>3E18489E-2E84-DA92-28C2-BFB907C16A82</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

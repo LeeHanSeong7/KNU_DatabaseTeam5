@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="HASv2" directorySegmentName="seg_0" id="00BC780D-1182-7DD4-B67E-462287FED7E7">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="SEASON_HAS_EPISODE" directorySegmentName="seg_0" id="00BC780D-1182-7DD4-B67E-462287FED7E7">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -8,6 +8,8 @@
 </engineerTo>
 <sourcePk>1E3D6C25-E182-8932-D105-8F0C47AE1D72</sourcePk>
 <identifying>true</identifying>
+<nameOnSource>Season</nameOnSource>
+<nameOnTarget>Episode</nameOnTarget>
 <optionalSource>false</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
