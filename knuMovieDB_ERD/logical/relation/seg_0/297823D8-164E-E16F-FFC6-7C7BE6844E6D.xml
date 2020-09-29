@@ -10,7 +10,7 @@
 <identifying>true</identifying>
 <nameOnSource>Movie</nameOnSource>
 <nameOnTarget>Season</nameOnTarget>
-<optionalSource>true</optionalSource>
+<optionalSource>false</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</sourceEntity>

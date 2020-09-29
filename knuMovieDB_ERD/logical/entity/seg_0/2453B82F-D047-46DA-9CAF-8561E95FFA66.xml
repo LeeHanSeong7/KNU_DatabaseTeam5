@@ -23,7 +23,6 @@
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -65,13 +64,14 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="F5759FAF-AF43-A6A9-39FC-38D7B7FC438A" name="Version_id">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<identifier id="7321D53D-2E48-14A5-DFA2-F21C1D8F28D3" name="VERSION PK">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-28 23:36:07 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
+<pk>true</pk>
 <usedAttributes>
 <attributeRef>7D8C58F9-4EE5-07E9-8E22-7486683A1B97</attributeRef>
 </usedAttributes>

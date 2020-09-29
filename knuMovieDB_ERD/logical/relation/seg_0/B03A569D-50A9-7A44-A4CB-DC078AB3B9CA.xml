@@ -10,7 +10,7 @@
 <nameOnSource>Movie</nameOnSource>
 <nameOnTarget>Genre</nameOnTarget>
 <optionalSource>false</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>51CEB282-F5F1-A4D4-E765-BD58828DDFE8</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>

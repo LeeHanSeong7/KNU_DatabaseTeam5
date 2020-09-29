@@ -50,6 +50,17 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Producer" id="9A0CD4B6-866B-72DB-5E85-425C026E9F54">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-28 23:59:31 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="63A45A13-0757-588E-5839-5374956D26E4" name="MOVIE PK">

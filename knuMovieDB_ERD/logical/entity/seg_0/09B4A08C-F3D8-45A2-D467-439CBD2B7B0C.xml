@@ -86,15 +86,14 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Version_id" id="2F29AD06-081F-20AF-F0B2-3A324BC15BF1">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:35:19 UTC</createdTime>
+<Attribute name="Version_id" id="ABFBE4C3-3D7D-93C3-3D26-B0616848D149">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-29 00:23:43 UTC</createdTime>
 <generatorID>2C9F102E-8010-F95B-9D87-478386033D86</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <referedAttribute>7D8C58F9-4EE5-07E9-8E22-7486683A1B97</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -109,6 +108,7 @@
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <pk>true</pk>
+<newElementsIDs>F85A22FE-59E0-74DE-23F4-931E49F63A3F</newElementsIDs>
 <usedAttributes>
 <attributeRef>F85A22FE-59E0-74DE-23F4-931E49F63A3F</attributeRef>
 </usedAttributes>

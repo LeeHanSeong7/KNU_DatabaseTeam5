@@ -27,55 +27,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="date of birth" id="366B29B0-C4D2-1F90-CC23-01E5F799888F">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>1954B5C8-8DFF-E7B3-2B83-D02421E21066</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="country" id="49E552D0-3DFD-7FF8-AEBE-B5E97724B9C0">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>EDCDA59F-5A3B-50BD-B094-1A9CD5415440</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="tall" id="35AD91FF-B8FC-1611-561C-FF897D4CDBB8">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>5BFFEA08-FF4C-7817-4EA1-31A4C56D5CE4</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name=" weight" id="A4C831CC-0B5F-A56B-0B1F-9E469B15FC2C">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>2D3CF96F-F0D9-629B-8BCC-55C9A117FFF3</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="gender" id="AF8849C0-4E79-61B8-097B-7002EB923095">
+<Attribute name="Actor_id" id="AF8849C0-4E79-61B8-097B-7002EB923095">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -83,9 +35,22 @@
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4B748754-5313-9287-0EAA-5F9A8EE1D838" name="ACTOR PK">
+<createdBy>jkhk7</createdBy>
+<createdTime>2020-09-28 23:39:51 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AF8849C0-4E79-61B8-097B-7002EB923095</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

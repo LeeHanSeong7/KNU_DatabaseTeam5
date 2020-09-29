@@ -10,7 +10,7 @@
 <nameOnSource>Viewer</nameOnSource>
 <nameOnTarget>Episode</nameOnTarget>
 <optionalSource>true</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>

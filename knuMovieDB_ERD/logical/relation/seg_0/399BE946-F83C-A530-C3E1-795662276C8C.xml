@@ -6,11 +6,12 @@
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
+<targetPk>63A45A13-0757-588E-5839-5374956D26E4</targetPk>
 <identifying>false</identifying>
 <nameOnSource>Viewer</nameOnSource>
 <nameOnTarget>Movie</nameOnTarget>
 <optionalSource>true</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
