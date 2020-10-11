@@ -15,29 +15,38 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Movie_id" id="EEE68183-757A-E574-9D6F-2209173BCC20">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>00BC780D-1182-7DD4-B67E-462287FED7E7</generatorID>
+<Attribute name="Title_id" id="9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:19:30 UTC</createdTime>
+<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>D50F983D-DAB4-E03E-39D7-59D1E33F6727</importedID>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<referedAttribute>2C2D0735-EEE4-DC88-966E-9173CC36601F</referedAttribute>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Season_number" id="305502DE-997E-918D-E858-4D564571B0B0">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>00BC780D-1182-7DD4-B67E-462287FED7E7</generatorID>
+<Attribute name="Parent_title_id" id="DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:35:10 UTC</createdTime>
+<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>6A459F01-9952-3B71-4DB9-001FDE8DA179</importedID>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<referedAttribute>568F3E38-59EE-E05C-C1A6-4F088AED65C7</referedAttribute>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Season_number" id="00CB3E55-41F9-3B66-B4C7-448938141955">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:01:39 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -49,108 +58,25 @@
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Video_src_url" id="9B09252E-9A9A-5FA8-56D0-BFDFF44D7046">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>E4314303-254F-5D41-E7EA-8D99EEF0ED91</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Title" id="063D26EA-BC54-AA10-5697-ADE0FF281197">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>1D68E2C3-0CED-2D28-CBDC-AC683684C90A</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Running_time" id="758D537B-D762-9007-D2DA-2D2AD6243261">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>C0F146C6-2A93-9EA2-82E5-787D80E8F47F</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Subtitle" id="2BEC7536-3087-8FA2-3D99-03F00BD6400E">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>9DF458D7-4638-B0BC-0A39-B58DFAE1BF58</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Audio" id="B389702E-B309-4408-3458-902EB72A5641">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>74D949E6-1F70-02BA-C0D6-4A23C8A3D54A</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Description" id="798B3BA1-449C-06B2-010E-B0332EC54942">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>AE5D9C06-1494-1990-4705-E22E4500F810</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Language_id" id="E899BABA-2EC7-3B76-4316-1320680E0517">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>4309F289-2CF8-D791-5C42-F9302718E03F</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="4B192997-BFBB-9482-9729-37E0C2DB29C9" name="EPISODE PK">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<identifier id="6B9A249F-3A03-02BD-DB9C-BCAB5E2173BD" name="EPISODE PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 08:37:18 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <pk>true</pk>
-<newElementsIDs>00BC780D-1182-7DD4-B67E-462287FED7E7,013A514A-5D07-4DA8-D91D-EEC16A9CEF8D</newElementsIDs>
 <usedAttributes>
-<attributeRef>EEE68183-757A-E574-9D6F-2209173BCC20</attributeRef>
-<attributeRef>305502DE-997E-918D-E858-4D564571B0B0</attributeRef>
-<attributeRef>013A514A-5D07-4DA8-D91D-EEC16A9CEF8D</attributeRef>
+<attributeRef>DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C</attributeRef>
+<attributeRef>9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6</attributeRef>
+<attributeRef>9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6</attributeRef>
+<attributeRef>DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

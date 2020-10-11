@@ -15,18 +15,29 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Version_id" id="7D8C58F9-4EE5-07E9-8E22-7486683A1B97">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<Attribute name="Title_id" id="2423C10B-4906-98AF-B786-CA059020E30A">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:24:47 UTC</createdTime>
+<generatorID>AE38EE43-FDAF-1E5E-DC33-24F6A6884FD3</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>F701EC5C-3AE0-30DE-1F18-CDF149BB23EA</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Ordering" id="802A643B-7983-141E-344D-9E12B5CE6563">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:25:15 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Constraint" id="C79F05AE-3817-0599-E89A-82B79F1328E0">
+<Attribute name="Title" id="C79F05AE-3817-0599-E89A-82B79F1328E0">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -38,7 +49,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Conutry" id="979D877E-36C5-51DD-FCB6-4DD34FFC8493">
+<Attribute name="Region" id="979D877E-36C5-51DD-FCB6-4DD34FFC8493">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -73,7 +84,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>7D8C58F9-4EE5-07E9-8E22-7486683A1B97</attributeRef>
+<attributeRef>2423C10B-4906-98AF-B786-CA059020E30A</attributeRef>
+<attributeRef>802A643B-7983-141E-344D-9E12B5CE6563</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

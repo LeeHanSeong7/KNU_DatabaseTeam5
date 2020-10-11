@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="92AD762B-2479-0D77-A030-1532497D89FF" name="ACCOUNT">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Email" id="4CA5E9E0-5F19-4A2C-2A99-29B233C45B84">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>F85A22FE-59E0-74DE-23F4-931E49F63A3F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Phone_number" id="34D7C36B-7DDC-724F-6DF0-13D9EEB332FD">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>15C2861A-24EB-3EB3-9FFC-AF0A4B87AA8F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Password" id="3051545A-7C40-5331-BDD5-A63355E96ADC">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>39190517-AE06-AED5-EFF2-C8B81A5A7208</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nickname" id="62CBBF6B-4E3F-7989-CFB9-1663A24773C2">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>99DEFADB-0FCF-9619-573C-079D0B40BB4F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Membership" id="735A4B2F-C9C2-A1AE-7C42-F86E17209A1B">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>DC34EB3F-78EA-9225-B8A5-E50905D50038</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Viewable_device" id="543D661C-631F-4FE0-E087-5A77129E9534">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>AC4D387B-7C60-753C-1465-B8EF44FFD67D</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D56BE210-DC63-7E10-8926-9380CAB5BCE7" name="ACCOUNT_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:40:21 UTC</createdTime>
+<generatorID>8E0E4006-1E0E-F191-BB27-A1099F552095</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4CA5E9E0-5F19-4A2C-2A99-29B233C45B84"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

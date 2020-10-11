@@ -26,7 +26,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Phone number " id="15C2861A-24EB-3EB3-9FFC-AF0A4B87AA8F">
+<Attribute name="Phone_number " id="15C2861A-24EB-3EB3-9FFC-AF0A4B87AA8F">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -74,7 +74,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Viewable device " id="AC4D387B-7C60-753C-1465-B8EF44FFD67D">
+<Attribute name="Viewable_device " id="AC4D387B-7C60-753C-1465-B8EF44FFD67D">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
@@ -86,15 +86,25 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Version_id" id="ABFBE4C3-3D7D-93C3-3D26-B0616848D149">
-<createdBy>jkhk7</createdBy>
-<createdTime>2020-09-29 00:23:43 UTC</createdTime>
-<generatorID>2C9F102E-8010-F95B-9D87-478386033D86</generatorID>
+<Attribute name="Gender" id="E4BD11FD-A85B-D641-E371-EEB4E48F9C87">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 08:37:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
-<referedAttribute>7D8C58F9-4EE5-07E9-8E22-7486683A1B97</referedAttribute>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isAdmin" id="19A9E5D5-1C58-AB53-78A1-8485129BF12F">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:47:08 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>

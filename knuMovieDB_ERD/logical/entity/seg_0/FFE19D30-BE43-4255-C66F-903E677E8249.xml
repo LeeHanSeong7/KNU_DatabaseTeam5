@@ -15,36 +15,11 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Movie_id" id="106A2CF9-9277-61ED-458D-FD30ED5CCF0C">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>CAD1D567-9B1F-7161-8DBD-36B9774386CB</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>7814E687-B49F-7792-1EE0-A90AA6504CF7</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Stars" id="C4DD22D3-D1FF-DCAB-CA3F-B0B08E701754">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>7C1908A9-8457-297F-F3AF-DC9492FDF668</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Comment" id="5A7F3FBB-0F28-80AC-98A0-F4AD2A65645B">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>78601210-9CB3-C8D1-8E95-A747B0B74743</importedID>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
@@ -64,6 +39,18 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Title_id" id="6FADA853-4568-1834-8B36-B7F66AE06D8E">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:19:30 UTC</createdTime>
+<generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="78586412-7BB7-BBB0-46F0-B8EB05AF61AB" name="RATING PK">
@@ -75,8 +62,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>106A2CF9-9277-61ED-458D-FD30ED5CCF0C</attributeRef>
 <attributeRef>FEBF9120-88A1-964E-B4C6-C403FCA49707</attributeRef>
+<attributeRef>6FADA853-4568-1834-8B36-B7F66AE06D8E</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
