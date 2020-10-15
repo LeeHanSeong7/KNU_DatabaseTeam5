@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C393E44B-22F6-5EA8-CBAD-9925D8401537" containerWithKeyObject="0EB4240A-B859-EF48-F9CA-053AEC70A927" localFKIndex="FB894A7A-C8AA-19C7-FA17-F7CD6FB00D6E" name="VIEWER_WATCH_MOVIE_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:59:19 UTC</createdTime>
+<generatorID>8E927C25-9F7F-5AD7-A094-473442AADF68</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<referredTableLongName>MOVIE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>EA567BE6-BEF5-B627-C210-A9A82E767C9B</referredTableID>
+<keyObject>42F5824B-ACA1-6CCF-0853-F000FE245CA8</keyObject>
+<referredKeyID>42F5824B-ACA1-6CCF-0853-F000FE245CA8</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Title_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
