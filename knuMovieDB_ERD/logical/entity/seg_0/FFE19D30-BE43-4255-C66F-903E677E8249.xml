@@ -27,7 +27,7 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Email" id="FEBF9120-88A1-964E-B4C6-C403FCA49707">
+<Attribute name="Email_id" id="FEBF9120-88A1-964E-B4C6-C403FCA49707">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <generatorID>846050A1-20A6-425F-5672-CD8CA0F3EE27</generatorID>
@@ -39,16 +39,18 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Title_id" id="6FADA853-4568-1834-8B36-B7F66AE06D8E">
+<Attribute name="Title_id" id="3B88597C-6F64-D026-60C3-FEF1988E36FF">
 <createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:19:30 UTC</createdTime>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
 <generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -57,13 +59,14 @@
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>FEBF9120-88A1-964E-B4C6-C403FCA49707</attributeRef>
-<attributeRef>6FADA853-4568-1834-8B36-B7F66AE06D8E</attributeRef>
+<attributeRef>3B88597C-6F64-D026-60C3-FEF1988E36FF</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

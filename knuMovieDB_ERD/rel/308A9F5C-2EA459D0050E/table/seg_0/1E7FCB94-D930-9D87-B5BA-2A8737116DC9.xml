@@ -13,17 +13,9 @@
 <createdTime>2020-10-11 07:40:21 UTC</createdTime>
 <generatorID>2D48204F-4196-03AE-F114-0F638AB92ECE</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Title" id="AF2FFD76-9A96-7710-4D63-471CD6D5030B">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:40:21 UTC</createdTime>
-<generatorID>81A3110E-18F3-8F21-5F26-3892484D80F6</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -33,8 +25,11 @@
 <generatorID>D33CB708-848F-6B9A-58C6-D71062168F57</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize> CHAR</dataTypeSize>
+<ownDataTypeParameters> CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="Runtime" id="B6132311-86C9-27B9-6A9E-E8A58C6BAD35">
@@ -57,10 +52,20 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Producer" id="6B327A18-2B87-C057-397E-39C90FFC008A">
+<Column name="Total_rating" id="89F1AD0F-BE83-117F-8776-895FF9738E1D">
 <createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:40:21 UTC</createdTime>
-<generatorID>9A0CD4B6-866B-72DB-5E85-425C026E9F54</generatorID>
+<createdTime>2020-10-15 13:01:22 UTC</createdTime>
+<generatorID>E49F20AC-3E16-8B81-598A-BFACCD0AB157</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Num_votes" id="FCB9BE4D-816E-1F23-4819-232BBADE1FC0">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:01:22 UTC</createdTime>
+<generatorID>CD8DA129-77AE-615A-A902-8FFB5A9AD674</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>

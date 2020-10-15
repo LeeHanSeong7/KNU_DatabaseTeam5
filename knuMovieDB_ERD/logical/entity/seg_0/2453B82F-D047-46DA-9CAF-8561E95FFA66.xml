@@ -15,18 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Title_id" id="2423C10B-4906-98AF-B786-CA059020E30A">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:24:47 UTC</createdTime>
-<generatorID>AE38EE43-FDAF-1E5E-DC33-24F6A6884FD3</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Ordering" id="802A643B-7983-141E-344D-9E12B5CE6563">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:25:15 UTC</createdTime>
@@ -73,19 +61,34 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Title_id" id="DE1F6C33-DA9C-CEF3-516C-765D6FACA637">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
+<generatorID>AE38EE43-FDAF-1E5E-DC33-24F6A6884FD3</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="7321D53D-2E48-14A5-DFA2-F21C1D8F28D3" name="VERSION PK">
 <createdBy>jkhk7</createdBy>
 <createdTime>2020-09-28 23:36:07 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>2423C10B-4906-98AF-B786-CA059020E30A</attributeRef>
 <attributeRef>802A643B-7983-141E-344D-9E12B5CE6563</attributeRef>
+<attributeRef>DE1F6C33-DA9C-CEF3-516C-765D6FACA637</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

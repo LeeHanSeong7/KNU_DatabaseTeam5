@@ -15,30 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Title_id" id="9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:19:30 UTC</createdTime>
-<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Parent_title_id" id="DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:35:10 UTC</createdTime>
-<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Season_number" id="00CB3E55-41F9-3B66-B4C7-448938141955">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:01:39 UTC</createdTime>
@@ -62,6 +38,34 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Title_id" id="AABE0E1E-07A5-2EFC-F4A3-D7FAD2893F3A">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
+<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Title_id1" id="0E526AC7-42FD-91CF-9265-042468D43B01">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
+<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="6B9A249F-3A03-02BD-DB9C-BCAB5E2173BD" name="EPISODE PK">
@@ -73,10 +77,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C</attributeRef>
-<attributeRef>9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6</attributeRef>
-<attributeRef>9CA0650A-A7FF-59D2-1B57-560A7C3CCFF6</attributeRef>
-<attributeRef>DCF461EA-5F2D-4985-F4C1-1AF6BFB2B18C</attributeRef>
+<attributeRef>AABE0E1E-07A5-2EFC-F4A3-D7FAD2893F3A</attributeRef>
+<attributeRef>0E526AC7-42FD-91CF-9265-042468D43B01</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

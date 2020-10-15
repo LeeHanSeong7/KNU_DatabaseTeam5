@@ -28,7 +28,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ACCOUNT_Email" id="E622AFA5-3445-5E1C-32D5-327CFFD066C4">
+<Column name="ACCOUNT_Email_id" id="E622AFA5-3445-5E1C-32D5-327CFFD066C4">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:40:21 UTC</createdTime>
 <generatorID>FEBF9120-88A1-964E-B4C6-C403FCA49707</generatorID>
@@ -46,7 +46,8 @@
 <createdTime>2020-10-11 07:40:21 UTC</createdTime>
 <generatorID>6FADA853-4568-1834-8B36-B7F66AE06D8E</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
