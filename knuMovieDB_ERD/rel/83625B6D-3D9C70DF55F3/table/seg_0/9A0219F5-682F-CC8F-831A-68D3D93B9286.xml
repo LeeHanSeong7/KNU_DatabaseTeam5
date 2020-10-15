@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9A0219F5-682F-CC8F-831A-68D3D93B9286" name="MOVIE_CAST_ACTOR">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MOVIE_Title_id" id="A711BAC5-0CB0-F770-E25B-5B4C39ABBA3C">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E2C2B9C5-BFA7-B94E-8EEA-90D6ED55C1A0" referredColumn="8537DAEA-DD9A-FC4E-454C-C63C0A136680"/>
+</associations>
+</Column>
+<Column name="ACTOR_Actor_id" id="555A56A8-F814-D100-2B14-C877A079FFE7">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0F6F983B-940E-65EC-E360-BA5E8D1B231E" referredColumn="B457C69C-938C-B731-DEC4-F470B2828483"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="09181E06-4D70-4F07-13BF-E97F157D76A1" name="MOVIE_CAST_ACTOR_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A711BAC5-0CB0-F770-E25B-5B4C39ABBA3C"/>
+<colUsage columnID="555A56A8-F814-D100-2B14-C877A079FFE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F95FF14-65AD-30A9-6BA8-BC84CD3DDC53" name="MOVIE_CAST_ACTOR_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<generatorID>80FB65B9-FE82-2ACA-5B50-116E96AFCEE0</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A711BAC5-0CB0-F770-E25B-5B4C39ABBA3C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D34887D2-3C5D-7442-41E6-7B1667F638A0" name="MOVIE_CAST_ACTOR_ACTOR_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<generatorID>80FB65B9-FE82-2ACA-5B50-116E96AFCEE0</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="555A56A8-F814-D100-2B14-C877A079FFE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

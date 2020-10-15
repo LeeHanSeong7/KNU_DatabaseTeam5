@@ -15,52 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Ordering" id="802A643B-7983-141E-344D-9E12B5CE6563">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-11 07:25:15 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Title" id="C79F05AE-3817-0599-E89A-82B79F1328E0">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>3737141F-0130-74FA-47DC-45A8E1528311</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Region" id="979D877E-36C5-51DD-FCB6-4DD34FFC8493">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>D2DDEA50-97EA-1222-5DF4-097810B51504</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Language" id="6A5E8DCF-13A3-D15C-11AB-FABC56D3140D">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>0F2A418A-8222-516A-FF16-AF22E738D649</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Title_id" id="DE1F6C33-DA9C-CEF3-516C-765D6FACA637">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-15 13:28:29 UTC</createdTime>
@@ -72,8 +26,66 @@
 <referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Ordering" id="802A643B-7983-141E-344D-9E12B5CE6563">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-11 07:25:15 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Title" id="C79F05AE-3817-0599-E89A-82B79F1328E0">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>3737141F-0130-74FA-47DC-45A8E1528311</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Region" id="979D877E-36C5-51DD-FCB6-4DD34FFC8493">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>D2DDEA50-97EA-1222-5DF4-097810B51504</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Language" id="6A5E8DCF-13A3-D15C-11AB-FABC56D3140D">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>0F2A418A-8222-516A-FF16-AF22E738D649</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

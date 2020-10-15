@@ -4,7 +4,7 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,15 +15,47 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Title_id" id="0E526AC7-42FD-91CF-9265-042468D43B01">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
+<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Parent_title_id" id="AABE0E1E-07A5-2EFC-F4A3-D7FAD2893F3A">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:28:29 UTC</createdTime>
+<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
+</engineerTo>
+<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="Season_number" id="00CB3E55-41F9-3B66-B4C7-448938141955">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:01:39 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Episode_number" id="013A514A-5D07-4DA8-D91D-EEC16A9CEF8D">
@@ -32,35 +64,9 @@
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>568D4CB0-5970-FCD1-B21E-3E1AF462FD26</importedID>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Title_id" id="AABE0E1E-07A5-2EFC-F4A3-D7FAD2893F3A">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-15 13:28:29 UTC</createdTime>
-<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Title_id1" id="0E526AC7-42FD-91CF-9265-042468D43B01">
-<createdBy>leo</createdBy>
-<createdTime>2020-10-15 13:28:29 UTC</createdTime>
-<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -73,7 +79,7 @@
 <createdTime>2020-10-11 08:37:18 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="83625B6D-7D43-177A-AFBE-3D9C70DF55F3" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

@@ -15,6 +15,20 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Actor_id" id="AF8849C0-4E79-61B8-097B-7002EB923095">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>40430DDE-3C49-D1A3-1C2A-FF6E3996C7BB</importedID>
+<engineerTo>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="name" id="9182EC1B-777C-AE4C-6893-5BD79CBD1F6A">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
@@ -24,19 +38,11 @@
 <item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Actor_id" id="AF8849C0-4E79-61B8-097B-7002EB923095">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>40430DDE-3C49-D1A3-1C2A-FF6E3996C7BB</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -44,8 +50,9 @@
 <createdBy>jkhk7</createdBy>
 <createdTime>2020-09-28 23:39:51 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

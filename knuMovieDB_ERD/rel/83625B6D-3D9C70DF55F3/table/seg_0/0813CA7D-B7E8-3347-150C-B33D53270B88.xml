@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0813CA7D-B7E8-3347-150C-B33D53270B88" name="VIEWER_WATCH_MOVIE">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ACCOUNT_Email_id" id="1F703492-8ED6-782F-8B39-B0CAEFF82CA8">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F3208AB4-CB8F-CBB8-C53B-AF271400F755" referredColumn="CE9073B5-8A53-A1BC-AB51-0DA048F0D804"/>
+</associations>
+</Column>
+<Column name="MOVIE_Title_id" id="37138138-4C0B-996F-37F0-7D9A98EA7246">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A2ADEDC4-3D6E-D3A6-14FF-1966AD67B341" referredColumn="8537DAEA-DD9A-FC4E-454C-C63C0A136680"/>
+</associations>
+</Column>
+<Column name="Playback_position" id="646BD832-1638-956B-7E05-B06A7AFAC414">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<generatorID>EF623CD3-8D0A-3ECD-BD81-E8385AC734D3</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isRelationshipColumn>true</isRelationshipColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="25A8E500-BFA4-3DDF-EFC7-614E7BE5B094" name="VIEWER_WATCH_MOVIE_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F703492-8ED6-782F-8B39-B0CAEFF82CA8"/>
+<colUsage columnID="37138138-4C0B-996F-37F0-7D9A98EA7246"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2E0FE084-FCCB-DE19-37C2-66F32AC79078" name="VIEWER_WATCH_MOVIE_ACCOUNT_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<generatorID>8E927C25-9F7F-5AD7-A094-473442AADF68</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F703492-8ED6-782F-8B39-B0CAEFF82CA8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C37CE383-EC00-4797-FFD7-AC62D4349B9C" name="VIEWER_WATCH_MOVIE_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-15 13:49:44 UTC</createdTime>
+<generatorID>8E927C25-9F7F-5AD7-A094-473442AADF68</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37138138-4C0B-996F-37F0-7D9A98EA7246"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
