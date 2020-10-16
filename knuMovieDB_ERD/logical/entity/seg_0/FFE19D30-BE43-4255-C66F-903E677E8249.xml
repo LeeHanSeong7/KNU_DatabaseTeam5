@@ -4,7 +4,7 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="FC5A0BCA-752B-7916-C64C-AB20F1A8C11E" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,41 +15,13 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Stars" id="C4DD22D3-D1FF-DCAB-CA3F-B0B08E701754">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<importedID>7C1908A9-8457-297F-F3AF-DC9492FDF668</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Email_id" id="FEBF9120-88A1-964E-B4C6-C403FCA49707">
-<createdBy>Hyunsu</createdBy>
-<createdTime>2020-09-26 14:07:55 UTC</createdTime>
-<generatorID>846050A1-20A6-425F-5672-CD8CA0F3EE27</generatorID>
-<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
-<referedAttribute>F85A22FE-59E0-74DE-23F4-931E49F63A3F</referedAttribute>
-<use>1</use>
-<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>50 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Title_id" id="3B88597C-6F64-D026-60C3-FEF1988E36FF">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-15 13:28:29 UTC</createdTime>
 <generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
+<item key="FC5A0BCA-752B-7916-C64C-AB20F1A8C11E" value="true"/>
 </engineerTo>
 <referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -58,15 +30,43 @@
 <dataTypeSize>20 CHAR</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Email_id" id="FEBF9120-88A1-964E-B4C6-C403FCA49707">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<generatorID>846050A1-20A6-425F-5672-CD8CA0F3EE27</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<engineerTo>
+<item key="FC5A0BCA-752B-7916-C64C-AB20F1A8C11E" value="true"/>
+</engineerTo>
+<referedAttribute>F85A22FE-59E0-74DE-23F4-931E49F63A3F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Stars" id="C4DD22D3-D1FF-DCAB-CA3F-B0B08E701754">
+<createdBy>Hyunsu</createdBy>
+<createdTime>2020-09-26 14:07:55 UTC</createdTime>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<importedID>7C1908A9-8457-297F-F3AF-DC9492FDF668</importedID>
+<engineerTo>
+<item key="FC5A0BCA-752B-7916-C64C-AB20F1A8C11E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="78586412-7BB7-BBB0-46F0-B8EB05AF61AB" name="RATING PK">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
+<item key="FC5A0BCA-752B-7916-C64C-AB20F1A8C11E" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

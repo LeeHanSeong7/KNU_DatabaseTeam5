@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="82FFAE6F-02A6-A4E6-4764-4BEA48BF557E" name="VERSION">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>2453B82F-D047-46DA-9CAF-8561E95FFA66</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MOVIE_Title_id" id="968810D9-7B49-ADA1-B0C3-5353733CF3E3">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>DE1F6C33-DA9C-CEF3-516C-765D6FACA637</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9F87C4E-235B-B400-E5F0-4DE093DF0AC1" referredColumn="AB837738-54DE-F188-2BA1-C73D933B518E"/>
+</associations>
+</Column>
+<Column name="Ordering" id="8D4C3BE6-AC2D-0D26-004B-EDACFB6723EE">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>802A643B-7983-141E-344D-9E12B5CE6563</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Title" id="BA3B127A-A5FA-C859-23EF-C1975CB0D086">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>C79F05AE-3817-0599-E89A-82B79F1328E0</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Region" id="3AA40C4F-DDF5-32B7-0803-7A73734346B4">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>979D877E-36C5-51DD-FCB6-4DD34FFC8493</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Language" id="F7AD98F8-5D8D-F4A2-A658-FD3E5F52FDEF">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>6A5E8DCF-13A3-D15C-11AB-FABC56D3140D</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FD31339A-1EA5-D8C2-FCFD-0F54B49CC0BF" name="VERSION_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>7321D53D-2E48-14A5-DFA2-F21C1D8F28D3</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8D4C3BE6-AC2D-0D26-004B-EDACFB6723EE"/>
+<colUsage columnID="968810D9-7B49-ADA1-B0C3-5353733CF3E3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5203F597-83CC-6073-9576-7934D60E628D" name="VERSION_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>AE38EE43-FDAF-1E5E-DC33-24F6A6884FD3</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="968810D9-7B49-ADA1-B0C3-5353733CF3E3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

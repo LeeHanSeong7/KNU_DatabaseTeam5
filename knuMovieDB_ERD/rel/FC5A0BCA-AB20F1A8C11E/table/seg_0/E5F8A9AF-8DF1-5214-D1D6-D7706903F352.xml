@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E5F8A9AF-8DF1-5214-D1D6-D7706903F352" name="ACCOUNT">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>09B4A08C-F3D8-45A2-D467-439CBD2B7B0C</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Email_id" id="27304B16-502D-4662-2B1F-4D48EA837AE6">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>F85A22FE-59E0-74DE-23F4-931E49F63A3F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Password" id="D684EA62-2CA5-10AA-793F-D6F9FE8B6F9F">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>39190517-AE06-AED5-EFF2-C8B81A5A7208</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Phone_number" id="B72EF6C1-3154-D303-4F02-D6CA484DAA1A">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>15C2861A-24EB-3EB3-9FFC-AF0A4B87AA8F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Name" id="F2DBF396-37CF-16BE-FF13-A9C92C30EAD2">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>99DEFADB-0FCF-9619-573C-079D0B40BB4F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Address" id="910CA5FD-12A8-8760-A1C6-497791B81C79">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>30CE7DAD-C58E-7242-4F45-E45AF3528B3B</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Gender" id="A89C574B-6A74-4884-8B0A-9B5C02DD0F2F">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>E4BD11FD-A85B-D641-E371-EEB4E48F9C87</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Birth_date" id="8DB4E79B-5795-556B-0A8D-93916939EC8E">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>D3174D16-9DC0-10F1-022D-4683D98A795B</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Job" id="89FDD50F-ED4C-225C-F920-6D1A196C6281">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>7B321627-D498-6E3B-0BB9-EB417B8072B1</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Membership" id="E5986B71-3275-9525-3FAE-D482DE5D0CC7">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>DC34EB3F-78EA-9225-B8A5-E50905D50038</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="isAdmin" id="0070573A-9F25-480D-89CA-732FAD25083C">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>19A9E5D5-1C58-AB53-78A1-8485129BF12F</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="716BC23D-339C-A6A9-8B0F-B0023333EA0E" name="ACCOUNT_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>8E0E4006-1E0E-F191-BB27-A1099F552095</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="27304B16-502D-4662-2B1F-4D48EA837AE6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

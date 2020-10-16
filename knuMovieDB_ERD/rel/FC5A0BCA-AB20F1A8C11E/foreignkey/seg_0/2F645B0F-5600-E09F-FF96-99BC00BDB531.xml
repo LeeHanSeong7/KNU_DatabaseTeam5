@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2F645B0F-5600-E09F-FF96-99BC00BDB531" containerWithKeyObject="AE0B0E7B-04C4-5A69-049A-85DECC98185B" localFKIndex="D365726A-D84D-EE66-3E80-2978E6127722" name="RATING_ACCOUNT_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>846050A1-20A6-425F-5672-CD8CA0F3EE27</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<referredTableLongName>ACCOUNT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E5F8A9AF-8DF1-5214-D1D6-D7706903F352</referredTableID>
+<keyObject>716BC23D-339C-A6A9-8B0F-B0023333EA0E</keyObject>
+<referredKeyID>716BC23D-339C-A6A9-8B0F-B0023333EA0E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Email_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

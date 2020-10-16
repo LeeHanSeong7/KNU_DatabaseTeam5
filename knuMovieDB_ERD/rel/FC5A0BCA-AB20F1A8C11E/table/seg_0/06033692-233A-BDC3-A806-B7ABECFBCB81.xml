@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="06033692-233A-BDC3-A806-B7ABECFBCB81" name="EPISODE">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>D82D1FD1-F385-93F7-6957-08D38D9C3A50</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Title_id" id="8893CAF9-EBD6-4652-BE7E-14BBB49F910E">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>0E526AC7-42FD-91CF-9265-042468D43B01</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A31BCF6A-0B7D-65C7-2E8C-2DF6751ECC4D" referredColumn="AB837738-54DE-F188-2BA1-C73D933B518E"/>
+</associations>
+</Column>
+<Column name="Parent_title_id" id="A969E6B5-6368-FAC8-7ED5-E6FCCDB457E6">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>AABE0E1E-07A5-2EFC-F4A3-D7FAD2893F3A</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="194055AC-594C-293C-F3ED-D2046AFFE8CD" referredColumn="AB837738-54DE-F188-2BA1-C73D933B518E"/>
+</associations>
+</Column>
+<Column name="Season_number" id="32695F2F-8D72-6226-BC6E-D34949CA9C88">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>00CB3E55-41F9-3B66-B4C7-448938141955</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Episode_number" id="77D0414C-3184-3BC3-3C09-72C196591C92">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>013A514A-5D07-4DA8-D91D-EEC16A9CEF8D</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1461E493-E55A-4E9F-381E-BC48AB532095" name="EPISODE_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>6B9A249F-3A03-02BD-DB9C-BCAB5E2173BD</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A969E6B5-6368-FAC8-7ED5-E6FCCDB457E6"/>
+<colUsage columnID="8893CAF9-EBD6-4652-BE7E-14BBB49F910E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A217D9F0-8DD5-E2AE-79B7-74F01DF363BF" name="EPISODE_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>A9B62B4B-5DF5-D1BC-379C-5CEC916F0794</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8893CAF9-EBD6-4652-BE7E-14BBB49F910E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9D9922D5-F74F-D152-B6C2-B3429294E772" name="EPISODE_MOVIE_FKv2">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>26E0F696-F4FC-FC4E-3753-443826DA89C8</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A969E6B5-6368-FAC8-7ED5-E6FCCDB457E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

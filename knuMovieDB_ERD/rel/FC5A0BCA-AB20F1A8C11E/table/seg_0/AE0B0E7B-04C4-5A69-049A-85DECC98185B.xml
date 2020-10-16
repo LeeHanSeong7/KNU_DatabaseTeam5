@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AE0B0E7B-04C4-5A69-049A-85DECC98185B" name="RATING">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>FFE19D30-BE43-4255-C66F-903E677E8249</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MOVIE_Title_id" id="4385FB52-5461-687D-2766-646D13DC8559">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>3B88597C-6F64-D026-60C3-FEF1988E36FF</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8E041B41-E2AE-003C-929E-AD9B0A88A47F" referredColumn="AB837738-54DE-F188-2BA1-C73D933B518E"/>
+</associations>
+</Column>
+<Column name="ACCOUNT_Email_id" id="C42CED61-84FA-24F5-6738-7B0B67535056">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>FEBF9120-88A1-964E-B4C6-C403FCA49707</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2F645B0F-5600-E09F-FF96-99BC00BDB531" referredColumn="27304B16-502D-4662-2B1F-4D48EA837AE6"/>
+</associations>
+</Column>
+<Column name="Stars" id="983BBBC2-5363-67A1-F53E-F36D64CA2BBA">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>C4DD22D3-D1FF-DCAB-CA3F-B0B08E701754</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8F8DCEB1-AA97-AF47-1C91-20357550596D" name="RATING_PK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>78586412-7BB7-BBB0-46F0-B8EB05AF61AB</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C42CED61-84FA-24F5-6738-7B0B67535056"/>
+<colUsage columnID="4385FB52-5461-687D-2766-646D13DC8559"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6168365A-5EE7-F77E-C2FE-35C9A2B8F903" name="RATING_MOVIE_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>4BA1396A-E458-39A1-2CF2-3F5B2AA7631A</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4385FB52-5461-687D-2766-646D13DC8559"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D365726A-D84D-EE66-3E80-2978E6127722" name="RATING_ACCOUNT_FK">
+<createdBy>leo</createdBy>
+<createdTime>2020-10-16 13:01:49 UTC</createdTime>
+<generatorID>846050A1-20A6-425F-5672-CD8CA0F3EE27</generatorID>
+<ownerDesignName>knuMovieDB_ERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C42CED61-84FA-24F5-6738-7B0B67535056"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
