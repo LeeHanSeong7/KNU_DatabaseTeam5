@@ -3,9 +3,6 @@
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
@@ -20,9 +17,6 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>4CECF13F-6B6B-4B50-BA6B-2F7900529083</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
@@ -33,23 +27,17 @@
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:04:44 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>10 CHAR</dataTypeSize>
-<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Runtime" id="48F6106C-1E62-A7FB-6424-C12E6D91CF8D">
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:04:59 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -61,9 +49,6 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>3772903C-DC23-3847-AC57-37C7A46AE106</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -74,9 +59,6 @@
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:59:59 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -87,9 +69,6 @@
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 08:00:07 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -102,10 +81,6 @@
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
-</engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>2D48204F-4196-03AE-F114-0F638AB92ECE</attributeRef>

@@ -3,9 +3,6 @@
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
@@ -20,9 +17,6 @@
 <createdTime>2020-10-15 13:28:29 UTC</createdTime>
 <generatorID>AE38EE43-FDAF-1E5E-DC33-24F6A6884FD3</generatorID>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <referedAttribute>2D48204F-4196-03AE-F114-0F638AB92ECE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -34,9 +28,6 @@
 <createdBy>leo</createdBy>
 <createdTime>2020-10-11 07:25:15 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -47,24 +38,18 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>3737141F-0130-74FA-47DC-45A8E1528311</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>50 CHAR</dataTypeSize>
-<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Region" id="979D877E-36C5-51DD-FCB6-4DD34FFC8493">
 <createdBy>Hyunsu</createdBy>
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>D2DDEA50-97EA-1222-5DF4-097810B51504</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -77,9 +62,6 @@
 <createdTime>2020-09-26 14:07:55 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
 <importedID>0F2A418A-8222-516A-FF16-AF22E738D649</importedID>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -93,10 +75,6 @@
 <createdBy>jkhk7</createdBy>
 <createdTime>2020-09-28 23:36:07 UTC</createdTime>
 <ownerDesignName>knuMovieDB_ERD</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
-<engineerTo>
-<item key="308A9F5C-189B-0D0E-FFB7-2EA459D0050E" value="false"/>
-</engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>802A643B-7983-141E-344D-9E12B5CE6563</attributeRef>
