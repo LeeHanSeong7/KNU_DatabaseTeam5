@@ -8,4 +8,5 @@ public interface AuthenticationService {
     //Result changeAccountInfo()
     Result changePassword(String id, String password, String changed);
     Result deleteAccount(String id, String password, String re_password);
+    AccountDTO getloggedInAccountInfo();
 } 

@@ -28,4 +28,10 @@ public class StubAuthenticationService implements AuthenticationService {
         return Result.success;
     }
 
+    @Override
+    public AccountDTO getloggedInAccountInfo() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

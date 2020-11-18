@@ -5,6 +5,7 @@ import pd.model.AccountDAO.ACCOUNT;
 import pd.model.AccountDTO;
 import pd.interfaces.AuthenticationService;
 import pd.utils.Result;
+import pd.utils.DB;
 import pd.utils.Error;
 
 public class DefaultAuthenticationService implements AuthenticationService {
@@ -20,7 +21,20 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     @Override
     public Result signUp(String id, String password, AccountDTO accountDTO) {
-        return null;
+        String sql = "INSERT INTO ACCOUNT " + 
+                    "VALUES ( "+ DB.TABLE.valueFormOf("Account", accountDTO) +" )";
+        try {
+            PreparedStatement ppst = connection.prepareStatement(sql);
+            int r = ppst.executeUpdate();
+            if (r != 1) return Result.withError(AuthError.accountInfoWrong);
+            else {
+                connection.commit();
+                return Result.success;
+            }
+        } catch (Exception e ) {
+            e.printStackTrace();
+        }
+        return Result.withError(AuthError.unknown);
     }
 
     @Override
@@ -54,9 +68,16 @@ public class DefaultAuthenticationService implements AuthenticationService {
         return null;
     }
 
+    @Override
+    public Result deleteAccount(String id, String password, String re_password) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     public enum AuthError implements Error {
         idNotFound(1, "id incorrect!"),
         passwordWrong(2, "Wrong Password!"),
+        accountInfoWrong(3, "Couldn't Sign Up, Check your Account Info again."),
         unknown(400, "Unknown Error!");
 
         private int code;
@@ -78,10 +99,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
         }
 
     }
-
     @Override
-    public Result deleteAccount(String id, String password, String re_password) {
-        // TODO Auto-generated method stub
-        return null;
+    public AccountDTO getloggedInAccountInfo() {
+        return loggedInAcountInfo;
     }
 }

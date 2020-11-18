@@ -4,9 +4,10 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import pd.interfaces.DTO;
 import pd.model.AccountDAO.ACCOUNT;
 
-public class AccountDTO {
+public class AccountDTO implements DTO {
     private String email_id;
     private String password;
     private String phone_number;
