@@ -5,19 +5,21 @@ import java.util.*;
 
 import injected.DIContainer;
 import injected.DIContainer.Services;
+import pd.services.DefaultAuthenticationService;
 import pd.utils.Result;
 
 public class KnuMovie {
-	public static final String URL = "jdbc:oracle:thin:@localhost:32769:orcl";
-	//public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
+	//public static final String URL = "jdbc:oracle:thin:@localhost:32769:orcl";
+	public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
 	public static String default_db_name = "KnuMovie";
 	public static String default_db_pwd = "knu";
 	private Services services;
-
+	private DefaultAuthenticationService de;
 	public KnuMovie(DIContainer diContainer){
 		services = diContainer.services;
 	}	
-
+	//connection Temporary
+	
 	public void run() {
 		String db_name = "";
 		String db_pwd = "";
@@ -54,7 +56,9 @@ public class KnuMovie {
 			}
 			break;
 		}	
-		
+		//connection set
+		de = (DefaultAuthenticationService)services.authenticationService;
+		de.setConnection(conn);
 		while(true) {
 			String str;
 			System.out.println("-menu-");
@@ -62,20 +66,26 @@ public class KnuMovie {
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {
-				System.out.println("����");
 			}
 			else if (str.equals("1")) {
-				Result result = services.authenticationService.login("id", "password");
-				System.out.println(result.toString());
-				// ���⼭ ��ü ȣ��
+				String id;
+				String password;
+				System.out.print("ID(EMAIL)	: ");
+				id = scan.nextLine();
+				System.out.print("PASSWORD	: ");
+				password = scan.nextLine();
+				Result result = services.authenticationService.login(id, password);
+				if (result == Result.failure)
+					System.out.println(result.getError().getDescription());
+				else {
+					//adminUI ui = new adminUI(services); in progress
+				}
 			}
 			else if (str.equals("2")) {
 				//Result result = services.authenticationService.signUp("id", "password", new accountDTO(null, null, null, ...));
-				System.out.println("ȸ������");
-				// ���⼭ ��ü ȣ��
 			}
 			else if (str.equals("3")) {
-				System.out.println("����");
+				System.out.println("***program exited.***");
 				break;
 			}
 			else System.out.println("invalid operation");
