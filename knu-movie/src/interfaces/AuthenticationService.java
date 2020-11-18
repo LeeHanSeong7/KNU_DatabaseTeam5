@@ -1,7 +1,4 @@
 package interfaces;
-
-import java.sql.Connection;
-
 import model.AccountDTO;
 import utils.Result;
 

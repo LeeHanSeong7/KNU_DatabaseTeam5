@@ -1,5 +1,6 @@
 import java.sql.*;
 
+import model.AccountDAO.ACCOUNT;
 import model.AccountDTO;
 //import interfaces.AccountInfo;
 import interfaces.AuthenticationService;
@@ -25,9 +26,32 @@ public class DefaultAuthenticationService implements AuthenticationService {
     }
 
     @Override
+    public Result signUp(String id, String password, AccountDTO accountDTO) {
+        return null;
+    }
+
+    @Override
     public Result login(String id, String password) {
-        Result result = Result.withError(AuthError.idNotFound);
-        return result;
+        String sql = "SELECT * FROM ACCOUNT WHERE email_id='" + id + "'";
+        try {
+            PreparedStatement ppst = connection.prepareStatement(sql);
+            ResultSet rs = ppst.executeQuery();
+            if (rs.next()) {
+                if (password.equals(rs.getString(ACCOUNT.PASSWORD))) {
+                    rs.close();
+                    return Result.success;
+                } else {
+                    rs.close();
+                    return Result.withError(AuthError.passwordWrong);
+                }
+            } else {
+                rs.close();
+                return Result.withError(AuthError.idNotFound);
+            }
+        } catch (Exception e)  {
+            e.printStackTrace();
+        } 
+        return Result.withError(AuthError.unknown);
     }
 
     @Override
@@ -38,7 +62,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     public enum AuthError implements Error {
         idNotFound(1, "id incorrect!"),
-        passwordWrong(2, "Wrong Password!");
+        passwordWrong(2, "Wrong Password!"),
+        unknown(400, "Unknown Error!");
 
         private int code;
         private String description;
@@ -58,11 +83,5 @@ public class DefaultAuthenticationService implements AuthenticationService {
             this.description = description;
         }
 
-    }
-
-    @Override
-    public Result signUp(String id, String password, AccountDTO accountDTO) {
-        // TODO Auto-generated method stub
-        return null;
     }
 }
