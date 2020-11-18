@@ -1,24 +1,17 @@
-import java.sql.*;
+package pd.services;
 
-import model.AccountDAO.ACCOUNT;
-import model.AccountDTO;
-//import interfaces.AccountInfo;
-import interfaces.AuthenticationService;
-import utils.Result;
-import utils.Error;
+import java.sql.*;
+import pd.model.AccountDAO.ACCOUNT;
+import pd.model.AccountDTO;
+import pd.interfaces.AuthenticationService;
+import pd.utils.Result;
+import pd.utils.Error;
 
 public class DefaultAuthenticationService implements AuthenticationService {
     private Connection connection;
+    private AccountDTO loggedInAcountInfo;
 
-    private DefaultAuthenticationService() {
-    }
-
-    public static DefaultAuthenticationService getInstance() {
-        return LazyHolder.INSTANCE;
-    }
-
-    private static class LazyHolder {
-        private static final DefaultAuthenticationService INSTANCE = new DefaultAuthenticationService();
+    public DefaultAuthenticationService() {
     }
 
     public void setConnection(Connection connection) {
@@ -38,6 +31,7 @@ public class DefaultAuthenticationService implements AuthenticationService {
             ResultSet rs = ppst.executeQuery();
             if (rs.next()) {
                 if (password.equals(rs.getString(ACCOUNT.PASSWORD))) {
+                    this.loggedInAcountInfo = AccountDTO.fromResultSet(rs);
                     rs.close();
                     return Result.success;
                 } else {
@@ -83,5 +77,11 @@ public class DefaultAuthenticationService implements AuthenticationService {
             this.description = description;
         }
 
+    }
+
+    @Override
+    public Result deleteAccount(String id, String password, String re_password) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package utils;
+package pd.utils;
 
 public interface Error {
     public String getDescription();

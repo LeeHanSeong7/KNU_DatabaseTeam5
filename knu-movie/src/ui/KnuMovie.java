@@ -1,13 +1,24 @@
+package ui;
+
 import java.sql.*;
 import java.util.*;
+
+import injected.DIContainer;
+import injected.DIContainer.Services;
+import pd.utils.Result;
 
 public class KnuMovie {
 	public static final String URL = "jdbc:oracle:thin:@localhost:32769:orcl";
 	//public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
 	public static String default_db_name = "KnuMovie";
-	public static String default_db_pwd = "knu";	
+	public static String default_db_pwd = "knu";
+	private Services services;
 
-	public static void main(String[] args) {
+	public KnuMovie(DIContainer diContainer){
+		services = diContainer.services;
+	}	
+
+	public void run() {
 		String db_name = "";
 		String db_pwd = "";
 		Connection conn = null;
@@ -54,10 +65,12 @@ public class KnuMovie {
 				System.out.println("����");
 			}
 			else if (str.equals("1")) {
-				//AuthenticationService(conn)
+				Result result = services.authenticationService.login("id", "password");
+				System.out.println(result.toString());
 				// ���⼭ ��ü ȣ��
 			}
 			else if (str.equals("2")) {
+				//Result result = services.authenticationService.signUp("id", "password", new accountDTO(null, null, null, ...));
 				System.out.println("ȸ������");
 				// ���⼭ ��ü ȣ��
 			}

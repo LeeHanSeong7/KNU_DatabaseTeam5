@@ -1,4 +1,4 @@
-package utils;
+package pd.utils;
 
 public enum Result {
     success,
@@ -13,8 +13,17 @@ public enum Result {
         return result;
     }
 
+    public static Result withValue(Void o) {
+        Result result = Result.success;
+        result.setValue(o);
+        return result;
+    }
+
     private void setError(Error e) {
         this.error = e;
+    }
+    public void setValue(Void value) {
+        this.value = value;
     }
 
     public Error getError() {
