@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "knu-movie/lib/ojdbc7.jar"
+    ]
+}
