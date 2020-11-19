@@ -7,9 +7,11 @@ import pd.model.AccountDTO;
 import pd.utils.Result;
 
 public class StubAuthenticationService implements AuthenticationService {
-
+    private AccountDTO loggedinUser;
     @Override
     public Result login(String id, String password) {
+        if (id.equals("admin")) loggedinUser = StubModels.Account.admin;
+        else loggedinUser = StubModels.Account.user;
         return Result.success;
     }
 
@@ -32,8 +34,7 @@ public class StubAuthenticationService implements AuthenticationService {
 
     @Override
     public AccountDTO getloggedInAccountInfo() {
-        // TODO Auto-generated method stub
-        return null;
+        return loggedinUser;
     }
 
     @Override
