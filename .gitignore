@@ -16,5 +16,5 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode
 
-**/*.properties
+knu-movie/src/config/db.properties
 
