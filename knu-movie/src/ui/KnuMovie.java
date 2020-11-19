@@ -2,14 +2,12 @@ package ui;
 
 import java.sql.*;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import config.DBConfig;
 import injected.DIContainer;
 import injected.DIContainer.Services;
 import pd.model.AccountDTO;
-import pd.services.DefaultAuthenticationService;
 import pd.utils.Result;
 import ui.admin.AdminUI;
 import ui.user.UserUI;
@@ -24,41 +22,11 @@ public class KnuMovie {
 	//connection Temporary
 	
 	public void run() {
-		String db_name = "";
-		String db_pwd = "";
-		Connection conn = null;
+		Connection conn = dbConfig.connection;
 
 		Scanner scan = new Scanner(System.in);
 		System.out.println("-----KnuMovie-----\r\n");
-		
-		while(true) {
-			System.out.println("DB name(insert default'"+dbConfig.USERNAME+"' if you give blank) : ");
-			db_name = scan.nextLine();
-			if (db_name.replaceAll(" ","").equals("")) {
-				db_name = dbConfig.USERNAME;
-				db_pwd = dbConfig.PASSWORD;
-			}
-			else {
-				System.out.println("DB password : ");
-				db_pwd = scan.nextLine();
-			}
-			// try to connect
-			try {
-				Class.forName(dbConfig.DRIVER);
-			} catch(ClassNotFoundException e) {
-				System.err.println("error = " + e.getMessage());
-				System.exit(1);
-			}
-			
-			try {
-				conn = DriverManager.getConnection(dbConfig.URL,  db_name, db_pwd);
-				conn.setAutoCommit(false);
-			}catch(SQLException ex) {
-				System.out.println("err)Cannot get a connection : " + ex.getMessage());
-				continue;
-			}
-			break;
-		}	
+
 		//connection set
 		services.authenticationService.setConnection(conn);
 		while(true) {

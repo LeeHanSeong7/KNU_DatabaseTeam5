@@ -2,7 +2,9 @@ package config;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBConfig {
@@ -10,6 +12,7 @@ public class DBConfig {
     public final String URL;
     public final String USERNAME;
     public final String PASSWORD;
+    public Connection connection;
 
     public DBConfig() {
         String resource = "db.properties";
@@ -26,6 +29,7 @@ public class DBConfig {
         this.URL = properties.getProperty("url");
         this.USERNAME = properties.getProperty("username");
         this.PASSWORD = properties.getProperty("password");
+        setConnection();
     }
 
     public DBConfig(String driver, String url, String username, String password) {
@@ -33,6 +37,25 @@ public class DBConfig {
         this.URL = url;
         this.USERNAME = username;
         this.PASSWORD = password;
+        setConnection();
+    }
+
+    private void setConnection() {
+        // try to connect
+        try {
+            Class.forName(DRIVER);
+        } catch(ClassNotFoundException e) {
+            System.err.println("error = " + e.getMessage());
+            System.exit(1);
+        }
+        
+        try {
+            connection = DriverManager.getConnection(URL,  USERNAME, PASSWORD);
+            connection.setAutoCommit(false);
+        }catch(SQLException ex) {
+            System.out.println("err)Cannot get a connection : " + ex.getMessage());
+            System.exit(1);
+        }
     }
 
 }
