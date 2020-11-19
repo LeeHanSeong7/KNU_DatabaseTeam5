@@ -4,7 +4,7 @@ import ui.KnuMovie;
 
 public class App {
     public static void main(String[] args) {
-        boolean test = true;
+        boolean test = false;
         if (test) new KnuMovie(DIContainer.test, new DBConfig()).run();
         else {
             AppEnvironment appEnvironment = AppEnvironment.bootstrap();

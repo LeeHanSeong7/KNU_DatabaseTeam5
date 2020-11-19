@@ -15,9 +15,22 @@ public class AccountDTO implements DTO {
     private String address;
     private String gender;
     private Date birth_date;
-    private String Job;
+    private String job;
     private String membership;
     private Boolean isAdmin;
+
+    public AccountDTO(AccountDTO a) {
+        this.email_id = a.email_id;
+        this.password = a.password;
+        this.phone_number = a.phone_number;
+        this.name = a.name;
+        this.address = a.address;
+        this.gender = a.gender;
+        this.birth_date = a.birth_date==null ? null : new Date(a.birth_date.getTime());
+        this.job = a.job;
+        this.membership = a.membership;
+        this.isAdmin = a.isAdmin;
+    }
 
     public AccountDTO(String email_id, String password, String phone_number, String name, String address, String gender,
             Date birth_date, String job, String membership, Boolean isAdmin) {
@@ -28,9 +41,24 @@ public class AccountDTO implements DTO {
         this.address = address;
         this.gender = gender;
         this.birth_date = birth_date;
-        Job = job;
+        this.job = job;
         this.membership = membership;
         this.isAdmin = isAdmin;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        AccountDTO a = (AccountDTO) o;
+        return this.email_id.equals(a.email_id) &&
+                this.password.equals(a.password) &&
+                this.phone_number.equals(a.phone_number) &&
+                this.name.equals(a.name) &&
+                this.address.equals(a.address) &&
+                this.gender.equals(a.gender) &&
+                this.birth_date.equals(a.birth_date) &&
+                this.job.equals(a.job) &&
+                this.membership.equals(a.membership) &&
+                this.isAdmin.equals(a.isAdmin);
     }
 
     public String getAddress() {
@@ -54,7 +82,7 @@ public class AccountDTO implements DTO {
     }
 
     public String getJob() {
-        return Job;
+        return job;
     }
 
     public String getMembership() {
@@ -94,7 +122,7 @@ public class AccountDTO implements DTO {
     }
 
     public void setJob(String job) {
-        Job = job;
+        this.job = job;
     }
 
     public void setMembership(String membership) {
@@ -121,6 +149,7 @@ public class AccountDTO implements DTO {
                     rs.getString(ACCOUNT.MEMBERSHIP), rs.getBoolean(ACCOUNT.IS_ADMIN));
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("\nAccountDTO.fromResultSet rs error please check null ");
         }
         return null;
 	}

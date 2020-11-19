@@ -40,7 +40,12 @@ public class StubAuthenticationService implements AuthenticationService {
     @Override
     public void setConnection(Connection Connection) {
         // TODO Auto-generated method stub
+    }
 
+    @Override
+    public Result changeAccountInfo(String id, String password, AccountDTO changed) {
+        // TODO Auto-generated method stub
+        return Result.success;
     }
 
 }

@@ -103,6 +103,28 @@ public class DB {
             return ret;
         }
 
+        public static String setFormOf(String table, DTO dto) {
+            switch (TABLE.of(table)) {
+                case ACCOUNT:
+                    AccountDTO a = (AccountDTO) dto;
+                    return (
+                        a.getEmail_id()==null ? "":("id="+VARCHAR(a.getEmail_id(), OPTION.NOT_NULL) + ", ")  + 
+                        a.getPassword()==null ? "":("password="+VARCHAR(a.getPassword(), OPTION.NOT_NULL) + ", ") + 
+                        a.getPhone_number()==null ? "":("phone_number="+VARCHAR(a.getPhone_number(), OPTION.NOT_NULL) + ", ") + 
+                        a.getName()==null ? "":("name="+VARCHAR(a.getName(), OPTION.NOT_NULL) + ", ") + 
+                        a.getAddress()==null ? "":("address="+VARCHAR(a.getAddress()) + ", ") + 
+                        a.getGender()==null ? "":("gender="+CHAR(a.getGender()) + ", ") + 
+                        a.getBirth_date()==null ? "":("birth_date="+DATE(a.getBirth_date().toString()) + ", ") + 
+                        a.getJob()==null ? "":("job="+VARCHAR(a.getJob()) + ", ") + 
+                        a.getMembership()==null ? "":("membership="+VARCHAR(a.getMembership()) + ", ") + 
+                        a.getIsAdmin()==null ? "":("isAdmin="+NUMBER(a.getIsAdmin()? "1":"0"))
+                    );
+                default:
+                    break;
+            }
+            return "";
+        }
+
         public static String valueFormOf(String table, DTO dto) {
             switch (TABLE.of(table)) {
                 case ACCOUNT:
