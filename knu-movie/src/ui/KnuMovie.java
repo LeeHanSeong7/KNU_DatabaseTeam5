@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import config.DBConfig;
 import injected.DIContainer;
 import injected.DIContainer.Services;
 import pd.model.AccountDTO;
@@ -14,14 +15,11 @@ import ui.admin.AdminUI;
 import ui.user.UserUI;
 
 public class KnuMovie {
-	//public static final String URL = "jdbc:oracle:thin:@localhost:32769:orcl";
-	public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-	public static String default_db_name = "KnuMovie";
-	public static String default_db_pwd = "knu";
 	private Services services;
-	private DefaultAuthenticationService de;
-	public KnuMovie(DIContainer diContainer){
+	private DBConfig dbConfig;
+	public KnuMovie(DIContainer diContainer, DBConfig dbConfig){
 		services = diContainer.services;
+		this.dbConfig = dbConfig;
 	}	
 	//connection Temporary
 	
@@ -34,11 +32,11 @@ public class KnuMovie {
 		System.out.println("-----KnuMovie-----\r\n");
 		
 		while(true) {
-			System.out.println("DB name(insert default'"+default_db_name+"' if you give blank) : ");
+			System.out.println("DB name(insert default'"+dbConfig.USERNAME+"' if you give blank) : ");
 			db_name = scan.nextLine();
 			if (db_name.replaceAll(" ","").equals("")) {
-				db_name = default_db_name;
-				db_pwd = default_db_pwd;
+				db_name = dbConfig.USERNAME;
+				db_pwd = dbConfig.PASSWORD;
 			}
 			else {
 				System.out.println("DB password : ");
@@ -46,14 +44,14 @@ public class KnuMovie {
 			}
 			// try to connect
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Class.forName(dbConfig.DRIVER);
 			} catch(ClassNotFoundException e) {
 				System.err.println("error = " + e.getMessage());
 				System.exit(1);
 			}
 			
 			try {
-				conn = DriverManager.getConnection(URL,  db_name, db_pwd);
+				conn = DriverManager.getConnection(dbConfig.URL,  db_name, db_pwd);
 				conn.setAutoCommit(false);
 			}catch(SQLException ex) {
 				System.out.println("err)Cannot get a connection : " + ex.getMessage());
@@ -62,8 +60,7 @@ public class KnuMovie {
 			break;
 		}	
 		//connection set
-		de = (DefaultAuthenticationService)services.authenticationService;
-		de.setConnection(conn);
+		services.authenticationService.setConnection(conn);
 		while(true) {
 			String str;
 			System.out.println("-title menu-");

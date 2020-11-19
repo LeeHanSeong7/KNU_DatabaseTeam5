@@ -1,5 +1,7 @@
 package pd.stub;
 
+import java.sql.Connection;
+
 import pd.interfaces.AuthenticationService;
 import pd.model.AccountDTO;
 import pd.utils.Result;
@@ -32,6 +34,12 @@ public class StubAuthenticationService implements AuthenticationService {
     public AccountDTO getloggedInAccountInfo() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public void setConnection(Connection Connection) {
+        // TODO Auto-generated method stub
+
     }
 
 }

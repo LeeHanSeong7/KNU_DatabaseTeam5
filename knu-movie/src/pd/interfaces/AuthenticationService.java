@@ -1,4 +1,6 @@
 package pd.interfaces;
+
+import java.sql.Connection;
 import pd.model.AccountDTO;
 import pd.utils.Result;
 
@@ -9,4 +11,5 @@ public interface AuthenticationService {
     Result changePassword(String id, String password, String changed);
     Result deleteAccount(String id, String password, String re_password);
     AccountDTO getloggedInAccountInfo();
+    void setConnection(Connection Connection);
 } 
