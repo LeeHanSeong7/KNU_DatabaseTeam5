@@ -123,7 +123,8 @@ public class UserUI {
 			else if(str.equals("4")){
 				UserAccountUI ui = new UserAccountUI(AuthService);
 				ui.setConnection(conn);
-				ui.run();
+				if (ui.run() == false)
+					break;
 			}
 			else if(str.equals("5"))	break;
 			else System.out.println("invalid operation");
