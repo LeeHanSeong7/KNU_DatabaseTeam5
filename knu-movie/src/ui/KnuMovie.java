@@ -65,12 +65,14 @@ public class KnuMovie {
 				AccountDTO newbee = accountMaker.makeAccountDTO(true);
 				if (newbee != null) {
 					//newbee = accountMaker.fillNullwithDefault(newbee, false); fixed!
+					newbee.setMembership("basic");
+					newbee.setIsAdmin(false);
 					Result result = services.authenticationService.signUp(newbee.getEmail_id(), newbee.getPassword(), newbee);
 				    if (result == Result.success) {
 						System.out.println("sign up is done! please log in.");
 				    }
 				    else {
-				    	System.out.println(result.getError().toString());
+				    	System.out.println(result.getError().getDescription());
 				    }
 			    }
 			}

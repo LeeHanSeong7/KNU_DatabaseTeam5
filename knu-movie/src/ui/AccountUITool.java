@@ -178,21 +178,21 @@ public class AccountUITool {
 	}
 	public AccountDTO fillNullwithOther(AccountDTO data,AccountDTO source) {
 		AccountDTO temp = data;
-		if (data.getEmail_id() == null)
+		if (data.getEmail_id() == null || data.getEmail_id().length() == 0)
 			temp.setEmail_id(source.getEmail_id());
-		if (data.getPassword() == null)
+		if (data.getPassword() == null || data.getPassword().length() == 0)
 			temp.setPassword(source.getPassword());
-		if (data.getPhone_number() == null)
+		if (data.getPhone_number() == null || data.getPhone_number().length() == 0)
 			temp.setPhone_number(source.getPhone_number());
-		if (data.getName() == null)
+		if (data.getName() == null || data.getName().length() == 0)
 			temp.setName(source.getName());
-		if (data.getAddress() == null)
+		if (data.getAddress() == null || data.getAddress().length() == 0)
 			temp.setAddress(source.getAddress());
-		if (data.getGender() == null)
+		if (data.getGender() == null || data.getGender().length() == 0)
 			temp.setGender(source.getGender());
 		if (data.getBirth_date() == null)
 			temp.setBirth_date(source.getBirth_date());
-		if (data.getJob() == null)
+		if (data.getJob() == null || data.getJob().length() == 0)
 			temp.setJob(source.getJob());
 		if (data.getMembership() == null)
 			temp.setMembership(source.getMembership());

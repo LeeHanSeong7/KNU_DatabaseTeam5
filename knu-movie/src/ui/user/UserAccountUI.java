@@ -49,6 +49,7 @@ public class UserAccountUI {
 				System.out.print("one more : ");
 				if (!password.equals(scan.nextLine())) {
 					System.out.println("two passwords is not same");
+					continue;
 				}
 				System.out.print("type your current password : ");
 				Result result = AuthService.changePassword(myinfo.getEmail_id(),scan.nextLine(), password);
@@ -56,7 +57,7 @@ public class UserAccountUI {
 					System.out.println("password changed");
 			    }
 			    else {
-			    	System.out.println(result.getError().toString());
+			    	System.out.println(result.getError().getDescription());
 			    }
 			}
 			else if(str.equals("3")){
@@ -64,14 +65,14 @@ public class UserAccountUI {
 				AccountDTO changed = accountMaker.makeAccountDTO(false);
 				if (changed != null) {
 					changed = accountMaker.fillNullwithOther(changed, myinfo);
-					changed.setEmail_id(null);
-					changed.setPassword(null);
+					changed.setEmail_id(null);changed.setPassword(null);
+					
 					Result result = AuthService.changeAccountInfo(myinfo.getEmail_id(), myinfo.getPassword(), changed);
 				    if (result == Result.success) {
 						System.out.println("information changed");
 				    }
 				    else {
-				    	System.out.println(result.getError().toString());
+				    	System.out.println(result.getError().getDescription());
 				    }
 			    }
 			}
@@ -86,7 +87,7 @@ public class UserAccountUI {
 					return false;
 			    }
 			    else {
-			    	System.out.println(result.getError().toString());
+			    	System.out.println(result.getError().getDescription());
 			    }
 			}
 			else if(str.equals("5"))	break;

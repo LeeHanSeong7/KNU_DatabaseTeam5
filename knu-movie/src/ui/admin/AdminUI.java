@@ -6,12 +6,15 @@ import java.util.Scanner;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
+import pd.interfaces.MovieService;
 
 public class AdminUI {
 	private AuthenticationService AuthService;
+	private MovieService MovieService;
 	private Connection conn;
 	public AdminUI(Services services) {
 		AuthService = services.authenticationService;
+		MovieService = services.movieService;
 	}
 	public void setConnection(Connection conn) {
 		this.conn = conn;
@@ -27,7 +30,7 @@ public class AdminUI {
 			if (str.equals("0")) {
 			}
 			else if(str.equals("1")){
-				AdminMovieManageUI ui = new AdminMovieManageUI();
+				AdminMovieManageUI ui = new AdminMovieManageUI(MovieService);
 				ui.setConnection(conn);
 				ui.run();
 			}

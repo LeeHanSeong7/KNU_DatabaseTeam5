@@ -4,11 +4,17 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.util.Scanner;
 
+import injected.DIContainer.Services;
+import pd.interfaces.MovieService;
 import pd.model.AccountDTO;
 
 public class AdminMovieManageUI {
 	private Connection conn;
-	public AdminMovieManageUI() {}
+	private MovieService MovieService;
+	
+	public AdminMovieManageUI(MovieService services) {
+		MovieService = services;
+	}
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
@@ -123,32 +129,6 @@ public class AdminMovieManageUI {
 				System.out.println("--result--");
 			}
 			else if(str.equals("2")){
-				String title_id;
-			    String type;
-			    double runtime;
-			    Date start_year;
-		   
-				System.out.println("---insert information---");
-				System.out.print("title_id : ");
-				title_id = scan.nextLine();
-				System.out.print("type : ");
-				type = scan.nextLine();
-				System.out.print("runtime :");
-				try {
-					runtime = Double.parseDouble(scan.nextLine());
-				}
-				catch(Exception e) {
-					System.out.println("type error");
-					continue;
-				}
-				System.out.print("start_year (yyyy-mm-dd) :");
-				try {
-					start_year = Date.valueOf(scan.nextLine());
-				}
-				catch(Exception e) {
-					System.out.println("type error");
-					continue;
-				}
 				//Result result = services.authenticationService.signUp("id", "password", new accountDTO(null, null, null, ...));
 			    if (true == true) {
 					System.out.println("upload complete!");

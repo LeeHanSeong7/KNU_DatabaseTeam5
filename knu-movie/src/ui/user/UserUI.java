@@ -32,9 +32,6 @@ public class UserUI {
 			if (str.equals("0")) {
 			}
 			else if(str.equals("1")){
-				Result result = MovieService.viewWholeVideo();
-				if (result == Result.failure)
-					System.out.println(result.getError().getDescription());
 
 				String movieName = "";
 				Date Maxyear= Date.valueOf("2500-12-21");
@@ -134,7 +131,6 @@ public class UserUI {
 				ui.setConnection(conn);
 				if (ui.run() == false)
 					break;
-		
 			}
 			else if(str.equals("5"))	break;
 			else System.out.println("invalid operation");
