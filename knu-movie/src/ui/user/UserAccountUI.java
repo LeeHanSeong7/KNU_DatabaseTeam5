@@ -7,8 +7,6 @@ import java.util.Scanner;
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
 import pd.model.AccountDTO;
-import pd.utils.Result;
-import ui.AccountUITool;
 import ui.admin.AdminMovieManageUI;
 
 public class UserAccountUI {
@@ -20,12 +18,12 @@ public class UserAccountUI {
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
-	public Boolean run() {
+	public void run() {
 		Scanner scan = new Scanner(System.in);
 		while(true) {
 			String str;
 			System.out.println("-account menu-");
-			System.out.println("0.help   1.my info   2.change password   3.modify info   4.delete   5.back");
+			System.out.println("0.help   1.my info   2.modify   3.delete   4.back");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			AccountDTO myinfo = AuthService.getloggedInAccountInfo();
@@ -44,54 +42,25 @@ public class UserAccountUI {
 				System.out.println("-------------");
 			}
 			else if(str.equals("2")){
-				System.out.print("type new password : ");
-				String password = scan.nextLine();
-				System.out.print("one more : ");
-				if (!password.equals(scan.nextLine())) {
-					System.out.println("two passwords is not same");
+				while(true) {
+					System.out.print("give modify operation, 'column:value'. type 'end' if you want to end : ");
+					// isadmin:password??
+					str = scan.nextLine();
+					if (str.equals("end")) break;
+					else
+						System.out.println("--result--");
 				}
-				System.out.print("type your current password : ");
-				Result result = AuthService.changePassword(myinfo.getEmail_id(),scan.nextLine(), password);
-				if (result == Result.success) {
-					System.out.println("password changed");
-			    }
-			    else {
-			    	System.out.println(result.getError().toString());
-			    }
 			}
 			else if(str.equals("3")){
-				AccountUITool accountMaker = new AccountUITool();
-				AccountDTO changed = accountMaker.makeAccountDTO(false);
-				if (changed != null) {
-					changed = accountMaker.fillNullwithOther(changed, myinfo);
-					changed.setEmail_id(null);
-					changed.setPassword(null);
-					Result result = AuthService.changeAccountInfo(myinfo.getEmail_id(), myinfo.getPassword(), changed);
-				    if (result == Result.success) {
-						System.out.println("information changed");
-				    }
-				    else {
-				    	System.out.println(result.getError().toString());
-				    }
-			    }
-			}
-			else if(str.equals("4")){
 				System.out.print("really want to delete account? then type your password : ");
-				String str1 = scan.nextLine();
-				System.out.print("one more : ");
-				String str2 = scan.nextLine();
-				Result result = AuthService.deleteAccount(myinfo.getEmail_id(), str1, str2);
-				if (result == Result.success) {
-					System.out.println("account deleted");
-					return false;
-			    }
-			    else {
-			    	System.out.println(result.getError().toString());
-			    }
+				if (myinfo.getPassword().equals(scan.nextLine()))
+					System.out.println("do delete");
+				else
+					System.out.println("password incorrect");
+					
 			}
-			else if(str.equals("5"))	break;
+			else if(str.equals("4"))	break;
 			else System.out.println("invalid operation");
 		}
-		return true;
 	}
 }
