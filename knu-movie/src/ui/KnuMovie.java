@@ -19,8 +19,6 @@ public class KnuMovie {
 		services = diContainer.services;
 		this.dbConfig = dbConfig;
 	}	
-	//connection Temporary
-	
 	public void run() {
 		Connection conn = dbConfig.connection;
 
@@ -62,41 +60,18 @@ public class KnuMovie {
 				}
 			}
 			else if (str.equals("2")) {
-			    String email_id;
-			    String password;
-			    String phone_number;
-			    String name;
-			    String address;
-			    String gender;
-			    Date birth_date;
-			    String job;
-			    String membership;
-		   
-				System.out.println("---insert mandatory information---");
-				System.out.print("id(email) : ");
-				email_id = scan.nextLine();
-				while(true) {
-					System.out.print("password : ");
-					String temp = scan.nextLine();
-					System.out.print("re-password : ");
-					password = scan.nextLine();
-					if (password.equals(temp))
-						break;
-					else
-						System.out.println("both passwords is not same, try again");
-				}
-				System.out.print("phone number : ");
-				phone_number = scan.nextLine();
-				System.out.print("name : ");
-				name = scan.nextLine();
-				System.out.println("----------------------------------");
-			    AccountDTO newbee = new AccountDTO(email_id, password, phone_number, name, null, null, null, null, "basic", false);
-					
-				//Result result = services.authenticationService.signUp("id", "password", new accountDTO(null, null, null, ...));
-			    if (true == true) {
-					System.out.println("sign up is done! please log in and give us more informaions (address, gender, birth_date, job)");
+				AccountUITool accountMaker = new AccountUITool();
+				AccountDTO newbee = accountMaker.makeAccountDTO(true);
+				if (newbee != null) {
+					newbee = accountMaker.fillNullwithDefault(newbee, false);
+					Result result = services.authenticationService.signUp(newbee.getEmail_id(), newbee.getPassword(), newbee);
+				    if (result == Result.success) {
+						System.out.println("sign up is done! please log in.");
+				    }
+				    else {
+				    	System.out.println(result.getError().toString());
+				    }
 			    }
-			    else {}
 			}
 			else if (str.equals("3")) {
 				System.out.println("***program exited.***");
