@@ -129,16 +129,17 @@ public class DB {
             switch (TABLE.of(table)) {
                 case ACCOUNT:
                     AccountDTO a = (AccountDTO) dto;
-                    return (VARCHAR(a.getEmail_id(), OPTION.NOT_NULL) + ", " + 
-                            VARCHAR(a.getPassword(), OPTION.NOT_NULL) + ", " + 
-                            VARCHAR(a.getPhone_number(), OPTION.NOT_NULL) + ", " + 
-                            VARCHAR(a.getName(), OPTION.NOT_NULL) + ", " + 
-                            VARCHAR(a.getAddress()) + ", " + 
-                            CHAR(a.getGender()) + ", " + 
-                            DATE(a.getBirth_date().toString()) + ", " + 
-                            VARCHAR(a.getJob()) + ", " + 
-                            VARCHAR(a.getMembership()) + ", " + 
-                            NUMBER(a.getIsAdmin()? "1":"0"));
+                    return ((a.getEmail_id()==null ? "NULL, ":VARCHAR(a.getEmail_id(), OPTION.NOT_NULL) + ", ") + 
+                            (a.getPassword()==null ? "NULL, ":VARCHAR(a.getPassword(), OPTION.NOT_NULL) + ", ") + 
+                            (a.getPhone_number()==null ? "NULL, ":VARCHAR(a.getPhone_number(), OPTION.NOT_NULL) + ", ") + 
+                            (a.getName()==null ? "NULL, ":VARCHAR(a.getName(), OPTION.NOT_NULL) + ", ") + 
+                            (a.getAddress()==null ? "NULL, ":VARCHAR(a.getAddress()) + ", ") + 
+                            (a.getGender()==null ? "NULL, ":CHAR(a.getGender()) + ", ") + 
+                            (a.getBirth_date()==null ? "NULL, ":DATE(a.getBirth_date().toString()) + ", ") + 
+                            (a.getJob()==null ? "NULL, ":VARCHAR(a.getJob()) + ", ") + 
+                            (a.getMembership()==null ? "NULL, ":VARCHAR(a.getMembership()) + ", ") + 
+                            (a.getIsAdmin()==null ? "NULL":NUMBER(a.getIsAdmin()? "1":"0"))
+                            );
                 default:
                     break;
 

@@ -21,7 +21,20 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     @Override
     public Result signUp(String id, String password, AccountDTO accountDTO) {
-        String sql = "INSERT INTO ACCOUNT " + 
+        String sql = "SELECT * FROM ACCOUNT WHERE email_id='" + id + "'";
+        try {
+            PreparedStatement ppst = connection.prepareStatement(sql);
+            ResultSet rs = ppst.executeQuery();
+            if (rs.next()) {
+                rs.close();
+                return Result.withError(AuthError.idAlreadyExists);
+            }
+            rs.close();
+        } catch(Exception e) {
+            return Result.withError(AuthError.unknown);
+        }
+
+        sql = "INSERT INTO ACCOUNT " + 
                     "VALUES ( "+ DB.TABLE.valueFormOf("Account", accountDTO) +" )";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
@@ -67,6 +80,7 @@ public class DefaultAuthenticationService implements AuthenticationService {
         if (!id.equals(loggedInAcountInfo.getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
         if (!password.equals(loggedInAcountInfo.getPassword())) return Result.withError(AuthError.passwordWrong);
         String sql = "UPDATE ACCOUNT SET password='" + changed + "' WHERE email_id='" + id + "'";
+    
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
@@ -113,7 +127,6 @@ public class DefaultAuthenticationService implements AuthenticationService {
         if (changed.getEmail_id() != null) return Result.withError(AuthError.idCantBeChanged);
         if (changed.getPassword() != null) return Result.withError(AuthError.passwordCantBeChanged);
         String sql = "UPDATE ACCOUNT SET " + DB.TABLE.setFormOf("Account", changed) + " WHERE email_id='" + id + "'";
-        System.out.println(sql);
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
@@ -152,7 +165,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
         idNotLoggedIn(5, "You're Not LoggedIn User. Please Login again."),
         noChangeOnInfo(6, "There is no changed values in account info."),
         idCantBeChanged(7, "You cannot change your ID"),
-        passwordCantBeChanged(7, "You cannot change your Password in this menu. use change password menu"),
+        passwordCantBeChanged(8, "You cannot change your Password in this menu. use change password menu"),
+        idAlreadyExists(9, "Your Email already Registered. please Enter Anoter Email."),
         unknown(400, "Unknown Error!");
 
         private int code;
