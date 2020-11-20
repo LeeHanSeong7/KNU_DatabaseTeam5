@@ -1,3 +1,4 @@
+import config.AppConfig;
 import config.DBConfig;
 import injected.DIContainer;
 import injected.DIContainer.Services;
@@ -6,11 +7,12 @@ import pd.services.DefaultMovieService;
 
 public class AppEnvironment {
     DIContainer container;
-    DBConfig config;
-
-    private AppEnvironment(DIContainer container, DBConfig config) {
+    DBConfig DBconfig;
+    AppConfig appconfig;
+    
+    private AppEnvironment(DIContainer container, DBConfig dbconfig) {
         this.container = container;
-        this.config = config;
+        this.DBconfig = dbconfig;
     }
 
     static AppEnvironment bootstrap() {

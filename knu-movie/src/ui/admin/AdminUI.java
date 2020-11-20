@@ -42,21 +42,21 @@ public class AdminUI {
 				while(true) {
 					System.out.println("--condition lists--");
 					System.out.println("target list");
-					System.out.println("movieName   	: " + movieName);
-					System.out.println("Email 	    	: " + Email);
-					System.out.println("maxstars(0~10) 	: " + Maxstars);
-					System.out.println("minstars(0~10) 	: " + Minstars);
+					System.out.println("1.movieName   		: " + movieName);
+					System.out.println("2.Email 	    	: " + Email);
+					System.out.println("3.maxstars(0~10) 	: " + Maxstars);
+					System.out.println("4.minstars(0~10) 	: " + Minstars);
 					System.out.println("-------------------");
-					System.out.print("give condition ' target:=value ', type 'end' if you want result : ");
+					System.out.print("give condition ' ex) 1:=name ', type 'end' if you want result : ");
 					str = scan.nextLine();
 					if (str.equals("end")) break;
 					try {
 						String[] temp = str.split(":=");
-						if (temp[0].equals("movieName"))
+						if (temp[0].equals("1"))
 							movieName = movieName+", "+temp[1];
-						else if (temp[0].equals("Email"))
+						else if (temp[0].equals("2"))
 							Email = Email+", "+temp[1];
-						else if (temp[0].equals("maxstars")) {
+						else if (temp[0].equals("3")) {
 							try {
 								Maxstars = Double.parseDouble(temp[1]);
 								if (Maxstars > 10 || Maxstars < 0)
@@ -66,7 +66,7 @@ public class AdminUI {
 								System.out.println("***invalid operation, ' maxstars:=0~10 '***");
 							}
 						}
-						else if (temp[0].equals("minstars")) {
+						else if (temp[0].equals("4")) {
 							try {
 								Minstars = Double.parseDouble(temp[1]);
 								if (Minstars > 10 || Minstars < 0)

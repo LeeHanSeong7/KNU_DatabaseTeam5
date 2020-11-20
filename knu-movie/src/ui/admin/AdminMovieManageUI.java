@@ -44,34 +44,34 @@ public class AdminMovieManageUI {
 				while(true) {
 					System.out.println("--condition lists--");
 					System.out.println("target list");
-					System.out.println("movieID   		: " + movieID);
-					System.out.println("movieName   		: " + movieName);
-					System.out.println("genre 	    		: " + genre);
-					System.out.println("actor 	    		: " + actor);
-					System.out.println("type 	    		: " + type);
-					System.out.println("maxyear(yyyy-mm-dd) : " + Maxyear.toString());
-					System.out.println("minyear(yyyy-mm-dd) : " + Minyear.toString());
-					System.out.println("maxaver(0~10) 		: " + Maxaver);
-					System.out.println("minaver(0~10) 		: " + Minaver);
-					System.out.println("maxtime 			: " + Maxtime);
-					System.out.println("mintime 			: " + Mintime);
+					System.out.println("1.movieID   		: " + movieID);
+					System.out.println("2.movieName   		: " + movieName);
+					System.out.println("3.genre 	    		: " + genre);
+					System.out.println("4.actor 	    		: " + actor);
+					System.out.println("5.type 	    		: " + type);
+					System.out.println("6.maxyear(yyyy-mm-dd) : " + Maxyear.toString());
+					System.out.println("7.minyear(yyyy-mm-dd) : " + Minyear.toString());
+					System.out.println("8.maxaver(0~10) 		: " + Maxaver);
+					System.out.println("9.minaver(0~10) 		: " + Minaver);
+					System.out.println("10.maxtime 			: " + Maxtime);
+					System.out.println("11.mintime 			: " + Mintime);
 					System.out.println("-------------------");
-					System.out.print("give condition ' target:=value ', type 'end' if you want result : ");
+					System.out.print("give condition ' ex) 1:=name ', type 'end' if you want result : ");
 					str = scan.nextLine();
 					if (str.equals("end")) break;
 					try {
 						String[] temp = str.split(":=");
-						if (temp[0].equals("movieID"))
+						if (temp[0].equals("1"))
 							movieID = movieID+", "+temp[1];
-						else if (temp[0].equals("movieName"))
+						else if (temp[0].equals("2"))
 							movieName = movieName+", "+temp[1];
-						else if (temp[0].equals("genre"))
+						else if (temp[0].equals("3"))
 							genre = genre+", "+temp[1];
-						else if (temp[0].equals("actor"))
+						else if (temp[0].equals("4"))
 							actor = actor+", "+temp[1];
-						else if (temp[0].equals("type"))
+						else if (temp[0].equals("5"))
 							type = type+", "+temp[1];
-						else if (temp[0].equals("maxyear")) {
+						else if (temp[0].equals("6")) {
 							try {
 								Maxyear = Date.valueOf(temp[1]);
 							}
@@ -79,7 +79,7 @@ public class AdminMovieManageUI {
 								System.out.println("***invalid operation, ' maxyear:=yyyy-mm-dd '***");
 							}
 						}
-						else if (temp[0].equals("minyear")) {
+						else if (temp[0].equals("7")) {
 							try {
 								Minyear = Date.valueOf(temp[1]);
 							}
@@ -87,7 +87,7 @@ public class AdminMovieManageUI {
 								System.out.println("***invalid operation, ' minyear:=yyyy-mm-dd '***");
 							}
 						}
-						else if (temp[0].equals("maxaver")) {
+						else if (temp[0].equals("8")) {
 							try {
 								Maxaver = Double.parseDouble(temp[1]);
 							}
@@ -95,7 +95,7 @@ public class AdminMovieManageUI {
 								System.out.println("***invalid operation, ' maxaver:=0~10 '***");
 							}
 						}
-						else if (temp[0].equals("minaver")) {
+						else if (temp[0].equals("9")) {
 							try {
 								Minaver = Double.parseDouble(temp[1]);
 							}
@@ -103,7 +103,7 @@ public class AdminMovieManageUI {
 								System.out.println("***invalid operation, ' minaver:=0~10 '***");
 							}
 						}
-						else if (temp[0].equals("maxtime")) {
+						else if (temp[0].equals("10")) {
 							try {
 								Maxaver = Double.parseDouble(temp[1]);
 							}
@@ -111,7 +111,7 @@ public class AdminMovieManageUI {
 								System.out.println("***invalid operation, ' maxtime:='num' '***");
 							}
 						}
-						else if (temp[0].equals("mintime")) {
+						else if (temp[0].equals("11")) {
 							try {
 								Minaver = Double.parseDouble(temp[1]);
 							}
@@ -129,6 +129,32 @@ public class AdminMovieManageUI {
 				System.out.println("--result--");
 			}
 			else if(str.equals("2")){
+				String title_id;
+			    String type;
+			    double runtime;
+			    Date start_year;
+		   
+				System.out.println("---insert information---");
+				System.out.print("title_id : ");
+				title_id = scan.nextLine();
+				System.out.print("type : ");
+				type = scan.nextLine();
+				System.out.print("runtime :");
+				try {
+					runtime = Double.parseDouble(scan.nextLine());
+				}
+				catch(Exception e) {
+					System.out.println("type error");
+					continue;
+				}
+				System.out.print("start_year (yyyy-mm-dd) :");
+				try {
+					start_year = Date.valueOf(scan.nextLine());
+				}
+				catch(Exception e) {
+					System.out.println("type error");
+					continue;
+				}
 				//Result result = services.authenticationService.signUp("id", "password", new accountDTO(null, null, null, ...));
 			    if (true == true) {
 					System.out.println("upload complete!");
