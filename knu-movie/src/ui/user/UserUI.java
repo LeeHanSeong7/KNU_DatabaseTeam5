@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
+import pd.utils.Result;
 
 public class UserUI {
 	private AuthenticationService AuthService;
 	private Connection conn;
+	
 	public UserUI(Services services) {
 		AuthService = services.authenticationService;
 	}
@@ -27,6 +29,7 @@ public class UserUI {
 			if (str.equals("0")) {
 			}
 			else if(str.equals("1")){
+
 				String movieName = "";
 				Date Maxyear= Date.valueOf("2500-12-21");
 				Date Minyear= Date.valueOf("1000-01-01");
@@ -123,7 +126,8 @@ public class UserUI {
 			else if(str.equals("4")){
 				UserAccountUI ui = new UserAccountUI(AuthService);
 				ui.setConnection(conn);
-				ui.run();
+				if (ui.run() == false)
+					break;
 			}
 			else if(str.equals("5"))	break;
 			else System.out.println("invalid operation");
