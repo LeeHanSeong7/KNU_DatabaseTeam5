@@ -64,7 +64,7 @@ public class KnuMovie {
 				AccountUITool accountMaker = new AccountUITool();
 				AccountDTO newbee = accountMaker.makeAccountDTO(true);
 				if (newbee != null) {
-					newbee = accountMaker.fillNullwithDefault(newbee, false);
+					//newbee = accountMaker.fillNullwithDefault(newbee, false); fixed!
 					Result result = services.authenticationService.signUp(newbee.getEmail_id(), newbee.getPassword(), newbee);
 				    if (result == Result.success) {
 						System.out.println("sign up is done! please log in.");

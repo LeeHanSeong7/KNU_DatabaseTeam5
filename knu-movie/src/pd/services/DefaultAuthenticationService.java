@@ -112,7 +112,7 @@ public class DefaultAuthenticationService implements AuthenticationService {
         if (loggedInAcountInfo.equals(changed)) return Result.withError(AuthError.noChangeOnInfo);
         if (changed.getEmail_id() != null) return Result.withError(AuthError.idCantBeChanged);
         if (changed.getPassword() != null) return Result.withError(AuthError.passwordCantBeChanged);
-        String sql = "UPDATE ACCOUNT SET password='" + DB.TABLE.setFormOf("Account", changed) + "' WHERE email_id='" + id + "'";
+        String sql = "UPDATE ACCOUNT SET '" + DB.TABLE.setFormOf("Account", changed) + "' WHERE email_id='" + id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
