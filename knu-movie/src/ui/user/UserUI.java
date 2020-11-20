@@ -6,14 +6,17 @@ import java.util.Scanner;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
+import pd.interfaces.MovieService;
 import pd.utils.Result;
 
 public class UserUI {
 	private AuthenticationService AuthService;
+	private MovieService MovieService;
 	private Connection conn;
 	
 	public UserUI(Services services) {
 		AuthService = services.authenticationService;
+		MovieService = services.movieService;
 	}
 	public void setConnection(Connection conn) {
 		this.conn = conn;
@@ -29,7 +32,7 @@ public class UserUI {
 			if (str.equals("0")) {
 			}
 			else if(str.equals("1")){
-				Result result = AuthService.viewWholeVideo();
+				Result result = MovieService.viewWholeVideo();
 				if (result == Result.failure)
 					System.out.println(result.getError().getDescription());
 
@@ -131,6 +134,7 @@ public class UserUI {
 				ui.setConnection(conn);
 				if (ui.run() == false)
 					break;
+		
 			}
 			else if(str.equals("5"))	break;
 			else System.out.println("invalid operation");

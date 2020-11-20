@@ -2,6 +2,7 @@ import config.DBConfig;
 import injected.DIContainer;
 import injected.DIContainer.Services;
 import pd.services.DefaultAuthenticationService;
+import pd.services.DefaultMovieService;
 
 public class AppEnvironment {
     DIContainer container;
@@ -20,6 +21,6 @@ public class AppEnvironment {
     }
 
     private static Services configuredServicies() {
-        return new DIContainer.Services(new DefaultAuthenticationService());
+        return new DIContainer.Services(new DefaultAuthenticationService(), new DefaultMovieService());
     }
 }

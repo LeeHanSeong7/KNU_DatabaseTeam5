@@ -27,6 +27,7 @@ public class KnuMovie {
 
 		//connection set
 		services.authenticationService.setConnection(conn);
+		services.movieService.setConnection(conn);
 		while(true) {
 			String str;
 			System.out.println("-title menu-");

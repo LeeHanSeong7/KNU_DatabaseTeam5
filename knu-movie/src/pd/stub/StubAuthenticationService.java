@@ -1,7 +1,6 @@
 package pd.stub;
 
 import java.sql.Connection;
-import java.sql.Date;
 
 import pd.interfaces.AuthenticationService;
 import pd.model.AccountDTO;
@@ -48,15 +47,4 @@ public class StubAuthenticationService implements AuthenticationService {
         // TODO Auto-generated method stub
         return Result.success;
     }
-
-    @Override
-    public Result viewWholeVideo(){
-        return Result.success;
-    }
-    
-    @Override
-    public Result searchMoiveByCondition(String movieName, Date Maxyear, Date Minyear, double Maxaver, double Minaver, String genre, String actor, String type){
-        return Result.success;
-    }
-
 }
