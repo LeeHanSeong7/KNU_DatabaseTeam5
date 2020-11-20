@@ -6,12 +6,10 @@ import java.util.Scanner;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
-import pd.utils.Result;
 
 public class UserUI {
 	private AuthenticationService AuthService;
 	private Connection conn;
-	
 	public UserUI(Services services) {
 		AuthService = services.authenticationService;
 	}
@@ -29,10 +27,6 @@ public class UserUI {
 			if (str.equals("0")) {
 			}
 			else if(str.equals("1")){
-				Result result = AuthService.viewWholeVideo();
-				if (result == Result.failure)
-					System.out.println(result.getError().getDescription());
-
 				String movieName = "";
 				Date Maxyear= Date.valueOf("2500-12-21");
 				Date Minyear= Date.valueOf("1000-01-01");
