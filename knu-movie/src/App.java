@@ -8,7 +8,7 @@ public class App {
         if (test) new KnuMovie(DIContainer.test, new DBConfig()).run();
         else {
             AppEnvironment appEnvironment = AppEnvironment.bootstrap();
-            new KnuMovie(appEnvironment.container, appEnvironment.config).run();
+            new KnuMovie(appEnvironment.container, appEnvironment.DBconfig).run();
         }
     }
 }

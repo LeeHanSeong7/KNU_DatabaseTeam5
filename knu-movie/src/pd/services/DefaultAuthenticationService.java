@@ -157,7 +157,7 @@ public class DefaultAuthenticationService implements AuthenticationService {
         return Result.withError(AuthError.unknown);
     }
 
-    public enum AuthError implements Error {
+    private enum AuthError implements Error {
         idNotFound(1, "ID Incorrect!"),
         passwordWrong(2, "Wrong Password!"),
         accountInfoWrong(3, "Couldn't Sign Up, Check your Account Info again."),

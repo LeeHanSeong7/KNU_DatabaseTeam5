@@ -34,7 +34,7 @@ public class AdminUI {
 				ui.setConnection(conn);
 				ui.run();
 			}
-			else if(str.equals("2")){ // ´ÙÀÌ³ª¹ÍÇÏ°Ô °³¼± ¿©Áö
+			else if(str.equals("2")){ // ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				String movieName = "";
 				String Email = "";
 				double Maxstars = 10;
