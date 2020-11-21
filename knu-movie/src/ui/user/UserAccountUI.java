@@ -61,10 +61,9 @@ public class UserAccountUI {
 			    }
 			}
 			else if(str.equals("3")){
-				AccountUITool accountMaker = new AccountUITool();
-				AccountDTO changed = accountMaker.makeAccountDTO(false);
+				AccountDTO changed = AccountUITool.makeAccountDTO(false);
 				if (changed != null) {
-					changed = accountMaker.fillNullwithOther(changed, myinfo);
+					changed = AccountUITool.fillNullwithOther(changed, myinfo);
 					changed.setEmail_id(null);changed.setPassword(null);
 					
 					Result result = AuthService.changeAccountInfo(myinfo.getEmail_id(), myinfo.getPassword(), changed);

@@ -1,8 +1,8 @@
 package pd.model;
 
 public class RatingVO {
-    final String emailId;
-    final double rating;
+    public final String emailId;
+    public final double rating;
 
     public RatingVO(String emailId, double rating) {
         this.emailId = emailId;

@@ -2,19 +2,31 @@ package ui.admin;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
 import pd.interfaces.MovieService;
+import pd.interfaces.RatingService;
+import pd.model.MyRatingVO;
+import pd.model.RatingSearchConditionDTO;
+import pd.model.RatingVO;
+import pd.model.RatingVOList;
+import pd.utils.Result;
+import ui.SearchUITool;
 
 public class AdminUI {
 	private AuthenticationService AuthService;
 	private MovieService MovieService;
+	private RatingService ratingService;
 	private Connection conn;
 	public AdminUI(Services services) {
 		AuthService = services.authenticationService;
 		MovieService = services.movieService;
+		ratingService = services.ratingService;
 	}
 	public void setConnection(Connection conn) {
 		this.conn = conn;
@@ -31,59 +43,66 @@ public class AdminUI {
 			}
 			else if(str.equals("1")){
 				AdminMovieManageUI ui = new AdminMovieManageUI(MovieService);
+				
 				ui.setConnection(conn);
 				ui.run();
 			}
-			else if(str.equals("2")){ // ���̳����ϰ� ���� ����
-				String movieName = "";
-				String Email = "";
-				double Maxstars = 10;
-				double Minstars = 0;
-				while(true) {
-					System.out.println("--condition lists--");
-					System.out.println("target list");
-					System.out.println("1.movieName   		: " + movieName);
-					System.out.println("2.Email 	    	: " + Email);
-					System.out.println("3.maxstars(0~10) 	: " + Maxstars);
-					System.out.println("4.minstars(0~10) 	: " + Minstars);
-					System.out.println("-------------------");
-					System.out.print("give condition ' ex) 1:=name ', type 'end' if you want result : ");
-					str = scan.nextLine();
-					if (str.equals("end")) break;
-					try {
-						String[] temp = str.split(":=");
-						if (temp[0].equals("1"))
-							movieName = movieName+", "+temp[1];
-						else if (temp[0].equals("2"))
-							Email = Email+", "+temp[1];
-						else if (temp[0].equals("3")) {
-							try {
-								Maxstars = Double.parseDouble(temp[1]);
-								if (Maxstars > 10 || Maxstars < 0)
-									System.out.println("***invalid operation, ' maxstars:=0~10 '***");
-							}
-							catch(Exception e) {
-								System.out.println("***invalid operation, ' maxstars:=0~10 '***");
+			else if(str.equals("2")){				
+				Result result;
+				RatingSearchConditionDTO condi = SearchUITool.makeRatingSearchCondition();
+				String movieName = condi.movieName.replaceAll(" ", "").length()==0 ? null:condi.movieName;
+				String email = condi.Email.replaceAll(" ", "");
+				
+				System.out.println("--result--");			
+				if (email.length() == 0) {
+					result = ratingService.getUserRatingListWith(movieName, null, condi.Maxstars, condi.Minstars);
+					if (result ==  Result.success) {
+						List<RatingVOList> movieList = (List<RatingVOList>)result.getValue();
+						for (int i = 0 ; i<movieList.size();i++) {
+							RatingVOList movieItem = movieList.get(i);
+							List<RatingVO> ratingList = movieItem.ratings;
+							System.out.println("<"+i+">"+movieItem.title+":");
+							for (int j = 0 ; j < ratingList.size();j++) {
+								RatingVO item = ratingList.get(j);
+								System.out.print(String.format("%d. (%.1f)", j , item.rating));
+								int k;
+								for(k = 1; k<=item.rating;k++) {
+									System.out.print("*");
+								}
+								for(; k<=10;k++) {
+									System.out.print("-");
+								}
+								System.out.println(" ["+item.emailId+"] ");
 							}
 						}
-						else if (temp[0].equals("4")) {
-							try {
-								Minstars = Double.parseDouble(temp[1]);
-								if (Minstars > 10 || Minstars < 0)
-									System.out.println("***invalid operation, ' minstars:=0~10 '***");
-							}
-							catch(Exception e) {
-								System.out.println("***invalid operation, ' minstars:=0~10 '***");
-							}
-						}
-						else 
-							System.out.println("***invalid operation, ' target:=value ' or 'end'***");
-					}
-					catch(Exception e) {
-						System.out.println("***invalid operation, ' target:=value ' or 'end'***");
 					}
 				}
-				System.out.println("--result--");
+				else {
+					String[] list = SearchUITool.NoRedundantSplit(email);
+					for(int index=0; index<list.length;index++) {
+						result = ratingService.getUserRatingListWith(movieName, list[index], condi.Maxstars, condi.Minstars);
+						if (result == Result.success) {
+							List<RatingVOList> movieList = (List<RatingVOList>)result.getValue();
+							for (int i = 0 ; i<movieList.size();i++) {
+								RatingVOList movieItem = movieList.get(i);
+								List<RatingVO> ratingList = movieItem.ratings;
+								System.out.println("<"+i+">"+movieItem.title+":");
+								for (int j = 0 ; j < ratingList.size();j++) {
+									RatingVO item = ratingList.get(j);
+									System.out.print(String.format("%d. (%.1f)", j , item.rating));
+									int k;
+									for(k = 1; k<=item.rating;k++) {
+										System.out.print("*");
+									}
+									for(; k<=10;k++) {
+										System.out.print("-");
+									}
+									System.out.println(" ["+item.emailId+"] ");
+								}
+							}
+						}
+					}
+				}
 			}
 			else if(str.equals("3"))	break;
 			else System.out.println("invalid operation");

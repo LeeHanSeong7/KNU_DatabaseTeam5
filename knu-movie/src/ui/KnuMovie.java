@@ -28,6 +28,7 @@ public class KnuMovie {
 		//connection set
 		services.authenticationService.setConnection(conn);
 		services.movieService.setConnection(conn);
+		services.ratingService.setConnection(conn);
 		while(true) {
 			String str;
 			System.out.println("-title menu-");
@@ -61,8 +62,7 @@ public class KnuMovie {
 				}
 			}
 			else if (str.equals("2")) {
-				AccountUITool accountMaker = new AccountUITool();
-				AccountDTO newbee = accountMaker.makeAccountDTO(true);
+				AccountDTO newbee = AccountUITool.makeAccountDTO(true);
 				if (newbee != null) {
 					//newbee = accountMaker.fillNullwithDefault(newbee, false); fixed!
 					newbee.setMembership("basic");

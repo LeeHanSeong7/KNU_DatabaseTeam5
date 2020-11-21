@@ -8,8 +8,8 @@ import pd.utils.Result;
 
 public class AccountUITool {
 	public AccountUITool() {};
-	final String NULLSTR = "";
-	public AccountDTO makeAccountDTO(Boolean isFirst) {
+	static final String NULLSTR = "";
+	public static AccountDTO makeAccountDTO(Boolean isFirst) {
 		String email_id = null;
 	    String password = null;
 	    String phone_number = null;
@@ -144,7 +144,7 @@ public class AccountUITool {
 		return new AccountDTO(email_id, password, phone_number, name, address, gender, birth_date, job, membership,  isAdmin);
 		
 	}
-	public AccountDTO fillNullwithDefault(AccountDTO data,Boolean isAdmin) {
+	public static AccountDTO fillNullwithDefault(AccountDTO data,Boolean isAdmin) {
 		AccountDTO temp = data;
 		if (data.getEmail_id() == null)
 			temp.setEmail_id(NULLSTR);
@@ -176,7 +176,7 @@ public class AccountUITool {
 		}
 		return temp;
 	}
-	public AccountDTO fillNullwithOther(AccountDTO data,AccountDTO source) {
+	public static AccountDTO fillNullwithOther(AccountDTO data,AccountDTO source) {
 		AccountDTO temp = data;
 		if (data.getEmail_id() == null || data.getEmail_id().length() == 0)
 			temp.setEmail_id(source.getEmail_id());
