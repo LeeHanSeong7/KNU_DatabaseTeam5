@@ -38,6 +38,15 @@ public class AccountUITool {
 					else 
 						return null;
 				}
+				else if (email_id.contains(" ")) {
+					System.out.println("no space allowed, try again = 'y' : ");
+					temp = scan.nextLine();
+					temp = temp.replaceAll(" ", "");
+					if (temp.equals("y") || temp.equals("Y"))
+						continue;
+					else 
+						return null;
+				}
 				else
 					 break;
 			}

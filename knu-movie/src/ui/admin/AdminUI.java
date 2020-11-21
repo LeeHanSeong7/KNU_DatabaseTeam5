@@ -51,10 +51,10 @@ public class AdminUI {
 				Result result;
 				RatingSearchConditionDTO condi = SearchUITool.makeRatingSearchCondition();
 				String movieName = condi.movieName.replaceAll(" ", "").length()==0 ? null:condi.movieName;
-				String email = condi.Email.replaceAll(" ", "");
+				String email = condi.Email;
 				
 				System.out.println("--result--");			
-				if (email.length() == 0) {
+				if (email.replaceAll(" ", "").length() == 0) {
 					result = ratingService.getUserRatingListWith(movieName, null, condi.Maxstars, condi.Minstars);
 					if (result ==  Result.success) {
 						List<RatingVOList> movieList = (List<RatingVOList>)result.getValue();

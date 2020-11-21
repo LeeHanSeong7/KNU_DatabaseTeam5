@@ -20,7 +20,7 @@ public class SearchUITool {
 			System.out.println("--condition lists--");
 			System.out.println("target list");
 			System.out.println("1.movieID(only)   	: " + res.movieID);
-			System.out.println("2.movieName   		: " + res.movieName);
+			System.out.println("2.movieName(only)   : " + res.movieName);
 			System.out.println("3.genre 	    	: " + res.genre);
 			System.out.println("4.actor 	    	: " + res.actor);
 			System.out.println("5.type 	    		: " + res.type);
@@ -41,7 +41,7 @@ public class SearchUITool {
 				else if (temp[0].equals("1"))
 					res.movieID = temp[1];
 				else if (temp[0].equals("2"))
-					res.movieName = res.movieName+", "+temp[1];
+					res.movieName = temp[1];
 				else if (temp[0].equals("3"))
 					res.genre = res.genre+", "+temp[1];
 				else if (temp[0].equals("4"))
@@ -136,7 +136,7 @@ public class SearchUITool {
 				else if (temp[0].equals("3"))
 					res.actor = res.actor+", "+temp[1];
 				else if (temp[0].equals("4"))
-					res.type = temp[1];
+					res.type = res.type+", "+temp[1];
 				else if (temp[0].equals("5")) {
 					try {
 						res.Maxyear = Date.valueOf(temp[1]);
