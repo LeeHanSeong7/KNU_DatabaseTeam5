@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyRatingVO {
-    final String movieTitle;
-    final Double rating;
+	public final String movieTitle;
+	public final Double rating;
 
     public MyRatingVO(String movieTitle, Double rating) {
         this.movieTitle = movieTitle;
