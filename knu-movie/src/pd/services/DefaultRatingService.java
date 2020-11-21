@@ -30,7 +30,7 @@ public class DefaultRatingService implements RatingService {
                     "AND ACCOUNT_Email_id='" +
                      authService.getloggedInAccountInfo().getEmail_id() + "'" + 
                     "ORDER BY v.title,  v.MOVIE_TITLE_ID";
-        System.out.println(sql);
+        //System.out.println(sql);
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -55,7 +55,7 @@ public class DefaultRatingService implements RatingService {
                     (maxStars==null? "":("AND Stars <= " + maxStars + " ")) + 
                     (minStars==null? "":("AND Stars >= " + minStars + " ")) +
                     "ORDER BY v.title,  v.MOVIE_TITLE_ID";
-        System.out.println(sql);
+        //System.out.println(sql);
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
