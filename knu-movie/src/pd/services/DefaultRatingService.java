@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import config.AppConfig;
+import pd.interfaces.AuthenticationService;
 import pd.interfaces.RatingService;
+import pd.model.MyRatingVO;
 import pd.model.RatingVOList;
 import pd.utils.Result;
 import pd.utils.Error;
@@ -14,19 +16,34 @@ import pd.utils.Error;
 public class DefaultRatingService implements RatingService {
     private AppConfig appConfig;
     private Connection connection;
+    private AuthenticationService authService;
 
-    public DefaultRatingService(AppConfig appConfig) {
+    public DefaultRatingService(AppConfig appConfig, AuthenticationService authenticationService) {
         this.appConfig = appConfig;
+        this.authService = authenticationService;
     }
 
     @Override
     public Result getMyRatingList() {
-        return null;
-    }
-
-    // MOVIE_Title_id   VARCHAR2 (20 CHAR)  NOT NULL , 
-    // ACCOUNT_Email_id VARCHAR2 (50 CHAR)  NOT NULL , 
-    // Stars          
+        String region = appConfig.REGION;
+        String sql = "SELECT v.title, r.stars FROM rating r join version v on v.movie_title_id=r.movie_title_id WHERE v.region='"+region+"' " + 
+                    "AND ACCOUNT_Email_id='" +
+                     authService.getloggedInAccountInfo().getEmail_id() + "'" + 
+                    "ORDER BY v.title,  v.MOVIE_TITLE_ID";
+        System.out.println(sql);
+        try {
+            PreparedStatement ppst = connection.prepareStatement(sql);
+            ResultSet rs = ppst.executeQuery();
+            if (rs.isBeforeFirst()) {
+                List<MyRatingVO> list = MyRatingVO.getListFromResultSet(rs);
+                return Result.withValue(list);
+            } else {
+                return Result.withError(RatingError.noResultWithGivenCondition);
+            }
+        } catch (Exception e) {
+            return Result.withError(RatingError.connectionError);
+        }
+    }        
 
     @Override
     public Result getUserRatingListWith(String movieName, String email, Double maxStars, Double minStars) {

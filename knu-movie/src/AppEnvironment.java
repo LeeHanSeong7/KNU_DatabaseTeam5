@@ -2,6 +2,7 @@ import config.AppConfig;
 import config.DBConfig;
 import injected.DIContainer;
 import injected.DIContainer.Services;
+import pd.interfaces.AuthenticationService;
 import pd.services.DefaultAuthenticationService;
 import pd.services.DefaultMovieService;
 import pd.services.DefaultRatingService;
@@ -26,6 +27,7 @@ public class AppEnvironment {
     }
 
     private static Services configuredServicies(AppConfig appConfig) {
-        return new DIContainer.Services(new DefaultAuthenticationService(), new DefaultMovieService(), new DefaultRatingService(appConfig));
+        AuthenticationService authService = new DefaultAuthenticationService();
+        return new DIContainer.Services(authService, new DefaultMovieService(), new DefaultRatingService(appConfig, authService));
     }
 }
