@@ -11,6 +11,7 @@ import pd.interfaces.AuthenticationService;
 import pd.interfaces.MovieService;
 import pd.interfaces.RatingService;
 import pd.model.AccountDTO;
+import pd.model.MovieDTO;
 import pd.model.MyRatingVO;
 import pd.model.RatingVOList;
 import pd.model.MovieSearchConditionDTO;
@@ -37,7 +38,7 @@ public class UserUI {
 		while(true) {
 			String str;
 			System.out.println("-user menu-");
-			System.out.println("0.help   1.search   2.rate   3.my ratings   4.account   5.sign out");
+			System.out.println("0.help   1.search   2.my rating   3.account   4.sign out");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {
@@ -45,22 +46,60 @@ public class UserUI {
 			else if(str.equals("1")){
 				MovieSearchConditionDTO condition = SearchUITool.makeMovieSearchConditionForUser();
 				System.out.println("--result--");
+				Result result = movieService.searchMoiveByCondition(condition);
+				if (result == Result.success) {
+					ArrayList<MovieDTO> movieDTOList = (ArrayList<MovieDTO>)result.getValue();
+					int i;
+					for(i=0;i<movieDTOList.size();i++){
+		                MovieDTO item = movieDTOList.get(i);
+		                System.out.println("<"+i+">");
+		                System.out.println("title:" + item.getTitle());
+		                System.out.println("type: " + item.getType());
+		                //System.out.println("type: " + item.getType() + ", region: " + item.getRegion());
+		                System.out.println("genre: " + item.getGenreList());
+		                //System.out.println("casting: " + item.getActorList());
+		                System.out.println("runtime: " + item.getRuntime()+"min "+ ", startYear: " + item.getStartYear());
+		                System.out.println("avgRating: " + String.valueOf(item.getAvg()) + ", numVotes: " + item.getNumVotes());
+		            }
+					//
+					int size = i;
+					System.out.print("if you want to rate movie, give index :");
+					try {
+						str = scan.nextLine();
+						int index = Integer.parseInt(str);
+						if (size > index && index >= 0) {
+			                MovieDTO item = movieDTOList.get(index);
+							double stars;
+							System.out.print("stars(0~10) : ");
+							try {
+								stars = Double.parseDouble(scan.nextLine());
+							}
+							catch(Exception e) {
+								System.out.println("wrong format");
+								continue;
+							}
+							condition = new MovieSearchConditionDTO();
+							condition.fillWithDefault();
+							condition.movieID = item.getTitleId();
+							condition.movieName = item.getTitle();
+							result = movieService.rateMovie(condition, stars);
+							if (result == Result.success) 
+								System.out.println("movie rated");
+							else
+								System.out.println(result.getError().getDescription());
+						}
+						else
+							System.out.println("wrong format.");
+					}
+					catch(Exception e) {
+						System.out.println("wrong format.");
+					}
+			    }
+			    else {
+			    	System.out.println(result.getError().getDescription());
+			    }
 			}
 			else if(str.equals("2")){
-				String movieName;
-				double stars;
-				System.out.print("movie name : ");
-				movieName = scan.nextLine();
-				System.out.print("stars(0~10) : ");
-				try {
-					stars = Double.parseDouble(scan.nextLine());
-				}
-				catch(Exception e) {
-					System.out.println("wrong format");
-					continue;
-				}
-			}
-			else if(str.equals("3")){
 				Result result = ratingService.getMyRatingList();
 				if (result == Result.failure)
 					System.out.println(result.getError().getDescription());
@@ -83,13 +122,13 @@ public class UserUI {
 					System.out.println("------------");
 				}
 			}
-			else if(str.equals("4")){
+			else if(str.equals("3")){
 				UserAccountUI ui = new UserAccountUI(authService);
 				ui.setConnection(conn);
 				if (ui.run() == false)
 					break;
 			}
-			else if(str.equals("5"))	break;
+			else if(str.equals("4"))	break;
 			else System.out.println("invalid operation");
 		}
 	}
