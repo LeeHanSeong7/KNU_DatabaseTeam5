@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import injected.DIContainer.Services;
@@ -108,14 +109,11 @@ public class AdminMovieManageUI {
 		}
 	}
 	Boolean modify(MovieDTO data) {
-		MovieDTO movieData = new MovieDTO(null, null, null, null, null, null, null, null, null, new ArrayList<String>(), null, new ArrayList<String>());
+		MovieDTO movieData = new MovieDTO(null, null, null, null, null, null, null, data.getNum(), null, new ArrayList<String>(), null, new ArrayList<String>());
 		String str;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("---information---");
 		System.out.print("title 	: ");
-		str = scan.nextLine();
-		if (str.length() != 0) movieData.setTitle(str);
-		System.out.print("region 	: ");
 		str = scan.nextLine();
 		if (str.length() != 0) movieData.setRegion(str);
 		System.out.print("runtime 	: ");
@@ -131,7 +129,7 @@ public class AdminMovieManageUI {
 		str = scan.nextLine();
 		try {
 			Date.valueOf(str);
-			movieData.setRuntime(str);
+			movieData.setStartYear(str);
 		}
 		catch(Exception e) {
 			System.out.println("wrong format, please modify later");
@@ -140,21 +138,33 @@ public class AdminMovieManageUI {
 		str = scan.nextLine();
 		if (str.length() != 0) {
 			try {
-				ArrayList<String> temp = new ArrayList<String>();
-				temp = (ArrayList<String>)Arrays.asList(str.replaceAll(" ", "").split(","));
+				List<String> temp = new ArrayList<String>();
+				String[] items = str.replaceAll(" ", "").split(",");
+				temp = (List<String>)Arrays.asList(items);
+				for (int i =0; i< temp.size() ; i++) {
+					String t = temp.get(i).toLowerCase();
+					t = t.substring(0,1).toUpperCase() + t.substring(1);
+					temp.set(i, t);
+				}
 				movieData.setGenreList(temp);
 			}
 			catch(Exception e) {
 				movieData.setGenreList(null);
-				//System.out.println("wrong format, please modify later");
-				e.getStackTrace();
+				System.out.println("wrong format, please modify later");
 			}
 		}
 		else
 			movieData.setGenreList(null);
-		System.out.print("type 		: ");
+		System.out.print("type (1.KnuMovieDB Original 2.Movie 3.TV Series): ");
 		str = scan.nextLine();
-		if (str.length() != 0) movieData.setType(str);
+		if (str.equals("1"))
+			movieData.setType("KnuMovieDB Original");
+		else if (str.equals("2"))
+			movieData.setType("Movie");
+		else if (str.equals("3"))
+			movieData.setType("TV Series");
+		else
+			System.out.println("wrong format, please modify later");
 		System.out.println("-----------------");
 		
 		Result result = movieService.updateMovie(data, movieData);
