@@ -17,6 +17,7 @@ public class MovieUITool {
 		String actorList = "";
 		String str = "";
 		Scanner scan = new Scanner(System.in);
+		res.setStartYear("2020-01-01");
 		while(true) {
 			System.out.println("--movie Information--");
 			System.out.println("target list");
