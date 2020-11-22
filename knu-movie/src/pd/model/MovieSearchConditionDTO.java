@@ -14,6 +14,7 @@ public class MovieSearchConditionDTO {
 	public String genre;
 	public String actor;
 	public String type;
+	public String region;
 	
 	public MovieSearchConditionDTO() {}
 	
@@ -28,7 +29,8 @@ public class MovieSearchConditionDTO {
 			double Mintime,
 			String genre,
 			String actor,
-			String type
+			String type,
+			String region
 			) {
 		this.movieID = movieID;
 		this.movieName = movieName;
@@ -41,11 +43,12 @@ public class MovieSearchConditionDTO {
 		this.genre = genre;
 		this.actor = actor;
 		this.type = type;
+		this.region = region;
 	}
 	public MovieSearchConditionDTO fillWithDefault() {
 		return new MovieSearchConditionDTO("","",
 				Date.valueOf("2500-12-21"),
 				Date.valueOf("1000-01-01"),
-				10,0,-1,-1, "", "","");
+				10,0,-1,-1, "", "","",null);
 	}
 }
