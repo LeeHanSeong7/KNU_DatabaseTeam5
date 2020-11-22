@@ -146,7 +146,7 @@ public class DB {
                 case MOVIE:
                     MovieDTO m = (MovieDTO) dto;
                     return (
-                        (m.getTitleId()==null ? "":("Title_id="+VARCHAR(m.getTitle(), OPTION.NOT_NULL) + ", "))  + 
+                        (m.getTitleId()==null ? "":("Title_id="+VARCHAR(m.getTitleId(), OPTION.NOT_NULL) + ", "))  + 
                         (m.getType()==null ? "":("Type="+VARCHAR(m.getType(), OPTION.NOT_NULL) + ", ")) + 
                         (m.getRuntime()==null ? "":("Runtime="+NUMBER(m.getRuntime()) + ", ")) + 
                         (m.getStartYear()==null ? "":("Start_year="+DATE(m.getStartYear()) + ", ")) + 
