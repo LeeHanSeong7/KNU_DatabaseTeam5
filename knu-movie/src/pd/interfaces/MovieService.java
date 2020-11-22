@@ -13,6 +13,7 @@ public interface MovieService {
     Result rateMovie(MovieSearchConditionDTO condition, double stars);
     Result movieUpload(MovieDTO movieDTO);
     Result movieDelete(String title_id);
+    Result updateMovie(MovieDTO before, MovieDTO changed);
     void setConnection(Connection Connection);
     void setRegion();
 }

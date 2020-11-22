@@ -10,10 +10,10 @@ public class MovieDTO implements DTO {
     private	String region;
     private String runtime;
     private String startYear;
-    private int total;
+    private Integer total;
     private String numVotes;
-    private int num;
-    private double avg;
+    private Integer num;
+    private Double avg;
     private ArrayList<String> genreList = new ArrayList<String>();
     private ArrayList<String> actorList = new ArrayList<String>();
     private String type;
@@ -35,7 +35,7 @@ public class MovieDTO implements DTO {
         this.type = a.type;
     }
 
-    public MovieDTO(String title_id, String title, String region, String runtime, String startYear, int total, String numVotes, int num, double avg, ArrayList<String> genreList, String type, ArrayList<String> actorList){
+    public MovieDTO(String title_id, String title, String region, String runtime, String startYear, Integer total, String numVotes, Integer num, Double avg, ArrayList<String> genreList, String type, ArrayList<String> actorList){
         this.title_id = title_id;
         this.title = title;
         this.region = region;
@@ -66,16 +66,16 @@ public class MovieDTO implements DTO {
     public String getStartYear(){
         return this.startYear;
     }
-    public int getTotal(){
+    public Integer getTotal(){
         return this.total;
     }
     public String getNumVotes(){
         return this.numVotes;
     }
-    public int getNum(){
+    public Integer getNum(){
         return this.num;
     }
-    public double getAvg(){
+    public Double getAvg(){
         return this.avg;
     }
     public ArrayList<String> getGenreList(){
@@ -103,16 +103,16 @@ public class MovieDTO implements DTO {
     public void setStartYear(String startYear){
         this.startYear = startYear;
     }
-    public void setTotal(int total){
+    public void setTotal(Integer total){
         this.total = total;
     }
     public void setNumVotes(String numVotes){
         this.numVotes = numVotes;
     }
-    public void setNum(int num){
+    public void setNum(Integer num){
         this.num = num;
     }
-    public void setAvg(double avg){
+    public void setAvg(Double avg){
         this.avg = avg;
     }
     public void setGenreList(ArrayList<String> genreList){
