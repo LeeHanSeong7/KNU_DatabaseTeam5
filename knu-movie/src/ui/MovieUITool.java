@@ -32,12 +32,7 @@ public class MovieUITool {
 			str = scan.nextLine();
 			if (str.length() == 0) continue;
 			else if (str.equals("end")) {
-				System.out.print("upload this movie? 'y' : ");
-				str= scan.nextLine();
-				if (!str.equals('y') && !str.equals('Y'))
-					return null;
-				else
-					break;
+				break;
 			}
 			try {
 				String[] temp = str.split(":=");

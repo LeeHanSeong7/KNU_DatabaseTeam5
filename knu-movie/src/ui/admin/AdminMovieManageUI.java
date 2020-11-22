@@ -90,6 +90,10 @@ public class AdminMovieManageUI {
 					continue;
 				}
 				else {
+					System.out.println("upload this video? 'y'");
+					str = scan.nextLine();
+					if (str.equals("y") || str.equals("Y")) {}
+					
 //					Result result = movieService.movieUpload(movieData);
 //					if (result == Result.success)
 //						System.out.println("upload conplete");
