@@ -499,7 +499,8 @@ public class DefaultMovieService implements MovieService{
     }
 
     public Result movieDelete(String title_id){    
-        String sql = "SELECT * FROM MOVIE_CAST_ACTOR MOVIE_title_id='" + title_id + "'";
+        String sql = "SELECT * FROM MOVIE_CAST_ACTOR WHERE MOVIE_title_id='" + title_id + "'";
+        //System.out.println(sql);
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -508,7 +509,7 @@ public class DefaultMovieService implements MovieService{
                  try {
                     ppst = connection.prepareStatement(sql);
                     int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
+                    if (r < 1) return Result.withError(MovieError.unknown);
                     else {
                         connection.commit();
                     }
@@ -519,10 +520,11 @@ public class DefaultMovieService implements MovieService{
             }
             rs.close();
         } catch(Exception e) {
+            e.printStackTrace();
             return Result.withError(MovieError.unknown);
         }
 
-        sql = "SELECT * FROM MOVIE_HAS_GENRE MOVIE_title_id='" + title_id + "'";
+        sql = "SELECT * FROM MOVIE_HAS_GENRE WHERE MOVIE_title_id='" + title_id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -531,7 +533,7 @@ public class DefaultMovieService implements MovieService{
                 try {
                     ppst = connection.prepareStatement(sql);
                     int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
+                    if (r < 1) return Result.withError(MovieError.unknown);
                     else {
                         connection.commit();
                     }
@@ -545,7 +547,7 @@ public class DefaultMovieService implements MovieService{
             return Result.withError(MovieError.unknown);
         }
 
-        sql = "SELECT * FROM RATING MOVIE_title_id='" + title_id + "'";
+        sql = "SELECT * FROM RATING WHERE MOVIE_title_id='" + title_id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -555,7 +557,7 @@ public class DefaultMovieService implements MovieService{
                 try {
                     ppst = connection.prepareStatement(sql);
                     int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
+                    if (r < 1) return Result.withError(MovieError.unknown);
                     else {
                         connection.commit();
                     }
@@ -569,7 +571,7 @@ public class DefaultMovieService implements MovieService{
             return Result.withError(MovieError.unknown);
         }
 
-        sql = "SELECT * FROM VERSION MOVIE_title_id='" + title_id + "'";
+        sql = "SELECT * FROM VERSION WHERE MOVIE_title_id='" + title_id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -579,7 +581,7 @@ public class DefaultMovieService implements MovieService{
                 try {
                     ppst = connection.prepareStatement(sql);
                     int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
+                    if (r < 1) return Result.withError(MovieError.unknown);
                     else {
                         connection.commit();
                     }
@@ -592,7 +594,7 @@ public class DefaultMovieService implements MovieService{
         } catch(Exception e) {
             return Result.withError(MovieError.unknown);
         }  
-        sql = "SELECT * FROM MOVIE title_id='" + title_id + "'";
+        sql = "SELECT * FROM MOVIE WHERE title_id='" + title_id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             ResultSet rs = ppst.executeQuery();
@@ -602,7 +604,7 @@ public class DefaultMovieService implements MovieService{
                 try {
                     ppst = connection.prepareStatement(sql);
                     int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
+                    if (r < 1) return Result.withError(MovieError.unknown);
                     else {
                         connection.commit();
                     }
