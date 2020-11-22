@@ -83,7 +83,7 @@ public class AdminMovieManageUI {
 			}
 			else if(str.equals("2")){
 				MovieDTO movieData = MovieUITool.makeMovieDTO(
-						new MovieDTO(null, null, null, null, null, 0, null, 0, 0, new ArrayList<String>(), null, new ArrayList<String>()));
+						new MovieDTO(null, null, null, null, null, null, null, null, null, new ArrayList<String>(), null, new ArrayList<String>()));
 				if (movieData == null) {
 					System.out.println("upload failed");
 					continue;
@@ -103,24 +103,21 @@ public class AdminMovieManageUI {
 		}
 	}
 	Boolean modify(MovieDTO data) {
-		Scanner scan = new Scanner(System.in);
-		MovieSearchConditionDTO condition = new MovieSearchConditionDTO();
-		condition.fillWithDefault();
-		System.out.print("MovieId	: ");
-		condition.movieID = scan.nextLine();
-		System.out.print("Region	: ");
-		condition.movieName = scan.nextLine();
-		Result result = movieService.searchMoiveByCondition(condition) ;
-		if (result == Result.success) {
-			ArrayList<MovieDTO> temp = (ArrayList<MovieDTO>)result.getValue();
-			MovieDTO movieData = temp.get(0);
-			movieData = MovieUITool.makeMovieDTO(movieData);
-			
-			//result = movieService.movieDelete(condition.movieID,condition.movieName);
-			// 재업로드
+		MovieDTO movieData = MovieUITool.makeMovieDTO(
+				new MovieDTO(null, null, null, null, null, null, null, null, null, new ArrayList<String>(), null, new ArrayList<String>()));
+		if (movieData == null) {
+			System.out.println("modify failed");
+			return false;
 		}
-		else
-			System.out.println(result.getError().getDescription());
+		else {
+			Result result = movieService.updateMovie(data, movieData);
+			if (result == Result.success)
+				System.out.println("modify conplete");
+			else {
+				System.out.println(result.getError().getDescription());
+				return false;
+			}
+		}
 		return true;
 	}
 	Boolean delete(MovieDTO data) {
