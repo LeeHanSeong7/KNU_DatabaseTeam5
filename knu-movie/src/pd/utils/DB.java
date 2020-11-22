@@ -1,10 +1,12 @@
 package pd.utils;
 import pd.interfaces.DTO;
 import pd.model.AccountDTO;
+import pd.model.MovieDTO;
+import pd.model.MovieGenreDTO;
 
 public class DB {
     public enum TABLE {
-        ACCOUNT, RATING, NONE;
+        ACCOUNT, RATING, MOVIE, VERSION, MOVIE_HAS_GENRE, MOVIE_CAST_ACTOR, NONE;
 
         public static TABLE of(String s) {
             try {
@@ -141,6 +143,21 @@ public class DB {
                         (a.getMembership()==null ? "":("membership="+VARCHAR(a.getMembership()) + ", ")) + 
                         (a.getIsAdmin()==null ? "":("isAdmin="+NUMBER(a.getIsAdmin()? "1":"0")))
                     );
+                case MOVIE:
+                    MovieDTO m = (MovieDTO) dto;
+                    return (
+                        (m.getTitleId()==null ? "":("Title_id="+VARCHAR(m.getTitle(), OPTION.NOT_NULL) + ", "))  + 
+                        (m.getType()==null ? "":("Type="+VARCHAR(m.getType(), OPTION.NOT_NULL) + ", ")) + 
+                        (m.getRuntime()==null ? "":("Runtime="+NUMBER(m.getRuntime()) + ", ")) + 
+                        (m.getStartYear()==null ? "":("Start_year="+DATE(m.getStartYear()) + ", ")) + 
+                        (m.getTotal()==null ? "":("Total_rating="+NUMBER(m.getTotal().toString()) + ", ")) + 
+                        (m.getNum()==null ? "":("Num_votes="+NUMBER(m.getNum().toString())))
+                    );
+                case VERSION:
+                    MovieDTO v = (MovieDTO) dto;
+                    return (
+                        (v.getTitle()==null ? "":("Title="+VARCHAR(v.getTitle(), OPTION.NOT_NULL)))
+                    );
                 default:
                     break;
             }
@@ -161,6 +178,11 @@ public class DB {
                             (a.getJob()==null ? "NULL, ":VARCHAR(a.getJob()) + ", ") + 
                             (a.getMembership()==null ? "NULL, ":VARCHAR(a.getMembership()) + ", ") + 
                             (a.getIsAdmin()==null ? "NULL":NUMBER(a.getIsAdmin()? "1":"0"))
+                            );
+                case MOVIE_HAS_GENRE:
+                    MovieGenreDTO mg = (MovieGenreDTO) dto;
+                    return ((mg.titleId==null ? "NULL, ":VARCHAR(mg.titleId, OPTION.NOT_NULL) + ", ") + 
+                            (mg.genreId==null ? "NULL, ":VARCHAR(mg.genreId, OPTION.NOT_NULL))
                             );
                 default:
                     break;
