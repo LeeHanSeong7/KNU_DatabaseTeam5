@@ -43,4 +43,10 @@ public class StubMovieService implements MovieService{
     public Result movieDelete(String title_id){
         return Result.success;
     }
+
+    @Override
+    public Result updateMovie(MovieDTO before, MovieDTO changed) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
