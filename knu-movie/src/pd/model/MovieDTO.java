@@ -1,6 +1,7 @@
 package pd.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pd.interfaces.DTO;
 
@@ -14,8 +15,8 @@ public class MovieDTO implements DTO {
     private String numVotes;
     private Integer num;
     private Double avg;
-    private ArrayList<String> genreList = new ArrayList<String>();
-    private ArrayList<String> actorList = new ArrayList<String>();
+    private List<String> genreList = new ArrayList<String>();
+    private List<String> actorList = new ArrayList<String>();
     private String type;
 
 
@@ -78,13 +79,13 @@ public class MovieDTO implements DTO {
     public Double getAvg(){
         return this.avg;
     }
-    public ArrayList<String> getGenreList(){
+    public List<String> getGenreList(){
         return this.genreList;
     }
     public String getType(){
         return this.type;
     }
-    public ArrayList<String> getActorList(){
+    public List<String> getActorList(){
         return this.actorList;
     }
 
@@ -115,13 +116,13 @@ public class MovieDTO implements DTO {
     public void setAvg(Double avg){
         this.avg = avg;
     }
-    public void setGenreList(ArrayList<String> genreList){
+    public void setGenreList(List<String> genreList){
         this.genreList = genreList;
     }
     public void setType(String type){
         this.type = type;
     }
-    public void setAcotrList(ArrayList<String> actorList){
+    public void setAcotrList(List<String> actorList){
         this.actorList = actorList;
     }
 

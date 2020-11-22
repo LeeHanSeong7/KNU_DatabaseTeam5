@@ -42,12 +42,15 @@ public class SearchUITool {
 					res.movieID = temp[1];
 				else if (temp[0].equals("2"))
 					res.movieName = temp[1];
-				else if (temp[0].equals("3"))
-					res.genre = res.genre+", "+temp[1];
-				else if (temp[0].equals("4"))
-					res.actor = res.actor+", "+temp[1];
+				else if (temp[0].equals("3")) {
+					str = temp[1];	
+					res.genre = str.substring(0,1).toUpperCase() + str.substring(1);
+				}
+				else if (temp[0].equals("4")) {
+					res.actor = temp[1];
+				}
 				else if (temp[0].equals("5"))
-					res.type = res.type+", "+temp[1];
+					res.type = temp[1];
 				else if (temp[0].equals("6")) {
 					try {
 						res.Maxyear = Date.valueOf(temp[1]);
@@ -131,12 +134,14 @@ public class SearchUITool {
 				if (temp[1].length() == 0) continue;
 				else if (temp[0].equals("1"))
 					res.movieName = temp[1];
-				else if (temp[0].equals("2"))
-					res.genre = res.genre+", "+temp[1];
+				else if (temp[0].equals("2")) {
+					str = temp[1];	
+					res.genre = str.substring(0,1).toUpperCase() + str.substring(1);
+				}
 				else if (temp[0].equals("3"))
-					res.actor = res.actor+", "+temp[1];
+					res.actor = temp[1];
 				else if (temp[0].equals("4"))
-					res.type = res.type+", "+temp[1];
+					res.type = temp[1];
 				else if (temp[0].equals("5")) {
 					try {
 						res.Maxyear = Date.valueOf(temp[1]);

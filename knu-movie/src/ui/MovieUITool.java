@@ -3,6 +3,7 @@ package ui;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import pd.model.MovieDTO;
@@ -17,7 +18,7 @@ public class MovieUITool {
 		String str = "";
 		Scanner scan = new Scanner(System.in);
 		while(true) {
-			System.out.println("--moive Information--");
+			System.out.println("--movie Information--");
 			System.out.println("target list");
 			System.out.println("1.titleID(only) 	: " + res.getTitleId());
 			System.out.println("2.title(only)   	: " + res.getTitle());
@@ -79,11 +80,41 @@ public class MovieUITool {
 			}
 		}
 		if (genreList.length() == 0) genreList = null;
-		else 
-			res.setGenreList((ArrayList<String>)Arrays.asList(genreList.split(", ")));
+		else {
+			try {
+				List<String> temp = new ArrayList<String>();
+				String[] items = genreList.split(", ");
+				temp = (List<String>)Arrays.asList(items);
+				for (int i =0; i< temp.size() ; i++) {
+					String t = temp.get(i).toLowerCase();
+					t = t.substring(0,1).toUpperCase() + t.substring(1);
+					temp.set(i, t);
+				}
+				res.setGenreList(temp);
+			}
+			catch(Exception e) {
+				res.setGenreList(null);
+				System.out.println("wrong format, please modify later");
+			}
+		}
 		if (actorList.length() == 0) actorList = null;
-		else 
-			res.setAcotrList((ArrayList<String>)Arrays.asList(actorList.split(", ")));
+		else {
+			try {
+				List<String> temp = new ArrayList<String>();
+				String[] items = actorList.split(", ");
+				temp = (List<String>)Arrays.asList(items);
+				for (int i =0; i< temp.size() ; i++) {
+					String t = temp.get(i).toLowerCase();
+					t = t.substring(0,1).toUpperCase() + t.substring(1);
+					temp.set(i, t);
+				}
+				res.setAcotrList(temp);
+			}
+			catch(Exception e) {
+				res.setAcotrList(null);
+				System.out.println("wrong format, please modify later");
+			}
+		}
 		return res;
 	}
 }
