@@ -88,7 +88,7 @@ public class DefaultMovieService implements MovieService{
                 if(movieDTOList.size() == 0){
                     movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
                     movieDTOList.add(movieDTO);
-                    System.out.println("moviDTO " + movieDTO);
+                    //System.out.println("moviDTO " + movieDTO);
                 }else if(movieDTOList.size() > 0){
                     // 앞의 movieDTO의 title_id와 같으면 genre 리스트에 추가하여 set
                     if(movieDTOList.get(movieDTOList.size() - 1).getTitleId().equals(title_id) == true){
@@ -114,17 +114,17 @@ public class DefaultMovieService implements MovieService{
 				// 				+  ", numVotes: " + numVotes);		
             }
            
-            for(int i=0;i<movieDTOList.size();i++){
-                MovieDTO item = movieDTOList.get(i);
-                System.out.print("title: " + item.getTitle()
-                                +  ", type: " + item.getType()
-                                +  ", region: " + item.getRegion()
-                                +  ", runtime: " + item.getRuntime()
-                                +  ", startYear: " + item.getStartYear()
-                                +  ", avgRating: " + String.valueOf(item.getAvg())
-                                +  ", numVotes: " + item.getNumVotes());
-                System.out.println(", genre: " + item.getGenreList());
-            }
+            // for(int i=0;i<movieDTOList.size();i++){
+            //     MovieDTO item = movieDTOList.get(i);
+            //     System.out.print("title: " + item.getTitle()
+            //                     +  ", type: " + item.getType()
+            //                     +  ", region: " + item.getRegion()
+            //                     +  ", runtime: " + item.getRuntime()
+            //                     +  ", startYear: " + item.getStartYear()
+            //                     +  ", avgRating: " + String.valueOf(item.getAvg())
+            //                     +  ", numVotes: " + item.getNumVotes());
+            //     System.out.println(", genre: " + item.getGenreList());
+            // }
 
             rs.close();
             
@@ -439,7 +439,7 @@ public class DefaultMovieService implements MovieService{
         }
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
-            System.out.println(sql);
+            //System.out.println(sql);
             int r = ppst.executeUpdate();
             if (r != 1) return Result.withError(MovieError.unknown);
             else {
