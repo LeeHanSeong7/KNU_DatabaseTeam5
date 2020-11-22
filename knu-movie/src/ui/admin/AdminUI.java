@@ -43,7 +43,6 @@ public class AdminUI {
 			}
 			else if(str.equals("1")){
 				AdminMovieManageUI ui = new AdminMovieManageUI(MovieService);
-				
 				ui.setConnection(conn);
 				ui.run();
 			}
