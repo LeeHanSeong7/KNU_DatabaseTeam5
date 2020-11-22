@@ -3,10 +3,15 @@ package pd.interfaces;
 import java.sql.Connection;
 import java.sql.Date;
 
+import pd.model.MovieSearchConditionDTO;
 import pd.utils.Result;
 
 public interface MovieService {
     Result viewWholeVideo();
-    Result searchMoiveByCondition(String movieName, Date Maxyear, Date Minyear, double Maxaver, double Minaver, String genre, String actor, String type);
+    Result searchMoiveByCondition(MovieSearchConditionDTO condition);
+    Result rateMovie(MovieSearchConditionDTO condition, double stars);
+    Result movieUpload(String title_id, String type, double runtime, Date start_year);
+    Result movieDelete(String title_id);
     void setConnection(Connection Connection);
+    void setRegion();
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 
 import pd.interfaces.MovieService;
+import pd.model.MovieSearchConditionDTO;
 import pd.utils.Result;
 
 public class StubMovieService implements MovieService{
@@ -17,12 +18,28 @@ public class StubMovieService implements MovieService{
     }
     
     @Override
-    public Result searchMoiveByCondition(String movieName, Date Maxyear, Date Minyear, double Maxaver, double Minaver, String genre, String actor, String type){
+    public Result searchMoiveByCondition(MovieSearchConditionDTO condition){
         return Result.success;
     }
 
     @Override
     public void setConnection(Connection Connection) {
         // TODO Auto-generated method stub
+    }
+
+    public void setRegion(){
+
+    }
+
+    public Result rateMovie(MovieSearchConditionDTO condition, double stars)
+    {
+        return Result.success;
+    }
+    public Result movieUpload(String title_id, String type, double runtime, Date start_year){
+        return Result.success;
+
+    }
+    public Result movieDelete(String title_id){
+        return Result.success;
     }
 }

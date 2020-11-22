@@ -28,6 +28,6 @@ public class AppEnvironment {
 
     private static Services configuredServicies(AppConfig appConfig) {
         AuthenticationService authService = new DefaultAuthenticationService();
-        return new DIContainer.Services(authService, new DefaultMovieService(), new DefaultRatingService(appConfig, authService));
+        return new DIContainer.Services(authService, new DefaultMovieService(appConfig, authService), new DefaultRatingService(appConfig, authService));
     }
 }
