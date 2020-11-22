@@ -25,7 +25,7 @@ public class UserAccountUI {
 		while(true) {
 			String str;
 			System.out.println("-account menu-");
-			System.out.println("0.help   1.my info   2.change password   3.modify info   4.delete   5.back");
+			System.out.println("1.my info   2.change password   3.modify info   4.delete   5.back");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			AccountDTO myinfo = AuthService.getloggedInAccountInfo();

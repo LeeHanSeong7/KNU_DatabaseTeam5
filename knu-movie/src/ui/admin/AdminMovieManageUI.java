@@ -50,7 +50,7 @@ public class AdminMovieManageUI {
 		                System.out.println("[id:"+item.getTitleId()+"] title:" + item.getTitle());
 		                System.out.println("type: " + item.getType() + ", region: " + item.getRegion());
 		                System.out.println("genre: " + item.getGenreList());
-		                System.out.println("casting: " + item.getActorList());
+		                //System.out.println("casting: " + item.getActorList());
 		                System.out.println("runtime: " + item.getRuntime()+"min "+ ", startYear: " + item.getStartYear());
 		                System.out.println("avgRating: " + String.valueOf(item.getAvg()) + ", numVotes: " + item.getNumVotes());
 		            }

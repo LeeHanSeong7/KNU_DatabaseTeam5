@@ -36,7 +36,7 @@ public class AdminUI {
 		while(true) {
 			String str;
 			System.out.println("-admin menu-");
-			System.out.println("0.help   1.movie manage   2.check ratings   3.sign out");
+			System.out.println("1.movie manage   2.check ratings   3.sign out");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {

@@ -38,7 +38,7 @@ public class UserUI {
 		while(true) {
 			String str;
 			System.out.println("-user menu-");
-			System.out.println("0.help   1.search   2.my rating   3.account   4.sign out");
+			System.out.println("1.search   2.my rating   3.account   4.sign out");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {

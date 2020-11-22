@@ -32,7 +32,7 @@ public class KnuMovie {
 		while(true) {
 			String str;
 			System.out.println("-title menu-");
-			System.out.println("0.help   1.sign in   2.sign up   3.exit");
+			System.out.println("1.sign in   2.sign up   3.exit");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {
