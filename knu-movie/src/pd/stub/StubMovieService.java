@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 
 import pd.interfaces.MovieService;
+import pd.model.MovieDTO;
 import pd.model.MovieSearchConditionDTO;
 import pd.utils.Result;
 
@@ -35,7 +36,7 @@ public class StubMovieService implements MovieService{
     {
         return Result.success;
     }
-    public Result movieUpload(String title_id, String type, double runtime, Date start_year){
+    public Result movieUpload(MovieDTO movieDTO){
         return Result.success;
 
     }
