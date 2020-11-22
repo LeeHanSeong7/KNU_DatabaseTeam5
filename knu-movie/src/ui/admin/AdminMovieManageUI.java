@@ -32,7 +32,7 @@ public class AdminMovieManageUI {
 		while(true) {
 			String str;
 			System.out.println("-movie manage menu-");
-			System.out.println("0.help   1.search   2.upload   3.back");
+			System.out.println("1.search   2.upload   3.back");
 			str = scan.nextLine();
 			str = str.replaceAll(" ", "");
 			if (str.equals("0")) {
@@ -93,15 +93,15 @@ public class AdminMovieManageUI {
 				else {
 					System.out.println("upload this video? 'y'");
 					str = scan.nextLine();
-					if (str.equals("y") || str.equals("Y")) {}
-					
-//					Result result = movieService.movieUpload(movieData);
-//					if (result == Result.success)
-//						System.out.println("upload conplete");
-//					else {
-//						System.out.println(result.getError().getDescription());
-//						continue;
-//					}
+					if (str.equals("y") || str.equals("Y")) {
+						Result result = movieService.movieUpload(movieData);
+						if (result == Result.success)
+							System.out.println("upload conplete");
+						else {
+							System.out.println(result.getError().getDescription());
+							continue;
+						}
+					}
 				}
 			}
 			else if(str.equals("3"))	break;
