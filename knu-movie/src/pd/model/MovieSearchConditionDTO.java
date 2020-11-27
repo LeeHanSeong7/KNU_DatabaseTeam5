@@ -47,8 +47,8 @@ public class MovieSearchConditionDTO {
 	}
 	public MovieSearchConditionDTO fillWithDefault() {
 		return new MovieSearchConditionDTO("","",
-				Date.valueOf("2500-12-21"),
-				Date.valueOf("1000-01-01"),
+				null,
+				null,
 				10,0,-1,-1, "", "","",null);
 	}
 }

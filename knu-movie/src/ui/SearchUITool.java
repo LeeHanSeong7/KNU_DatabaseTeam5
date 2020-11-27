@@ -24,8 +24,16 @@ public class SearchUITool {
 			System.out.println("3.genre 	    	: " + res.genre);
 			System.out.println("4.actor 	    	: " + res.actor);
 			System.out.println("5.type 	    		: " + res.type);
-			System.out.println("6.maxyear(yyyy-mm-dd) : " + res.Maxyear.toString());
-			System.out.println("7.minyear(yyyy-mm-dd) : " + res.Minyear.toString());
+			if(res.Maxyear != null){
+				System.out.println("5.maxyear(yyyy-mm-dd) : " + res.Maxyear.toString());
+			}else{
+				System.out.println("5.maxyear(yyyy-mm-dd) : ");
+			}
+			if(res.Minyear != null){
+				System.out.println("6.minyear(yyyy-mm-dd) : " + res.Minyear.toString());
+			}else{
+				System.out.println("5.maxyear(yyyy-mm-dd) : ");
+			}
 			System.out.println("8.maxaver(0~10) 	: " + res.Maxaver);
 			System.out.println("9.minaver(0~10) 	: " + res.Minaver);
 			System.out.println("10.maxtime 			: " + res.Maxtime);
@@ -120,8 +128,16 @@ public class SearchUITool {
 			System.out.println("2.genre 	    	: " + res.genre);
 			System.out.println("3.actor 	    	: " + res.actor);
 			System.out.println("4.type 	    		: " + res.type);
-			System.out.println("5.maxyear(yyyy-mm-dd) : " + res.Maxyear.toString());
-			System.out.println("6.minyear(yyyy-mm-dd) : " + res.Minyear.toString());
+			if(res.Maxyear != null){
+				System.out.println("5.maxyear(yyyy-mm-dd) : " + res.Maxyear.toString());
+			}else{
+				System.out.println("5.maxyear(yyyy-mm-dd) : ");
+			}
+			if(res.Minyear != null){
+				System.out.println("6.minyear(yyyy-mm-dd) : " + res.Minyear.toString());
+			}else{
+				System.out.println("5.maxyear(yyyy-mm-dd) : ");
+			}
 			System.out.println("7.maxaver(0~10) 	: " + res.Maxaver);
 			System.out.println("8.minaver(0~10) 	: " + res.Minaver);
 			System.out.println("-------------------");

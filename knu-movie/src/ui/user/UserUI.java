@@ -3,8 +3,12 @@ package ui.user;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.Scanner;
+import java.util.Map.Entry;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import injected.DIContainer.Services;
 import pd.interfaces.AuthenticationService;
@@ -48,52 +52,61 @@ public class UserUI {
 				System.out.println("--result--");
 				Result result = movieService.searchMoiveByCondition(condition);
 				if (result == Result.success) {
-					ArrayList<MovieDTO> movieDTOList = (ArrayList<MovieDTO>)result.getValue();
-					int i;
-					for(i=0;i<movieDTOList.size();i++){
-		                MovieDTO item = movieDTOList.get(i);
-		                System.out.println("<"+i+">");
+					HashMap<String, MovieDTO> hashMovies = (HashMap<String, MovieDTO>)result.getValue();
+
+					Iterator<Entry<String, MovieDTO>> entries = hashMovies.entrySet().iterator();
+
+					int i = 0;
+					while(entries.hasNext()){
+						Entry<String, MovieDTO> entry = entries.next();
+						//System.out.println("[Key]:" + entry.getKey() + " [Value]:" +  entry.getValue());
+
+						MovieDTO item = entry.getValue();
+						System.out.println("<"+i+">");
 		                System.out.println("title:" + item.getTitle());
 		                System.out.println("type: " + item.getType());
 		                //System.out.println("type: " + item.getType() + ", region: " + item.getRegion());
-		                System.out.println("genre: " + item.getGenreList());
+						System.out.println("genre: " + item.getGenreList());
+						System.out.println("actor: " + item.getActorList());
 		                //System.out.println("casting: " + item.getActorList());
 		                System.out.println("runtime: " + item.getRuntime()+"min "+ ", startYear: " + item.getStartYear());
-		                System.out.println("avgRating: " + String.valueOf(item.getAvg()) + ", numVotes: " + item.getNumVotes());
-		            }
+						System.out.println("avgRating: " + String.valueOf(item.getAvg()) + ", numVotes: " + item.getNumVotes());
+						i++;
+					}
+
 					//
-					int size = i;
-					System.out.print("if you want to rate movie, give index :");
-					try {
-						str = scan.nextLine();
-						int index = Integer.parseInt(str);
-						if (size > index && index >= 0) {
-			                MovieDTO item = movieDTOList.get(index);
-							double stars;
-							System.out.print("stars(0~10) : ");
-							try {
-								stars = Double.parseDouble(scan.nextLine());
-							}
-							catch(Exception e) {
-								System.out.println("wrong format");
-								continue;
-							}
-							condition = new MovieSearchConditionDTO();
-							condition.fillWithDefault();
-							condition.movieID = item.getTitleId();
-							condition.movieName = item.getTitle();
-							result = movieService.rateMovie(condition, stars);
-							if (result == Result.success) 
-								System.out.println("movie rated");
-							else
-								System.out.println(result.getError().getDescription());
-						}
-						else
-							System.out.println("wrong format.");
-					}
-					catch(Exception e) {
-						System.out.println("wrong format.");
-					}
+					// int size = i;
+					// System.out.print("if you want to rate movie, give index :");
+					// try {
+					// 	str = scan.nextLine();
+					// 	int index = Integer.parseInt(str);
+					// 	if (size > index && index >= 0) {
+			        //         MovieDTO item = movieDTOList.get(index);
+					// 		double stars;
+					// 		System.out.print("stars(0~10) : ");
+					// 		try {
+					// 			stars = Double.parseDouble(scan.nextLine());
+					// 		}
+					// 		catch(Exception e) {
+					// 			System.out.println("wrong format");
+					// 			continue;
+					// 		}
+					// 		condition = new MovieSearchConditionDTO();
+					// 		condition.fillWithDefault();
+					// 		condition.movieID = item.getTitleId();
+					// 		condition.movieName = item.getTitle();
+					// 		result = movieService.rateMovie(condition, stars);
+					// 		if (result == Result.success) 
+					// 			System.out.println("movie rated");
+					// 		else
+					// 			System.out.println(result.getError().getDescription());
+					// 	}
+					// 	else
+					// 		System.out.println("wrong format.");
+					// }
+					// catch(Exception e) {
+					// 	System.out.println("wrong format.");
+					// }
 			    }
 			    else {
 			    	System.out.println(result.getError().getDescription());

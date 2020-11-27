@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.Map.Entry;
 
 import config.AppConfig;
 import pd.interfaces.AuthenticationService;
@@ -49,7 +51,7 @@ public class DefaultMovieService implements MovieService{
 
         this.region = properties.getProperty("region");
     }
-    //영상물에 보여줘야 하는 데이터를 나름대로 생각해서 출려함. 그런데 version이 너무 많아서 일단 KR로 고정하였음
+
     @Override
     public Result viewWholeVideo(){
         String sql = "SELECT M.TITLE_ID, V.title, V.region, M.runtime, M.start_year, M.total_rating, M.num_votes, G.GENRE_Genre_id, M.type "+
@@ -134,11 +136,11 @@ public class DefaultMovieService implements MovieService{
         } 
         return Result.withError(MovieError.unknown);
     }
-    
-    @Override
-    public Result searchMoiveByCondition(MovieSearchConditionDTO condition){
 
-        ArrayList<MovieDTO> genrMovieDTOs = new ArrayList<MovieDTO>();
+    public Result searchMoiveByCondition(MovieSearchConditionDTO condition)
+    {
+        HashMap<String, MovieDTO> hashMovies = new HashMap<String, MovieDTO>();
+
         String sql = "with exceptRating AS( "+
             "SELECT * " +
             "FROM MOVIE " +
@@ -175,134 +177,55 @@ public class DefaultMovieService implements MovieService{
                 "where rated.total_rating/rated.num_votes >= "+String.valueOf(condition.Minaver)+" AND rated.total_rating/rated.num_votes <= "+String.valueOf(condition.Maxaver)+" " +
                 ") ";
         }
-        String first_sql="";
-        first_sql += sql + "SELECT M.TITLE_ID, M.runtime, M.start_year, M.total_rating, M.num_votes, M.type, G.GENRE_Genre_id " +
-        "FROM ((afterRate A join MOVIE M on M.TITLE_ID = A.TITLE_ID)join MOVIE_HAS_GENRE G on M.TITLE_ID = G.MOVIE_Title_id) " +
-        "WHERE "+ "Start_year BETWEEN TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') AND TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
         
+        sql +=  ", condition AS( " +
+        "SELECT M.TITLE_ID, M.runtime, M.start_year, M.total_rating, M.num_votes, M.type, V.title, V.region " +
+        "FROM ((afterRate A join MOVIE M on M.TITLE_ID = A.TITLE_ID) join VERSION V on M.TITLE_ID = V.MOVIE_Title_id) " +
+        "WHERE M.TITLE_ID IS NOT NULL ";
+        
+        if(condition.Minyear != null && condition.Maxyear != null){
+            sql += "AND Start_year BETWEEN TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') AND TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
+        }else if(condition.Minyear != null && condition.Maxyear == null){
+            sql += "AND Start_year >= TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') ";
+        }else if(condition.Minyear == null && condition.Maxyear != null){
+            sql += "AND Start_year <= TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
+        }
+
         if(condition.Mintime != -1){
-            first_sql += "AND M.runtime >= " + String.valueOf(condition.Mintime) + " ";
+            sql += "AND M.runtime >= " + String.valueOf(condition.Mintime) + " ";
         }
         if(condition.Maxtime != -1){
-            first_sql += "AND M.runtime <= " + String.valueOf(condition.Maxtime) + " ";
+            sql += "AND M.runtime <= " + String.valueOf(condition.Maxtime) + " ";
         }
         if(!condition.movieID.equals("")){
-            first_sql += "AND M.TITLE_ID = '" + condition.movieID + "' ";
+            sql += "AND M.TITLE_ID = '" + condition.movieID + "' ";
         }
         if(!condition.type.equals("")){
             String[] type = condition.type.split(", ");
-            first_sql += "AND (LOWER(M.type) LIKE LOWER('%" + type[0] + "%') ";
+            sql += "AND (LOWER(M.type) LIKE LOWER('" + type[0] + "%') ";
             for(int i=1;i<type.length;i++){
-                first_sql += "OR LOWER(M.type) LIKE LOWER('%" + type[i] + "%') ";
+                sql += "OR LOWER(M.type) LIKE LOWER('" + type[i] + "%') ";
             }
-            first_sql += ") ";
+            sql += ") ";
         }
-        try {
-            PreparedStatement ppst = connection.prepareStatement(first_sql);
-            ResultSet rs = ppst.executeQuery();
-            movieDTOList = new ArrayList<MovieDTO>();
-            ArrayList<String> genreList = new ArrayList<String>();
-
-            while(rs.next()) {
-                String title_id = rs.getString(1);
-				String title = "";
-				String region = "";
-                String runtime = rs.getString(2);
-                String startYear = rs.getString(3);
-                int total  = rs.getInt(4);
-                String numVotes = rs.getString(5);
-                int num = rs.getInt(5);
-                String type = rs.getString(6);
-                String genre = rs.getString(7);
-                double avg = 0;
-                String avgRating = "0";
-                MovieDTO movieDTO;
-                ArrayList<String> actorList = new ArrayList<String>();
-                genreList.add(genre);
-                
-                if(num == 0){
-                    avgRating = "0";
-                }else{
-                    avg = ((double)total/num);
-                    avgRating = String.valueOf(avg);
-                }
-
-                if(genrMovieDTOs.size() == 0){
-                    movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
-                    genrMovieDTOs.add(movieDTO);
-                }else if(genrMovieDTOs.size() > 0){
-                    // 앞의 movieDTO의 title_id와 같으면 genre 리스트에 추가하여 set
-                    if(genrMovieDTOs.get(genrMovieDTOs.size() - 1).getTitleId().equals(title_id) == true){
-                        genrMovieDTOs.remove(genrMovieDTOs.size() - 1);
-                        movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
-                        genrMovieDTOs.add(movieDTO);
-                    }
-                    else{
-                        //다르면 genreList 초기화 하고 다시 추가하여 ArrayList에 추가
-                        genreList = new ArrayList<String>();
-                        genreList.add(genre);
-                        movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
-                        genrMovieDTOs.add(movieDTO);
-                    }
-                }
-                
-            }     
-            rs.close();
-
-            // 이부분 내가 withValue로 반환 했으니 주석처리하거나 지우고 ui에 갔다 놔도 됨. 여기 두려면 두고.
-            // for(int i=0;i<genrMovieDTOs.size();i++){
-            //     MovieDTO item = genrMovieDTOs.get(i);
-            //     System.out.print("title: " + item.getTitle()
-            //                     +  ", type: " + item.getType()
-            //                     +  ", region: " + item.getRegion()
-            //                     +  ", runtime: " + item.getRuntime()
-            //                     +  ", startYear: " + item.getStartYear()
-            //                     +  ", avgRating: " + String.valueOf(item.getAvg())
-            //                     +  ", numVotes: " + item.getNumVotes());
-            //     System.out.println(", genre: " + item.getGenreList());
-            // }
-
-        } catch (Exception e)  {
-            e.printStackTrace();
-        }
-        String second_sql = sql + "SELECT M.TITLE_ID, M.runtime, M.start_year, M.total_rating, M.num_votes, M.type, V.title, V.region " +
-        "FROM ((afterRate A join MOVIE M on M.TITLE_ID = A.TITLE_ID) join VERSION V on M.TITLE_ID = V.MOVIE_Title_id)  " +
-        "WHERE "+ "Start_year BETWEEN TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') AND TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
-
-        if(condition.Mintime != -1){
-            second_sql += "AND M.runtime >= " + String.valueOf(condition.Mintime) + " ";
-        }
-        if(condition.Maxtime != -1){
-            second_sql += "AND M.runtime <= " + String.valueOf(condition.Maxtime) + " ";
-        }
-        if(!condition.movieID.equals("")){
-            second_sql += "AND M.TITLE_ID = '" + condition.movieID + "' ";
-        }
-        if(!condition.type.equals("")){
-            String[] type = condition.type.split(", ");
-            second_sql += "AND (LOWER(M.type) LIKE LOWER('%" + type[0] + "%') ";
-            for(int i=1;i<type.length;i++){
-                second_sql += "OR LOWER(M.type) LIKE LOWER('%" + type[i] + "%') ";
-            }
-            second_sql += ") ";
-        }
-
         if(condition.region != null){
-            second_sql += "AND V.Region = '"+condition.region+"' ";
+            sql += "AND V.Region = '"+condition.region+"' ";
         }else{
-            second_sql += "AND V.Region = '"+this.region+"' ";
+            sql += "AND V.Region = '"+this.region+"' ";
         }
         
         if(!condition.movieName.equals("")){
-            second_sql += "AND LOWER(V.title) LIKE LOWER('%" + condition.movieName + "%') ";
+            sql += "AND LOWER(V.title) LIKE LOWER('%" + condition.movieName + "%') ";
         }
-    
+        sql += ") ";
+        String first_sql="";
+        first_sql = sql +
+        "SELECT TITLE_ID, runtime, start_year, total_rating, num_votes, type, title, region " +
+        "FROM condition ";
+
         try {
-            //System.out.println(second_sql);
-            PreparedStatement ppst = connection.prepareStatement(second_sql);
+            PreparedStatement ppst = connection.prepareStatement(first_sql);
             ResultSet rs = ppst.executeQuery();
-            movieDTOList = new ArrayList<MovieDTO>();
-            ArrayList<String> genreList = new ArrayList<String>();
 
             while(rs.next()) {
                 String title_id = rs.getString(1);
@@ -314,48 +237,95 @@ public class DefaultMovieService implements MovieService{
                 String numVotes = rs.getString(5);
                 int num = rs.getInt(5);
                 String type = rs.getString(6);
+                String genre = "";
                 double avg = 0;
                 String avgRating = "0";
                 MovieDTO movieDTO;
+                ArrayList<String> genreList = new ArrayList<String>();
                 ArrayList<String> actorList = new ArrayList<String>();
-
+                
                 if(num == 0){
                     avgRating = "0";
                 }else{
                     avg = ((double)total/num);
                     avgRating = String.valueOf(avg);
                 }
-                
-                for(int i=0;i<genrMovieDTOs.size();i++){
-                    MovieDTO item = genrMovieDTOs.get(i);
-                    if(item.getTitleId().equals(title_id)){
-                        item.setTitle(title);
-                        item.setRegion(region);
-                        
-                        if(condition.genre.equals("")){
-                            MovieDTO a = new MovieDTO(item);
-                            movieDTOList.add(a);
-                            break;
-                        }else{
-                            if(item.getGenreList().contains(condition.genre)){
-                                MovieDTO a = new MovieDTO(item);
-                                movieDTOList.add(a);
-                                break;
-                            }
-                        }
-                        
-                    }
-                }     
-            }
+                movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
+                hashMovies.put(title_id, movieDTO);
+            }     
             rs.close();
 
-            return Result.withValue(movieDTOList);
         } catch (Exception e)  {
             e.printStackTrace();
+            return Result.withError(MovieError.unknown);
+        }
+        String second_sql = "";
+        second_sql = sql +
+        "SELECT TITLE_ID, G.GENRE_Genre_id " +
+        "FROM condition M join MOVIE_HAS_GENRE G on M.TITLE_ID = G.MOVIE_Title_id";
+
+        try {
+            //System.out.println(second_sql);
+            PreparedStatement ppst = connection.prepareStatement(second_sql);
+            ResultSet rs = ppst.executeQuery();
+
+            while(rs.next()) {
+                String title_id = rs.getString(1);
+				String genre = rs.getString(2);
+                MovieDTO movieDTO;
+                movieDTO = hashMovies.get(title_id);
+                movieDTO.getGenreList().add(genre);
+            }
+            rs.close();
+        } catch (Exception e)  {
+            e.printStackTrace();
+            return Result.withError(MovieError.unknown);
         } 
 
-        return Result.withError(MovieError.unknown);
+        String third_sql = "";
+        third_sql = sql +
+        "SELECT TITLE_ID, A.name " +
+        "FROM (condition M join MOVIE_CAST_ACTOR C on M.TITLE_ID = C.MOVIE_Title_id) join ACTOR A on A.Actor_id = C.ACTOR_Actor_id ";
+
+        try {
+            //System.out.println(second_sql);
+            PreparedStatement ppst = connection.prepareStatement(third_sql);
+            ResultSet rs = ppst.executeQuery();
+
+            while(rs.next()) {
+                String title_id = rs.getString(1);
+				String name = rs.getString(2);
+                MovieDTO movieDTO;
+                movieDTO = hashMovies.get(title_id);
+                movieDTO.getActorList().add(name);
+            }
+            rs.close();
+        } catch (Exception e)  {
+            e.printStackTrace();
+            return Result.withError(MovieError.unknown);
+        }
+        Iterator<Entry<String, MovieDTO>> entries = hashMovies.entrySet().iterator();
+        while(entries.hasNext()){
+            Entry<String, MovieDTO> entry = entries.next();
+            //System.out.println("[Key]:" + entry.getKey() + " [Value]:" +  entry.getValue());
+            MovieDTO item = entry.getValue();
+            if(condition.genre != ""){
+                if(item.getGenreList().contains(condition.genre) == false){
+                    entries.remove();
+                    continue;
+                }
+            }
+            if(condition.actor != ""){
+                if(item.getActorList().contains(condition.actor) == false){
+                    entries.remove();
+                }
+            }
+        }
+        
+
+        return Result.withValue(hashMovies);
     }
+
     // rate를 여기에 두는게 맞는진 모르겠는데 그냥 여기 둠. 그리고 2. rate 할 때 제목 받은걸로
     // condition 만들어서 search 하고 그 중에 선택 해서 여기 condition에 title_id 채워서 입력 인자로 넣어줘
     public Result rateMovie(MovieSearchConditionDTO condition, double stars)
