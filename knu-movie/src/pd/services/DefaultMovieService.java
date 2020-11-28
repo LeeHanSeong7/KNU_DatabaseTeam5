@@ -403,7 +403,7 @@ public class DefaultMovieService implements MovieService{
         }
 
         if(movieDTO.getRegion()==null){
-            sql+="null, '\\N' )";
+            sql+="'"+this.region+"', '\\N' )";
         }else{
             sql+="'"+movieDTO.getRegion()+"', '\\N' )";
         }
