@@ -1,5 +1,7 @@
 package knu.movie.app.config;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -19,8 +21,14 @@ public class DBConfig {
         Properties properties = new Properties();
 
         try {
-            InputStream is = getClass().getResourceAsStream(resource);
-            properties.load(is);
+            String externalFileName = System.getProperty(resource); 
+            if (externalFileName != null) {
+                InputStream fin = new FileInputStream(new File(externalFileName));        
+                properties.load(fin);
+            } else {
+                InputStream is = getClass().getResourceAsStream(resource);
+                properties.load(is);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
