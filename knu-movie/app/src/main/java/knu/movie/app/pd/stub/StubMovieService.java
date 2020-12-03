@@ -17,10 +17,6 @@ public class StubMovieService implements MovieService{
         return Result.success;
     }
     
-    @Override
-    public Result searchMoiveByCondition(MovieSearchConditionDTO condition){
-        return Result.success;
-    }
 
     @Override
     public void setConnection(Connection Connection) {
@@ -45,6 +41,18 @@ public class StubMovieService implements MovieService{
 
     @Override
     public Result updateMovie(MovieDTO before, MovieDTO changed) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Result searchMoiveByCondition(String id, String password, MovieSearchConditionDTO condition) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Result rateMovie(String id, String password, MovieSearchConditionDTO condition, double stars) {
         // TODO Auto-generated method stub
         return null;
     }

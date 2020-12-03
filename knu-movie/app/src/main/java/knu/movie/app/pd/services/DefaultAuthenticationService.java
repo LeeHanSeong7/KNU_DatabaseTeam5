@@ -3,6 +3,8 @@ package knu.movie.app.pd.services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import knu.movie.app.pd.interfaces.AuthenticationService;
 import knu.movie.app.pd.model.AccountDAO.ACCOUNT;
@@ -13,7 +15,7 @@ import knu.movie.app.pd.utils.Error;
 
 public class DefaultAuthenticationService implements AuthenticationService {
     private Connection connection;
-    private AccountDTO loggedInAcountInfo;
+    private Map<String, AccountDTO> loggedInAcounts = new HashMap<>();
 
     public DefaultAuthenticationService() {
     }
@@ -61,7 +63,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
             ResultSet rs = ppst.executeQuery();
             if (rs.next()) {
                 if (password.equals(rs.getString(ACCOUNT.PASSWORD))) {
-                    this.loggedInAcountInfo = AccountDTO.fromResultSet(rs);
+                    AccountDTO user = AccountDTO.fromResultSet(rs);
+                    this.loggedInAcounts.put(user.getEmail_id(), user); 
                     rs.close();
                     return Result.success;
                 } else {
@@ -80,8 +83,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     @Override
     public Result changePassword(String id, String password, String changed) {
-        if (!id.equals(loggedInAcountInfo.getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
-        if (!password.equals(loggedInAcountInfo.getPassword())) return Result.withError(AuthError.passwordWrong);
+        if (!id.equals(loggedInAcounts.get(id).getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
+        if (!password.equals(loggedInAcounts.get(id).getPassword())) return Result.withError(AuthError.passwordWrong);
         String sql = "UPDATE ACCOUNT SET password='" + changed + "' WHERE email_id='" + id + "'";
     
         try {
@@ -89,7 +92,7 @@ public class DefaultAuthenticationService implements AuthenticationService {
             int r = ppst.executeUpdate();
             if (r == 1) {
                 ppst.close();
-                loggedInAcountInfo.setPassword(changed);
+                loggedInAcounts.get(id).setPassword(changed);
                 connection.commit();
                 return Result.success;
             } 
@@ -103,15 +106,15 @@ public class DefaultAuthenticationService implements AuthenticationService {
     @Override
     public Result deleteAccount(String id, String password, String re_password) {
         if (!password.equals(re_password)) return Result.withError(AuthError.rePasswordDifferent);
-        if (!id.equals(loggedInAcountInfo.getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
-        if (!password.equals(loggedInAcountInfo.getPassword())) return Result.withError(AuthError.passwordWrong);
+        if (!id.equals(loggedInAcounts.get(id).getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
+        if (!password.equals(loggedInAcounts.get(id).getPassword())) return Result.withError(AuthError.passwordWrong);
         String sql = "DELETE FROM ACCOUNT WHERE email_id='" + id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
             if (r == 1) {
                 ppst.close();
-                loggedInAcountInfo = null;
+                loggedInAcounts.remove(id);
                 connection.commit();
                 return Result.success;
             } 
@@ -124,9 +127,9 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     @Override
     public Result changeAccountInfo(String id, String password, AccountDTO changed) {
-        if (!id.equals(loggedInAcountInfo.getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
-        if (!password.equals(loggedInAcountInfo.getPassword())) return Result.withError(AuthError.passwordWrong);
-        if (loggedInAcountInfo.equals(changed)) return Result.withError(AuthError.noChangeOnInfo);
+        if (!id.equals(loggedInAcounts.get(id).getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
+        if (!password.equals(loggedInAcounts.get(id).getPassword())) return Result.withError(AuthError.passwordWrong);
+        if (loggedInAcounts.get(id).equals(changed)) return Result.withError(AuthError.noChangeOnInfo);
         if (changed.getEmail_id() != null) return Result.withError(AuthError.idCantBeChanged);
         if (changed.getPassword() != null) return Result.withError(AuthError.passwordCantBeChanged);
         String sql = "UPDATE ACCOUNT SET " + DB.TABLE.setFormOf("Account", changed) + " WHERE email_id='" + id + "'";
@@ -140,7 +143,8 @@ public class DefaultAuthenticationService implements AuthenticationService {
                 ResultSet rs = ppst.executeQuery();
                 if (rs.next()) {
                     if (password.equals(rs.getString(ACCOUNT.PASSWORD))) {
-                        this.loggedInAcountInfo = AccountDTO.fromResultSet(rs);
+                        AccountDTO user = AccountDTO.fromResultSet(rs);
+                        this.loggedInAcounts.put(id, user);
                         rs.close();
                         connection.commit();
                         return Result.success;
@@ -192,8 +196,15 @@ public class DefaultAuthenticationService implements AuthenticationService {
 
     }
     @Override
-    public AccountDTO getloggedInAccountInfo() {
-        return new AccountDTO(loggedInAcountInfo);
+    public AccountDTO getloggedInAccountInfo(String id, String password) {
+        return new AccountDTO(loggedInAcounts.get(id));
+    }
+
+    @Override
+    public Result logout(String id, String password) {
+        AccountDTO user = loggedInAcounts.remove(id);
+        if (user == null) return Result.withError(AuthError.idNotFound);
+        return Result.success;
     }
 
 }

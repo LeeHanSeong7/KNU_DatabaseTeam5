@@ -136,7 +136,7 @@ public class DefaultMovieService implements MovieService{
         return Result.withError(MovieError.unknown);
     }
 
-    public Result searchMoiveByCondition(MovieSearchConditionDTO condition)
+    public Result searchMoiveByCondition(String id, String password, MovieSearchConditionDTO condition)
     {
         HashMap<String, MovieDTO> hashMovies = new HashMap<String, MovieDTO>();
 
@@ -146,7 +146,7 @@ public class DefaultMovieService implements MovieService{
             "MINUS "+
             "(SELECT M.title_id, M.Type, M.runTime, M.start_year, M.total_rating, M.Num_votes " +
             "FROM rating r join Movie M on M.title_id = r.MOVIE_Title_id  " +
-            "WHERE ACCOUNT_Email_id='"+authService.getloggedInAccountInfo().getEmail_id()+"' ) " +
+            "WHERE ACCOUNT_Email_id='"+authService.getloggedInAccountInfo(id, password).getEmail_id()+"' ) " +
             ")";
 
         SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
@@ -327,10 +327,10 @@ public class DefaultMovieService implements MovieService{
 
     // rate를 여기에 두는게 맞는진 모르겠는데 그냥 여기 둠. 그리고 2. rate 할 때 제목 받은걸로
     // condition 만들어서 search 하고 그 중에 선택 해서 여기 condition에 title_id 채워서 입력 인자로 넣어줘
-    public Result rateMovie(MovieSearchConditionDTO condition, double stars)
+    public Result rateMovie(String id, String password, MovieSearchConditionDTO condition, double stars)
     {
         String sql = "INSERT INTO RATING VALUES( " +
-        "'"+condition.movieID+"','"+authService.getloggedInAccountInfo().getEmail_id()+"',"+String.valueOf(stars)+")";
+        "'"+condition.movieID+"','"+authService.getloggedInAccountInfo(id, password).getEmail_id()+"',"+String.valueOf(stars)+")";
 
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);

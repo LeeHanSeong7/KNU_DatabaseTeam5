@@ -8,8 +8,8 @@ import knu.movie.app.pd.utils.Result;
 
 public interface MovieService {
     Result viewWholeVideo();
-    Result searchMoiveByCondition(MovieSearchConditionDTO condition);
-    Result rateMovie(MovieSearchConditionDTO condition, double stars);
+    Result searchMoiveByCondition(String id, String password, MovieSearchConditionDTO condition);
+    Result rateMovie(String id, String password, MovieSearchConditionDTO condition, double stars);
     Result movieUpload(MovieDTO movieDTO);
     Result movieDelete(String title_id);
     Result updateMovie(MovieDTO before, MovieDTO changed);

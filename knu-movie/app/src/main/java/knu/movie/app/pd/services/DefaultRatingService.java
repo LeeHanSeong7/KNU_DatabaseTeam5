@@ -24,11 +24,11 @@ public class DefaultRatingService implements RatingService {
     }
 
     @Override
-    public Result getMyRatingList() {
+    public Result getMyRatingList(String id, String password) {
         String region = appConfig.REGION;
         String sql = "SELECT v.title, r.stars FROM rating r join version v on v.movie_title_id=r.movie_title_id WHERE v.region='"+region+"' " + 
                     "AND ACCOUNT_Email_id='" +
-                     authService.getloggedInAccountInfo().getEmail_id() + "'" + 
+                     authService.getloggedInAccountInfo(id, password).getEmail_id() + "'" + 
                     "ORDER BY v.title,  v.MOVIE_TITLE_ID";
         //System.out.println(sql);
         try {

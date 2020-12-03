@@ -33,11 +33,6 @@ public class StubAuthenticationService implements AuthenticationService {
     }
 
     @Override
-    public AccountDTO getloggedInAccountInfo() {
-        return loggedinUser;
-    }
-
-    @Override
     public void setConnection(Connection Connection) {
         // TODO Auto-generated method stub
     }
@@ -46,5 +41,17 @@ public class StubAuthenticationService implements AuthenticationService {
     public Result changeAccountInfo(String id, String password, AccountDTO changed) {
         // TODO Auto-generated method stub
         return Result.success;
+    }
+
+    @Override
+    public Result logout(String id, String password) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public AccountDTO getloggedInAccountInfo(String id, String password) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
