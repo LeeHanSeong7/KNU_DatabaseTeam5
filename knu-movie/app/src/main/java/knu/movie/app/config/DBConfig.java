@@ -31,6 +31,7 @@ public class DBConfig {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(1);
         }
 
         this.DRIVER = properties.getProperty("driver");
