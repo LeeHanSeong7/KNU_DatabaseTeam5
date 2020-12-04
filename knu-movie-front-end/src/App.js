@@ -11,6 +11,8 @@ import LoginView from "./views/LoginView"
 function App() {  
 
     const [loggedIn, setLoggedIn] = useState(true);
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
     
     function logoutButtonClicked() {
         logout();
@@ -48,7 +50,7 @@ function App() {
       } 
       {
       !loggedIn && (  
-        <LoginView setLoggedin={setLoggedIn}/>
+        <LoginView setLoggedin={setLoggedIn} setId={setId} setPassword={setPassword}/>
       )
       }
     </div>
