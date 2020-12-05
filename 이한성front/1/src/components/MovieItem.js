@@ -5,7 +5,7 @@ function MovieItem(props) {
   return (
     <Container {...props}>
       <Index>index</Index>
-      <Image1 src={require("../assets/images/movie-icon4.png")}></Image1>
+      <Image1 src={require("../assets/images/movie-icon.png")}></Image1>
       <Group>
         <Title>title</Title>
         <Genre>genre</Genre>

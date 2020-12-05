@@ -1,10 +1,39 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
 import DateBox from "./DateBox";
 import Button from "./Button";
 
 function SignUp(props) {
+
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState(" ");
+  const [passwordRepeat, setPasswordRepeat] = useState(" ");
+  const [name, setName] = useState(" ");
+  const [pnumber, setPnumber] = useState(" ");
+
+  const [address, setAddress] = useState(" ");
+  const [gender, setGender] = useState(" ");
+  const [birthDate, setBirthDate] = useState(" ");
+  const [job, setJob] = useState(" ");
+
+  const submitClicked =()=>{
+    console.log("submit");
+    console.log(email);
+    console.log(password);
+    console.log(passwordRepeat);
+    console.log(name);
+    console.log(pnumber);
+    console.log(address);
+    console.log(gender);
+    console.log(birthDate);
+    console.log(job);
+    props.setSignup(false);
+  } 
+  const resetClicked =()=>{
+    console.log("reset")
+  }
+
   return (
     <Container {...props}>
       <Group4>
@@ -16,6 +45,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setAddress}
           ></Textbox>
           <Gender>Gender</Gender>
           <Textbox
@@ -23,6 +53,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setGender}
           ></Textbox>
           <BirthDate>BirthDate</BirthDate>
           <DateBox
@@ -30,6 +61,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setBirthDate}
           ></DateBox>
           <Job>Job</Job>
           <Textbox
@@ -37,6 +69,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setJob}
           ></Textbox>
         </Group2>
         <Group3>
@@ -47,6 +80,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setEmail}
           ></Textbox>
           <Password1>Password</Password1>
           <Textbox
@@ -54,6 +88,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setPassword}
           ></Textbox>
           <PasswordRepeat1>Password(repeat)</PasswordRepeat1>
           <Textbox
@@ -61,6 +96,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setPasswordRepeat}
           ></Textbox>
           <Name1>Name</Name1>
           <Textbox
@@ -68,6 +104,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setName}
           ></Textbox>
           <Pnumber1>Pnumber</Pnumber1>
           <Textbox
@@ -75,6 +112,7 @@ function SignUp(props) {
               height: 43,
               alignSelf: "stretch"
             }}
+            setValue = {setPnumber}
           ></Textbox>
         </Group3>
       </Group4>
@@ -84,12 +122,16 @@ function SignUp(props) {
             width: 100,
             height: 36
           }}
+          text = 'Submit'
+          onClick = {submitClicked}
         ></Button>
         <Button
           style={{
             width: 100,
             height: 36
           }}
+          text = 'reset'
+          onClick = {resetClicked}
         ></Button>
       </Group>
     </Container>
@@ -114,7 +156,7 @@ const Group2 = styled.div`
   height: 349px;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 1 0%;
+  width: 437px;
   display: flex;
 `;
 
@@ -172,7 +214,7 @@ const Group3 = styled.div`
   height: 420px;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 1 0%;
+  width: 437px;
   display: flex;
 `;
 

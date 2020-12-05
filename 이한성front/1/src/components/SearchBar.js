@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
-import FontAwesomeIcon from "react-native-vector-icons/dist/FontAwesome";
+import Button from "./Button";
 
 function SearchBar(props) {
   return (
     <Container {...props}>
       <Group>
-        <Textbox
+        <Button
           style={{
             height: 43,
             flex: 1
           }}
-        ></Textbox>
-        <FontAwesomeIcon
-          name="search"
+          text = 'test'
+        ></Button>
+        <Textbox
           style={{
-            color: "rgba(128,128,128,1)",
-            fontSize: 40
+            height: 43,
+            flex: 2
           }}
-        ></FontAwesomeIcon>
+        ></Textbox>
       </Group>
     </Container>
   );
