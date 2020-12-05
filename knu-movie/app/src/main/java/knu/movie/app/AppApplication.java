@@ -24,7 +24,7 @@ import knu.movie.app.pd.model.MyRatingVO;
 import knu.movie.app.pd.model.RatingVOList;
 import knu.movie.app.pd.utils.Result;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 @SpringBootApplication
 @RestController
 public class AppApplication {
