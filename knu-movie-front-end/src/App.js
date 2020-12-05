@@ -13,7 +13,7 @@ import UserMain from "./views/UserMain";
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
