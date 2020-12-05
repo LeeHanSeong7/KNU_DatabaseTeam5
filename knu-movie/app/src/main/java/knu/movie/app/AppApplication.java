@@ -1,5 +1,8 @@
 package knu.movie.app;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -17,6 +20,8 @@ import knu.movie.app.injected.DIContainer;
 import knu.movie.app.pd.model.AccountDTO;
 import knu.movie.app.pd.model.MovieDTO;
 import knu.movie.app.pd.model.MovieSearchConditionDTO;
+import knu.movie.app.pd.model.MyRatingVO;
+import knu.movie.app.pd.model.RatingVOList;
 import knu.movie.app.pd.utils.Result;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -40,8 +45,8 @@ public class AppApplication {
 	//@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/login")
 	public String loginGet(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password
 	) {
 		Result result = services.authenticationService.login(id, password);
 		if (result == Result.failure) return result.getError().getDescription();
@@ -54,8 +59,8 @@ public class AppApplication {
 
 	@GetMapping("/logout")
 	public ResponseEntity<Result> logout(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password
 	) {
 		Result result = services.authenticationService.logout(id, password);
 		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
@@ -71,31 +76,31 @@ public class AppApplication {
 		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
 	}
 
-	@PostMapping("/user/search")
-	public ResponseEntity<Result> uSearch(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password,
+	@PostMapping("/user/search-movie")
+	public ResponseEntity<HashMap<String, MovieDTO>> uSearchMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
 		@RequestBody MovieSearchConditionDTO condition
 	) {
 		Result result = services.movieService.searchMoiveByCondition(id, password, condition);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.NOT_FOUND);
+		if (result == Result.success) return new ResponseEntity<HashMap<String, MovieDTO>>((HashMap<String, MovieDTO>)result.getValue(), HttpStatus.OK);
+		else return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping("/user/my-ratings")
-	public ResponseEntity<Result> myRatings(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password
+	public ResponseEntity<List<MyRatingVO>> myRatings(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password
 	) {
 		Result result = services.ratingService.getMyRatingList(id, password);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.NOT_FOUND);
+		if (result == Result.success) return new ResponseEntity<List<MyRatingVO>>((List<MyRatingVO>)result.getValue(), HttpStatus.OK);
+		else return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping("/user/account/my-info")
 	public ResponseEntity<AccountDTO> myInfo(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password
 	) {
 		AccountDTO user = services.authenticationService.getloggedInAccountInfo(id, password);
 		if (user != null) return new ResponseEntity<AccountDTO>(user, HttpStatus.OK);
@@ -104,9 +109,9 @@ public class AppApplication {
 
 	@GetMapping("/user/account/change-password")
 	public ResponseEntity<Result> changePassword(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password,
-		@RequestParam(value="changed", defaultValue = "") String changed
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
+		@RequestParam(value="changed") String changed
 	) {
 		Result result = services.authenticationService.changePassword(id, password, changed);
 		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
@@ -115,8 +120,8 @@ public class AppApplication {
 
 	@PostMapping("/user/account/modify-info")
 	public ResponseEntity<Result> modifyInfo(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password,
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
 		@RequestBody AccountDTO changed
 	) {
 		Result result = services.authenticationService.changeAccountInfo(id, password, changed);
@@ -136,7 +141,7 @@ public class AppApplication {
 	}
 
 	@GetMapping("/admin/check-ratings")
-	public ResponseEntity<Result> checkRating(
+	public ResponseEntity<List<RatingVOList>> checkRating(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
 		@RequestParam(value="movie-name", required=false) String movieName,
@@ -145,19 +150,19 @@ public class AppApplication {
 		@RequestParam(value="min-stars", required=false) Double minStars
 	) {
 		Result result = services.ratingService.getUserRatingListWith(movieName, email, maxStars, minStars);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<List<RatingVOList>>((List<RatingVOList>)result.getValue(), HttpStatus.OK);
+		else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 
 	@PostMapping("/admin/search-movie")
-	public ResponseEntity<Result> modifyInfo(
-		@RequestParam(value="id", defaultValue = "") String id,
-		@RequestParam(value="password", defaultValue = "") String password,
+	public ResponseEntity<List<MovieDTO>> adminSearchMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
 		@RequestBody MovieSearchConditionDTO condition
 	) {
 		Result result = services.movieService.searchMoiveByCondition(id, password, condition);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<List<MovieDTO>>((List<MovieDTO>)result.getValue(), HttpStatus.OK);
+		else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 
 	@PostMapping("/admin/upload-movie")
