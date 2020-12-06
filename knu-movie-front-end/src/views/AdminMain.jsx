@@ -69,53 +69,85 @@ function AdminMoviePage() {
     );
 }
 
-function UploadMovie() {
-    const [id, setID] = useState(null);
-    const [password, setPassword] = useState(null);
-
-    const onChange = function (e) {
-        console.log(e.target.name)
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+class UploadMovie extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        id: '',
+        password: ''
+      };
+  
+      this.onSubmit = this.onSubmit.bind(this);
+      this.onChange = this.onChange.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const url = 'http://localhost:8080/login?id=' + this.state.id + '&password=' + this.state.password
-
-        console.log(url);
-        const response = axios.get(url);
-
-        console.log(response);
+  
+    onChange(e) {
+      console.log(e.target.name)
+      this.setState({
+        [e.target.name]: e.target.value
+      });
     }
-
-    const handleChange = (event) => {
-        this.setState({ value: event.target.value });
+  
+    onSubmit(e) {
+      e.preventDefault();
+      const url = 'http://localhost:8080/admin/upload-movie?id=admin1&password=admin'
+      const data = {
+        "title_id":"tt0000600",
+        "title":"test",
+        "region":"KR",
+        "runtime":"90",
+        "startYear":"2020",
+        "total":0,
+        "numVotes":"0",
+        "num":0,
+        "avg":0.0,
+        "genreList":["Comedy"],
+        "actorList":["Fred Astaire"],
+        "type":"Movie"
+      };
+      const BodyJson = JSON.stringify(data);
+      console.log(BodyJson);
+      console.log(url);
+  
+      axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
+        .then((response) => {
+          alert('Upload complete!');
+          console.log(response.body);
+        }).catch((error)=>{
+          alert(error.response.data);
+          console.log(error.response.data);
+          
+        })
+  
     }
-
-    const handleSubmit = (event) => {
-        alert('A id was submitted: ' + this.state.id + '\n A password was submitted: ' + this.state.password);
-        event.preventDefault();
+  
+    handleChange(event) {
+      this.setState({ value: event.target.value });
     }
-
-
-    return (
-        <form onSubmit={this.handleSubmit}>
-            <label>
-                ID:
-            <input type="text" value={this.state.id} name='id' onChange={this.onChange} />
-            </label>
-            <label>
-
-                PASSWORD:
-            <input type="text" value={this.state.password} name='password' onChange={this.onChange} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
-    );
-
-}
+  
+    handleSubmit(event) {
+      alert('A id was submitted: ' + this.state.id + '\n A password was submitted: ' + this.state.password);
+      event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <div>
+          <div>id</div>
+          <Textbox
+            setValue={this.state.id}>
+          </Textbox>
+          <div>password</div>
+          <Textbox
+            setValue={this.state.password}>
+          </Textbox>
+          <input type="submit" value="Search" onClick={this.onSubmit}/>
+        </div>
+      );
+    }
+  }
 
 
 function RatingList() {
