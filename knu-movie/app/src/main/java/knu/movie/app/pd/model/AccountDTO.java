@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import knu.movie.app.pd.interfaces.DTO;
 import knu.movie.app.pd.model.AccountDAO.ACCOUNT;
 
@@ -14,10 +16,15 @@ public class AccountDTO implements DTO {
     private String name;
     private String address;
     private String gender;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
     private Date birth_date;
     private String job;
     private String membership;
     private Boolean isAdmin;
+
+    public AccountDTO() {
+        super();
+    }
 
     public AccountDTO(AccountDTO a) {
         this.email_id = a.email_id;
