@@ -1,94 +1,44 @@
-import React, { Component } from "react";
+import React, { useState, Component, useEffect } from "react";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory
+} from "react-router-dom";
 import styled, { css } from "styled-components";
 import MovieItem from "./MovieItem";
 
 function MovieList(props) {
+  const [itemList, setItemList] = useState(props.Resultset);
+  var i = 0;
   return (
     <Container {...props}>
       <ScrollArea>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
-        <MovieItem
-          style={{
-            height: 129,
-            width: 1366,
-            flex: "0 0 auto"
-          }}
-        ></MovieItem>
+        {itemList.map(item=>{
+          i = i+1;
+          return (<Link 
+            to="/user-movie-page"
+            style={{
+            width: 100,
+            height: 36
+            }}
+            key = {i}>
+            <MovieItem
+              style={{
+                height: 129,
+                width: 1366
+              }}
+              index = {i}
+              item = {itemList[i-1]}
+              onClick = {()=>{
+                props.setItem(itemList[i-1])
+              }}
+            ></MovieItem>
+          </Link>
+          )
+        }
+        )}
       </ScrollArea>
     </Container>
   );

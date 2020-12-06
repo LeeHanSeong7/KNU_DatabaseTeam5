@@ -1,18 +1,18 @@
 import React, {useState, Component } from "react";
 import styled, { css } from "styled-components";
 
-function Textbox({setValue}) {
+function Textbox(props) {
   const [input, setInput] = useState("")
 
   const onChangeField = e => {
     setInput(e.target.value);
-    setValue(e.target.value)
+    props.setValue(e.target.value)
   };
 
   return (
-    <Container>
+    <Container {...props}>
       <InputStyle 
-        placeholder="input"
+        placeholder={props.placehold}
         value = {input}
         onChange = {onChangeField}>
       </InputStyle>

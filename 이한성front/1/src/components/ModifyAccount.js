@@ -1,9 +1,16 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
 import Button from "./Button";
 
 function ModifyAccount(props) {
+  const [name, setName] = useState(null);
+  const [pnumber, setPnumber] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [birthDate, setBirthDate] = useState(null);
+  const [job, setJob] = useState(null);
+
   return (
     <Container {...props}>
       <Group3>
@@ -13,24 +20,28 @@ function ModifyAccount(props) {
             style={{
               height: 43
             }}
+            placehold = 'input'
           ></Textbox>
           <Address>Address</Address>
           <Textbox
             style={{
               height: 43
             }}
+            placehold = 'input'
           ></Textbox>
           <Name>Name</Name>
           <Textbox
             style={{
               height: 43
             }}
+            placehold = 'input'
           ></Textbox>
           <Job>Job</Job>
           <Textbox
             style={{
               height: 43
             }}
+            placehold = 'input'
           ></Textbox>
           <BirthDate>BirthDate</BirthDate>
           <Gender>Gender</Gender>
@@ -38,15 +49,10 @@ function ModifyAccount(props) {
             style={{
               height: 43
             }}
+            placehold = 'input'
           ></Textbox>
         </Group>
         <Group2>
-          <Button
-            style={{
-              width: 100,
-              height: 36
-            }}
-          ></Button>
           <Button
             style={{
               width: 100,

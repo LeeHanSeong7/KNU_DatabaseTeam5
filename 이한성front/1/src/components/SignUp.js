@@ -1,37 +1,62 @@
 import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
-import DateBox from "./DateBox";
 import Button from "./Button";
+import DatePicker from "react-datepicker";
+
+
+require('react-datepicker/dist/react-datepicker.css')
 
 function SignUp(props) {
+  const axios = require('axios');
 
-  const [email, setEmail] = useState(" ");
-  const [password, setPassword] = useState(" ");
-  const [passwordRepeat, setPasswordRepeat] = useState(" ");
-  const [name, setName] = useState(" ");
-  const [pnumber, setPnumber] = useState(" ");
-
-  const [address, setAddress] = useState(" ");
-  const [gender, setGender] = useState(" ");
-  const [birthDate, setBirthDate] = useState(" ");
-  const [job, setJob] = useState(" ");
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [passwordRepeat, setPasswordRepeat] = useState(null);
+  const [name, setName] = useState(null);
+  const [pnumber, setPnumber] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [birthDate, setBirthDate] = useState(null);
+  const [job, setJob] = useState(null);
 
   const submitClicked =()=>{
-    console.log("submit");
-    console.log(email);
-    console.log(password);
-    console.log(passwordRepeat);
-    console.log(name);
-    console.log(pnumber);
-    console.log(address);
-    console.log(gender);
-    console.log(birthDate);
-    console.log(job);
-    props.setSignup(false);
+    const url = 'http://localhost:8080/signup/'
+    if (password != passwordRepeat) return (alert("password incorrect!"));
+
+    try {
+      function getFormatDate(date){
+        if (date == null) return null;
+        var year = date.getFullYear();              //yyyy
+        var month = (1 + date.getMonth());          //M
+        month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+        var day = date.getDate();                   //d
+        day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+        return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+      }
+      axios.post(url,{
+        body:{
+          'address': address,
+          'birth_date': getFormatDate(birthDate),
+          'email_id': email,
+          'gender': gender,
+          'isAdmin': 'false',
+          'job': job,
+          'membership': 'basic',
+          'name': name,
+          'password': password,
+          'phone_number': pnumber,
+        }
+      }).then((response) => {
+       console.log(response);
+      })
+    } catch(error){
+      console.error(error.body);
+    }
+    //props.setSignup(false);
   } 
-  const resetClicked =()=>{
-    console.log("reset")
+  const backClicked =()=>{
+    console.log("backClicked")
   }
 
   return (
@@ -56,13 +81,9 @@ function SignUp(props) {
             setValue = {setGender}
           ></Textbox>
           <BirthDate>BirthDate</BirthDate>
-          <DateBox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setBirthDate}
-          ></DateBox>
+          <DatePicker 
+            selected={birthDate} 
+            onChange={date => setBirthDate(date)}/>
           <Job>Job</Job>
           <Textbox
             style={{
@@ -130,8 +151,8 @@ function SignUp(props) {
             width: 100,
             height: 36
           }}
-          text = 'reset'
-          onClick = {resetClicked}
+          text = 'back'
+          onClick = {backClicked}
         ></Button>
       </Group>
     </Container>

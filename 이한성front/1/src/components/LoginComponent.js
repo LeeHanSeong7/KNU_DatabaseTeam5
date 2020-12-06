@@ -12,57 +12,35 @@ function LoginComponent(props) {
     props.setSignup(true);
   }
   const SigninClicked = function(){
-    var url = 'http://localhost:8080/login/'
-    var data;
+    const url = 'http://localhost:8080/login/'
     try {
-      axios.get(url,{
-        header :{
-        'Host': 'localhost:8080',
-        'Connection': 'keep-alive',
-        'Cache-Control': 'max-age=0',
-        'Upgrade-Insecure-Requests': 1,
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-User': '?1',
-        'Sec-Fetch-Dest': 'document',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'ko,ko-KR;q=0.9,en-US;q=0.8,en;q=0.7',
-        },
+       axios.get(url,{
         params:{
           'id':id,
           'password':password,
         }
       }).then((response) => {
         console.log(response);
+        const data = response.data ;
+        if (data == 'user'){
+          props.setId(id); 
+          props.setPassword(password); 
+          props.setLoggedin(true);
+          props.setIsAdmin(false);
+        }
+        else if (data == 'admin'){
+          props.setId(id); 
+          props.setPassword(password); 
+          props.setLoggedin(true);
+          props.setIsAdmin(true);
+        }
+        else{
+          return (alert(data))
+        }
       })
     } catch(error){
       console.error(error);
     }
-
-    console.log(data);
-    
-    
-    // fetch(url, {
-    //   method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    //   mode: 'no-cors', // no-cors, cors, *same-origin
-    //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    //   credentials: 'same-origin', // include, *same-origin, omit
-    //   headers: {
-    //       'Content-Type': 'application/json',
-    //       // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   redirect: 'follow', // manual, *follow, error
-    //   referrer: 'no-referrer', // no-referrer, *client
-    // })
-    //   .then(res => console.log(res))
-    //   .then(data => console.log(data))
-
-    props.setId(id); 
-    props.setPassword(password); 
-    props.setLoggedin(true);
-    props.setIsAdmin(false);
   }
 
   return (
@@ -75,6 +53,7 @@ function LoginComponent(props) {
                 style={{
                   height: 45
                 }}
+                placehold = "Email"
                 setValue={_setId}>
               </Textbox>
               <Password2>Password</Password2>
@@ -82,6 +61,7 @@ function LoginComponent(props) {
                 style={{
                   height: 45
                 }}
+                placehold = "password"
                 setValue={_setPassword}
               ></Textbox>
             </Group>

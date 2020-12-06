@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -10,56 +10,34 @@ import styled, { css } from "styled-components";
 import Button from "../components/Button";
 import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
+import UserAccountView from "./UserAccountView";
 
 export default function UserMain({ logoutButtonClicked }) {
-    let history = useHistory();
+    const [item, setItem] = useState(null);
+    const [resultset, setResultset] = useState([
+        {
+                title_id:'title_id',
+                title:'title',
+                region:'region',
+                runtime:'runtime',
+                startYear:'startYear',
+                total:0,
+                numVotes:'numVotes',
+                num:0,
+                avg:0,
+                genreList:['test','genre'],
+                actorList:['test','actor'],
+                type:'type',
+        },
+    ]);
     return (
         <Router>
-            <Group10>
-                <Image1 src={require("../assets/images/ui_logo.jpg")}></Image1>
-                <Group7>
-                <Button
-                    style={{
-                    width: 100,
-                    height: 36,
-                    alignSelf: "center",
-                    margin: 10
-                    }}
-                ></Button>
-                <SearchBar
-                    style={{
-                    height: 48,
-                    flex: 1,
-                    alignSelf: "center",
-                    margin: 10
-                    }}
-                ></SearchBar>
-                </Group7>
-                <MovieList
-                style={{
-                    width: 1366,
-                    flex: 1,
-                    height: 599
-                }}
-                ></MovieList>
-                <Group8>
-                <Rect1></Rect1>
-                <Group9>
-                    <Icon1Row>
-                    <Button
-                        style={{
-                        width: 100,
-                        height: 36,
-                        marginLeft: -140
-                        }}
-                    ></Button>
-                    </Icon1Row>
-                </Group9>
-                </Group8>
-            </Group10>
             <Switch>
                  <Route exact path="/">
-                     <Home />
+                     <Home 
+                     setItem = {setItem}
+                     resultset = {resultset}
+                     setResultset = {setResultset}/>
                  </Route>
                  <Route path="/user-account">
                     <UserAccount />
@@ -68,7 +46,7 @@ export default function UserMain({ logoutButtonClicked }) {
                     <MyRatings />
                  </Route>
                 <Route path="/user-movie-page">
-                    <UserMoviePage />
+                    <UserMoviePage item = {item}/>
                 </Route>
                 <Route path="/delete-accout">
                     <DeleteAccount />
@@ -78,15 +56,96 @@ export default function UserMain({ logoutButtonClicked }) {
     )
 }
 
-function Home() {
+function Home(props) {
+    let history = useHistory();
     return (
-        <h2>eeee</h2>
+        <Group2>
+        <Group>
+        <Link 
+                to="/delete-accout"
+                style={{
+                width: 100,
+                height: 36
+                }}>
+            <Button
+                text = 'delete Account'
+            ></Button>
+        </Link>
+          <Button
+            style={{
+              width: 100,
+              height: 36
+            }}
+            text = 'Movie Recommand'
+            onClick ={()=>{
+                props.setResultset([
+                    {
+                            title_id:'rec',
+                            title:'rec',
+                            region:'region',
+                            runtime:'runtime',
+                            startYear:'startYear',
+                            total:0,
+                            numVotes:'numVotes',
+                            num:0,
+                            avg:0,
+                            genreList:['test','genre'],
+                            actorList:['test','actor'],
+                            type:'type',
+                    },
+                ]);
+            }}
+          ></Button>
+        <Link 
+                to="/my-ratings"
+                style={{
+                width: 100,
+                height: 36
+                }}>
+            <Button
+                text = 'My Rating'
+            ></Button>
+        </Link>
+        <Link 
+                to="/user-account"
+                style={{
+                width: 100,
+                height: 36
+                }}>
+            <Button
+                text = 'My Account'
+            ></Button>
+        </Link>
+        </Group>
+        <SearchBar
+          style={{
+            alignSelf: "stretch",
+            borderWidth: 1,
+            borderColor: "#000000",
+            flex: 0.13,
+            borderStyle: "solid"
+          }}
+          setResultset = {props.setResultset}
+        ></SearchBar>
+        <MovieList
+          style={{
+            alignSelf: "stretch",
+            borderWidth: 1,
+            borderColor: "#000000",
+            height: 283,
+            flex: 0.79,
+            borderStyle: "solid"
+          }}
+          Resultset = {props.resultset}
+          setItem = {props.setItem}
+        ></MovieList>
+      </Group2>
     );
 }
 
 function UserAccount() {
     return (
-        <h2>UserAccount</h2>
+        <UserAccountView/>
     );
 }
 
@@ -96,9 +155,9 @@ function MyRatings() {
     );
 }
 
-function UserMoviePage() {
+function UserMoviePage(props) {
     return (
-        <h2>UserMoviePage</h2>
+    <h2>props.item.title</h2>
     );
 }
 
@@ -109,62 +168,21 @@ function DeleteAccount() {
 }
 
 
-const Container = styled.div`
+//usermain
+const Group2 = styled.div`
   display: flex;
-  background-color: rgba(255,255,255,1);
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-`;
-
-const Group10 = styled.div`
   width: 1366px;
   height: 768px;
   flex-direction: column;
   justify-content: space-between;
-  display: flex;
 `;
 
-const Image1 = styled.img`
-  width: 1366px;
-  height: 100%;
-  object-fit: contain;
-`;
-
-const Group7 = styled.div`
-  height: 38px;
+const Group = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-self: stretch;
+  flex: 0.07999999999999997 1 0%;
   display: flex;
 `;
 
-const Group8 = styled.div`
-  width: 1366px;
-  height: 47px;
-  flex-direction: row;
-  justify-content: space-between;
-  display: flex;
-`;
-
-const Rect1 = styled.div`
-  width: 1153px;
-  height: 47px;
-  background-color: #E6E6E6;
-`;
-
-const Group9 = styled.div`
-  height: 47px;
-  flex: 1 1 0%;
-  flex-direction: row;
-  display: flex;
-`;
-
-const Icon1Row = styled.div`
-  height: 47px;
-  flex-direction: row;
-  display: flex;
-  flex: 1 1 0%;
-  margin-right: 5px;
-  margin-left: 28px;
-`;
+//end usermain
