@@ -11,10 +11,29 @@ function DeleteUserView(props) {
   const [Repeat, setRepeeat] = useState(null);
   
   const submitClicked=()=>{
-    if (password != Repeat) 
-      return alert("password not same");
-    props.logoutButtonClicked();
-    return alert("user deleted ");
+    const axios = require('axios');
+    const url = 'http://localhost:8080//user/account/delete/'
+    const BodyJson = {
+      "id":props.userId,
+      "password":password,
+      "re-password":Repeat,
+    };
+    try {
+      axios.delete(url,{
+        params:BodyJson,
+        headers: {"Content-Type": "Application/json"}
+      })
+      .then((response) => {
+        alert('Account Deleted!');
+        props.logoutButtonClicked();
+        console.log(response.body);
+      }).catch((error)=>{
+        alert(error.response);
+        console.log(error.response);
+      })
+    }catch(error){
+      console.error(error);
+    }
   }
   return (
     <Container {...props}>

@@ -46,10 +46,8 @@ function SignUp(props) {
         "password": password,
         "phone_number": pnumber,
       });
-      console.log(BodyJson);
-      axios.post(url,{
-        body:JSON.parse(BodyJson)
-      }).then((response) => {
+      axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
+      .then((response) => {
         alert('Signup complete!');
         props.setSignup(false);
         console.log(response.body);
@@ -60,11 +58,7 @@ function SignUp(props) {
     }catch(error){
       console.error(error);
     }
-  } 
-  const backClicked =()=>{
-    console.log("backClicked")
   }
-
   return (
     <Container {...props}>
       <Group4>

@@ -1,66 +1,78 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import Textbox from "./Textbox";
+import ReadonlyText from "./ReadonlyText";
 
 function AccountInfo(props) {
+  var toStr =(a)=>{
+    if (a == null) return "";
+    else return a
+  }
   return (
     <Container {...props}>
       <Email>Email</Email>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Email)}
+      ></ReadonlyText>
       <Pnumber>Pnumber</Pnumber>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Pnumber)}
+      ></ReadonlyText>
       <Address>Address</Address>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Address)}
+      ></ReadonlyText>
       <Name2>Name</Name2>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Name)}
+      ></ReadonlyText>
       <Job>Job</Job>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Job)}
+      ></ReadonlyText>
       <Membership>Membership</Membership>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Membership)}
+      ></ReadonlyText>
       <BirthDate>BirthDate</BirthDate>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.BirthDate)}
+      ></ReadonlyText>
       <Gender>Gender</Gender>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+        text = {toStr(props.accInfo.Gender)}
+      ></ReadonlyText>
     </Container>
   );
 }

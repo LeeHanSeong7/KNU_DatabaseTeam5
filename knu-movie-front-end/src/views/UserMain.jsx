@@ -15,7 +15,7 @@ import MyRatingView from "./MyRatingView";
 import DeleteUserView from "./DeleteUserView";
 import UserMovieView from "./UserMovieView";
 
-export default function UserMain({ logoutButtonClicked}) {
+export default function UserMain(props) {
     const [item, setItem] = useState(null);
     const [resultset, setResultset] = useState([
         {
@@ -41,10 +41,13 @@ export default function UserMain({ logoutButtonClicked}) {
                      setItem = {setItem}
                      resultset = {resultset}
                      setResultset = {setResultset}
-                     logoutButtonClicked = {logoutButtonClicked}/>
+                     logoutButtonClicked = {props.logoutButtonClicked}/>
                  </Route>
                  <Route path="/user-account">
-                    <UserAccount />
+                    <UserAccount      
+                        userId={props.userId}
+                        userPassword={props.userPassword}
+                    />
                 </Route>
                  <Route path="/my-ratings">
                     <MyRatings />
@@ -54,7 +57,9 @@ export default function UserMain({ logoutButtonClicked}) {
                 </Route>
                 <Route path="/delete-accout">
                     <DeleteAccount 
-                    logoutButtonClicked = {logoutButtonClicked}/>
+                    logoutButtonClicked = {props.logoutButtonClicked}
+                    userId = {props.userId}
+                    userPassword = {props.userPassword}/>
                  </Route>
             </Switch>
         </Router>
@@ -154,9 +159,12 @@ function Home(props) {
     );
 }
 
-function UserAccount() {
+function UserAccount(props) {
     return (
-        <UserAccountView/>
+        <UserAccountView
+        userId={props.userId}
+        userPassword={props.userPassword}
+        />
     );
 }
 
@@ -172,10 +180,11 @@ function UserMoviePage(props) {
     );
 }
 
-function DeleteAccount({logoutButtonClicked}) {
+function DeleteAccount(props) {
     return (
         <DeleteUserView
-        logoutButtonClicked = {logoutButtonClicked}/>
+        logoutButtonClicked = {props.logoutButtonClicked}
+        userId = {props.userId}/>
     );
 }
 

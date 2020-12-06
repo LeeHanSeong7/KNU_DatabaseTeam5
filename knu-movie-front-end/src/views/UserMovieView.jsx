@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import Textbox from "../components/Textbox";
+import ReadonlyText from "../components/ReadonlyText";
 import {
     Link,
 } from "react-router-dom";
@@ -10,61 +10,61 @@ function UserMovieView(props) {
     <Container {...props}>
     <Link to="/">back</Link>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
       <div></div>
-      <Textbox
+      <ReadonlyText
         style={{
           height: 43,
           alignSelf: "stretch"
         }}
-      ></Textbox>
+      ></ReadonlyText>
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState,Component } from "react";
 import styled, { css } from "styled-components";
 import AccountInfo from "../components/AccountInfo";
 import PasswordChange from "../components/PasswordChange";
@@ -8,6 +8,30 @@ import {
 } from "react-router-dom";
 
 function UserAccountView(props) {
+  const [accinfo, setAccInfo] = useState(null);
+  const axios = require('axios');
+  const BodyJson = {
+    "id":props.userId,
+    "password":props.userPassword,
+  };
+  //
+    const url = 'http://localhost:8080//user/account/my-info/'
+    try {
+      axios.get(url,{
+        params:BodyJson,
+        headers: {"Content-Type": "Application/json"}
+      })
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error)=>{
+        alert(error.response);
+        console.log(error.response);
+      })
+    }catch(error){
+      console.error(error);
+    }
+  //
+
   return (
     <div>
       <Container>
@@ -27,6 +51,7 @@ function UserAccountView(props) {
                         height: 582,
                         alignSelf: "stretch"
                       }}
+                      accInfo = {accinfo}
                     ></AccountInfo>
                   </Group10>
                 </Group9>
@@ -38,6 +63,8 @@ function UserAccountView(props) {
                     height: 412,
                     alignSelf: "stretch"
                   }}
+                  userId={props.userId}
+                  userPassword={props.userPassword}
                 ></PasswordChange>
               </Group3>
               <Group2>
@@ -47,6 +74,8 @@ function UserAccountView(props) {
                     height: 493,
                     alignSelf: "stretch"
                   }}
+                  userId={props.userId}
+                  userPassword={props.userPassword}
                 ></ModifyAccount>
               </Group2>
             </Group4>
