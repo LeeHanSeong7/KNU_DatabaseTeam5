@@ -58,13 +58,13 @@ public class AppApplication {
 	}
 
 	@GetMapping("/logout")
-	public ResponseEntity<Result> logout(
+	public ResponseEntity<String> logout(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password
 	) {
 		Result result = services.authenticationService.logout(id, password);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 	@PostMapping("/signup")
@@ -108,36 +108,36 @@ public class AppApplication {
 	}
 
 	@GetMapping("/user/account/change-password")
-	public ResponseEntity<Result> changePassword(
+	public ResponseEntity<String> changePassword(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
 		@RequestParam(value="changed") String changed
 	) {
 		Result result = services.authenticationService.changePassword(id, password, changed);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 	@PostMapping("/user/account/modify-info")
-	public ResponseEntity<Result> modifyInfo(
+	public ResponseEntity<String> modifyInfo(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
 		@RequestBody AccountDTO changed
 	) {
 		Result result = services.authenticationService.changeAccountInfo(id, password, changed);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString()HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 	@DeleteMapping("/user/account/delete")
-	public ResponseEntity<Result> deleteAccount(
+	public ResponseEntity<String> deleteAccount(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
 		@RequestParam(value="re-password") String rePassword
 	) {
 		Result result = services.authenticationService.deleteAccount(id, password, rePassword);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 	@GetMapping("/admin/check-ratings")
@@ -166,14 +166,14 @@ public class AppApplication {
 	}
 
 	@PostMapping("/admin/upload-movie")
-	public ResponseEntity<Result> uploadMovie(
+	public ResponseEntity<String> uploadMovie(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
 		@RequestBody MovieDTO movie
 	) {
 		Result result = services.movieService.movieUpload(movie);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 }
