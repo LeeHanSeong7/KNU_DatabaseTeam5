@@ -37,12 +37,18 @@ function App() {
       }
       {
         loggedIn && !isAdmin && (
-          <UserMain logoutButtonClicked={logoutButtonClicked} />
+          <UserMain 
+          logoutButtonClicked={logoutButtonClicked}
+          setLoggedin={setLoggedIn} />
         )
       }
       {
         !loggedIn && (
-          <LoginView setLoggedin={setLoggedIn} setId={setId} setPassword={setPassword} setIsAdmin={setIsAdmin} />
+          <LoginView 
+          setLoggedin={setLoggedIn}
+          setId={setId}
+          setPassword={setPassword}
+          setIsAdmin={setIsAdmin}/>
         )
       }
     </div>
