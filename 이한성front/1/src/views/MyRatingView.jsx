@@ -3,14 +3,25 @@ import {
     Link,
 } from "react-router-dom";
 import styled, { css } from "styled-components";
-import MovieItem from "./MovieItem";
 
-function MovieList(props) {
+function MyRatingView(props) {
+  const [itemList, setItemList] = useState(null);
   var i = 0;
   return (
     <Container {...props}>
+      <Link to="/">
+        <div
+        style={
+          {
+            width:50,
+            height:50,
+          }
+        }>
+          back
+        </div>
+      </Link>
       <ScrollArea>
-        {props.Resultset.map(item=>{
+        {/* {itemList.map(item=>{
           i = i+1;
           return (<Link 
             to="/user-movie-page"
@@ -25,15 +36,15 @@ function MovieList(props) {
                 width: 1366
               }}
               index = {i}
-              item = {props.Resultset[i-1]}
+              item = {itemList[i-1]}
               onClick = {()=>{
-                props.setItem(props.Resultset[i-1])
+                props.setItem(itemList[i-1])
               }}
             ></MovieItem>
           </Link>
           )
         }
-        )}
+        )} */}
       </ScrollArea>
     </Container>
   );
@@ -47,10 +58,10 @@ const Container = styled.div`
 const ScrollArea = styled.div`
   overflow-y: scroll;
   width: 1366px;
-  height: 774px;
+  height: 700px;
   flex-direction: column;
   justify-content: space-between;
   display: flex;
 `;
 
-export default MovieList;
+export default MyRatingView;

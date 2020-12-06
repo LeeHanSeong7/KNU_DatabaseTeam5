@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { useState,Component } from "react";
 import styled, { css } from "styled-components";
 import AccountInfo from "../components/AccountInfo";
 import PasswordChange from "../components/PasswordChange";
 import ModifyAccount from "../components/ModifyAccount";
-import Button from "../components/Button";
+import {
+    Link,
+} from "react-router-dom";
 
 function UserAccountView(props) {
   return (
@@ -11,7 +13,9 @@ function UserAccountView(props) {
       <Container>
       <Group6>
         <Group7>
-          <AccuntMenu>Accunt Menu</AccuntMenu>
+          <Link to="/">
+            <AccuntMenu>Back</AccuntMenu>
+          </Link>
           <Group8>
             <Group4>
               <Group>
@@ -23,6 +27,8 @@ function UserAccountView(props) {
                         height: 582,
                         alignSelf: "stretch"
                       }}
+                      userId={props.userId}
+                      userPassword={props.userPassword}
                     ></AccountInfo>
                   </Group10>
                 </Group9>
@@ -34,6 +40,8 @@ function UserAccountView(props) {
                     height: 412,
                     alignSelf: "stretch"
                   }}
+                  userId={props.userId}
+                  userPassword={props.userPassword}
                 ></PasswordChange>
               </Group3>
               <Group2>
@@ -43,6 +51,8 @@ function UserAccountView(props) {
                     height: 493,
                     alignSelf: "stretch"
                   }}
+                  userId={props.userId}
+                  userPassword={props.userPassword}
                 ></ModifyAccount>
               </Group2>
             </Group4>

@@ -11,8 +11,11 @@ import Button from "../components/Button";
 import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
 import UserAccountView from "./UserAccountView";
+import MyRatingView from "./MyRatingView";
+import DeleteUserView from "./DeleteUserView";
+import UserMovieView from "./UserMovieView";
 
-export default function UserMain({ logoutButtonClicked }) {
+export default function UserMain(props) {
     const [item, setItem] = useState(null);
     const [resultset, setResultset] = useState([
         {
@@ -37,10 +40,14 @@ export default function UserMain({ logoutButtonClicked }) {
                      <Home 
                      setItem = {setItem}
                      resultset = {resultset}
-                     setResultset = {setResultset}/>
+                     setResultset = {setResultset}
+                     logoutButtonClicked = {props.logoutButtonClicked}/>
                  </Route>
                  <Route path="/user-account">
-                    <UserAccount />
+                    <UserAccount      
+                        userId={props.userId}
+                        userPassword={props.userPassword}
+                    />
                 </Route>
                  <Route path="/my-ratings">
                     <MyRatings />
@@ -49,7 +56,10 @@ export default function UserMain({ logoutButtonClicked }) {
                     <UserMoviePage item = {item}/>
                 </Route>
                 <Route path="/delete-accout">
-                    <DeleteAccount />
+                    <DeleteAccount 
+                    logoutButtonClicked = {props.logoutButtonClicked}
+                    userId = {props.userId}
+                    userPassword = {props.userPassword}/>
                  </Route>
             </Switch>
         </Router>
@@ -61,6 +71,12 @@ function Home(props) {
     return (
         <Group2>
         <Group>
+        <Button
+            onClick = {()=>{
+                props.logoutButtonClicked();
+            }}
+            text = 'Sign out'
+        ></Button>
         <Link 
                 to="/delete-accout"
                 style={{
@@ -143,27 +159,33 @@ function Home(props) {
     );
 }
 
-function UserAccount() {
+function UserAccount(props) {
+    const [accinfo, setAccinfo] = useState(null);
     return (
-        <UserAccountView/>
+        <UserAccountView
+        userId={props.userId}
+        userPassword={props.userPassword}
+        />
     );
 }
 
 function MyRatings() {
     return (
-        <h2>MyRatings</h2>
+        <MyRatingView/>
     );
 }
 
 function UserMoviePage(props) {
     return (
-    <h2>props.item.title</h2>
+    <UserMovieView/>
     );
 }
 
-function DeleteAccount() {
+function DeleteAccount(props) {
     return (
-        <h2>DeleteAccount</h2>
+        <DeleteUserView
+        logoutButtonClicked = {props.logoutButtonClicked}
+        userId = {props.userId}/>
     );
 }
 

@@ -13,9 +13,11 @@ export default function AdminMain({ logoutButtonClicked }) {
 
         <Router>
             <div>
-                <button type="button" onClick={logoutButtonClicked}>
-                    로그아웃
-                </button>
+                <Link to="/">
+                    <button type="button" onClick={logoutButtonClicked}>
+                        로그아웃
+                    </button>
+                </Link>
                 <nav>
                     <ul>
                         <li>

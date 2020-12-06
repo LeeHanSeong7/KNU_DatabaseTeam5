@@ -37,7 +37,11 @@ function App() {
       }
       {
         loggedIn && !isAdmin && (
-          <UserMain logoutButtonClicked={logoutButtonClicked} />
+          <UserMain 
+          logoutButtonClicked={logoutButtonClicked}
+          userId={id}
+          userPassword={password}
+          setIsAdmin={setIsAdmin} />
         )
       }
       {

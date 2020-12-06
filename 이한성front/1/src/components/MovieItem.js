@@ -2,14 +2,13 @@ import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 
 function MovieItem(props) {
-  const [item, setItem] = useState(props.item);
   return (
     <Container {...props}>
       <Index>{props.index}</Index>
       <Image1 src={require("../assets/images/movie-icon.png")}></Image1>
       <Group>
-        <Title>{item.title}</Title>
-        <Genre>{item.genreList.map(genre=>{return " "+genre})}</Genre>
+        <Title>{props.item.title}</Title>
+        <Genre>{props.item.genreList.map(genre=>{return " "+genre})}</Genre>
       </Group>
     </Container>
   );
