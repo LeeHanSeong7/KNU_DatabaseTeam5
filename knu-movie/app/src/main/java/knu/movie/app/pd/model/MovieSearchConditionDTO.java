@@ -16,7 +16,7 @@ public class MovieSearchConditionDTO {
 	public String type;
 	public String region;
 	
-	public MovieSearchConditionDTO() {}
+	public MovieSearchConditionDTO() {super();}
 	
 	public MovieSearchConditionDTO(
 			String movieID,

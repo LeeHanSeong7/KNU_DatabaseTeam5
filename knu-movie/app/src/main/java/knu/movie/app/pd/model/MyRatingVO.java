@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyRatingVO {
-	public final String movieTitle;
-	public final Double rating;
+	public String movieTitle;
+    public Double rating;
+    
+    public MyRatingVO() {
+        super();
+    }
 
     public MyRatingVO(String movieTitle, Double rating) {
         this.movieTitle = movieTitle;

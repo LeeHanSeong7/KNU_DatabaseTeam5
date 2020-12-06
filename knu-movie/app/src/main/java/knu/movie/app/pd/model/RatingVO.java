@@ -1,8 +1,12 @@
 package knu.movie.app.pd.model;
 
 public class RatingVO {
-    public final String emailId;
-    public final double rating;
+    public String emailId;
+    public double rating;
+
+    public RatingVO() {
+        super();
+    }
 
     public RatingVO(String emailId, double rating) {
         this.emailId = emailId;

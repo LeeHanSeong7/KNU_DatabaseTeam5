@@ -6,7 +6,7 @@ public class RatingSearchConditionDTO {
 	public double Maxstars;
 	public double Minstars;
 	
-	public RatingSearchConditionDTO() {}
+	public RatingSearchConditionDTO() {super();}
 	
 	public RatingSearchConditionDTO(
 			String movieName,

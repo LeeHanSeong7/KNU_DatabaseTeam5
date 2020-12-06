@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RatingVOList {
-    public final String title;
-    public final List<RatingVO> ratings;
+    public String title;
+    public List<RatingVO> ratings;
+
+    public RatingVOList() {
+        super();
+    }
 
     public RatingVOList(String title, List<RatingVO> ratings) {
         this.title= title;
