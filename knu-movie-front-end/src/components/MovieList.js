@@ -1,21 +1,16 @@
 import React, { useState, Component, useEffect } from "react";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    useHistory
 } from "react-router-dom";
 import styled, { css } from "styled-components";
 import MovieItem from "./MovieItem";
 
 function MovieList(props) {
-  const [itemList, setItemList] = useState(props.Resultset);
   var i = 0;
   return (
     <Container {...props}>
       <ScrollArea>
-        {itemList.map(item=>{
+        {props.Resultset.map(item=>{
           i = i+1;
           return (<Link 
             to="/user-movie-page"
@@ -30,9 +25,9 @@ function MovieList(props) {
                 width: 1366
               }}
               index = {i}
-              item = {itemList[i-1]}
+              item = {props.Resultset[i-1]}
               onClick = {()=>{
-                props.setItem(itemList[i-1])
+                props.setItem(props.Resultset[i-1])
               }}
             ></MovieItem>
           </Link>

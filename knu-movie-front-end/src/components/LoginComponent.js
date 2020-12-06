@@ -25,14 +25,14 @@ function LoginComponent(props) {
         if (data == 'user'){
           props.setId(id); 
           props.setPassword(password); 
-          props.setLoggedin(true);
           props.setIsAdmin(false);
+          props.setLoggedin(true);
         }
         else if (data == 'admin'){
           props.setId(id); 
           props.setPassword(password); 
-          props.setLoggedin(true);
           props.setIsAdmin(true);
+          props.setLoggedin(true);
         }
         else{
           return (alert(data))

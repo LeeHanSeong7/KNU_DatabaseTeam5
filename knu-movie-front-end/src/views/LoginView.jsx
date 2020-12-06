@@ -1,20 +1,64 @@
-import React, {Component} from 'react';
+import React, { useState, Component } from "react";
+import styled, { css } from "styled-components";
+import LoginComponent from "../components/LoginComponent";
+import SignUpView from "./SignUpView";
 
-export default function LoginView({setLoggedin, setId, setPassword}) {
+function LoginView(props) {
+  const [isSignup, setSignUp] = useState(false);
 
-    const loginButtonClicked = async () => {
-        setLoggedin(true);
-        setId("admin1");
-        setPassword("passwrd");
-        console.log("hi");
-    }
-
-    return (
-        <div>
-        <button type="button" onClick={loginButtonClicked}>
-            로그인
-        </button>
-        </div>
+  if (isSignup){
+    return(
+      <div>
+        <SignUpView
+        setSignup = {setSignUp}
+        ></SignUpView>
+      </div>
     );
-    
+  }
+  else{
+    return (
+      <Container {...props}>
+          <Group>
+            <Image src={require("../assets/images/ui_logo.jpg")}></Image>
+            <LoginComponent
+              style={{
+                width: 487,
+                height: 346,
+                alignSelf: "center"
+              }}
+              setLoggedin = {props.setLoggedin}
+              setId = {props.setId}
+              setPassword = {props.setPassword}
+              setIsAdmin = {props.setIsAdmin}
+              setSignup = {setSignUp}
+            ></LoginComponent>
+          </Group>
+      </Container>
+    );
+  }
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+`;
+
+const Group = styled.div`
+  width: 552px;
+  height: 450px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  display: flex;
+`;
+
+const Image = styled.img`
+  width: 552px;
+  height: 100%;
+  object-fit: contain;
+`;
+
+export default LoginView;

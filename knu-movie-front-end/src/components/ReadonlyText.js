@@ -1,20 +1,13 @@
 import React, {useState, Component } from "react";
 import styled, { css } from "styled-components";
 
-function Textbox(props) {
-  const [input, setInput] = useState("")
-
-  const onChangeField = e => {
-    setInput(e.target.value);
-    props.setValue(e.target.value)
-  };
-
+function ReadonlyText(props) {
   return (
     <Container {...props}>
       <InputStyle 
-        placeholder={props.placehold}
-        value = {input}
-        onChange = {onChangeField}>
+        value = {props.text}
+        readOnly>
+        
       </InputStyle>
     </Container>
   );
@@ -43,4 +36,4 @@ const InputStyle = styled.input`
   display: flex;
   flex-direction: column;
 `;
-export default Textbox;
+export default ReadonlyText;

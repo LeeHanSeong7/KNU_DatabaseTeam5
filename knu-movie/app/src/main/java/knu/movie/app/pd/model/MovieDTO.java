@@ -19,6 +19,9 @@ public class MovieDTO implements DTO {
     private List<String> actorList = new ArrayList<String>();
     private String type;
 
+    public MovieDTO() {
+        super();
+    }
 
     public MovieDTO(MovieDTO a)
     {

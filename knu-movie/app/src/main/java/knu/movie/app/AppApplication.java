@@ -68,12 +68,12 @@ public class AppApplication {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<Result> signUp(
+	public ResponseEntity<String> signUp(
 		@RequestBody AccountDTO newbee
 	) {
 		Result result = services.authenticationService.signUp(newbee.getEmail_id(), newbee.getPassword(), newbee);
-		if (result == Result.success) return new ResponseEntity<Result>(result, HttpStatus.OK);
-		else return new ResponseEntity<Result>(result, HttpStatus.BAD_REQUEST);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
 	@PostMapping("/user/search-movie")
