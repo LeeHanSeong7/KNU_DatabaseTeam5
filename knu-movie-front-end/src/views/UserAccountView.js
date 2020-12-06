@@ -3,7 +3,9 @@ import styled, { css } from "styled-components";
 import AccountInfo from "../components/AccountInfo";
 import PasswordChange from "../components/PasswordChange";
 import ModifyAccount from "../components/ModifyAccount";
-import Button from "../components/Button";
+import {
+    Link,
+} from "react-router-dom";
 
 function UserAccountView(props) {
   return (
@@ -11,7 +13,9 @@ function UserAccountView(props) {
       <Container>
       <Group6>
         <Group7>
-          <AccuntMenu>Accunt Menu</AccuntMenu>
+          <Link to="/">
+            <AccuntMenu>Back</AccuntMenu>
+          </Link>
           <Group8>
             <Group4>
               <Group>

@@ -50,12 +50,16 @@ function SignUp(props) {
       axios.post(url,{
         body:JSON.parse(BodyJson)
       }).then((response) => {
-       console.log(response);
+        alert('Signup complete!');
+        props.setSignup(false);
+        console.log(response.body);
+      }).catch((error)=>{
+        alert(error.response.data);
+        console.log(error.response.data);
       })
-    } catch(error){
-      console.error(error.body);
+    }catch(error){
+      console.error(error);
     }
-    //props.setSignup(false);
   } 
   const backClicked =()=>{
     console.log("backClicked")
@@ -73,15 +77,24 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setAddress}
+            placehold = 'input'
           ></Textbox>
           <Gender>Gender</Gender>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setGender}
-          ></Textbox>
+          <select
+           style={{
+            height: 43,
+            backgroundColor: "rgba(224, 224, 230, 1)",
+            margin: 1,
+            width:200,
+          }}>
+            <option key = 'M' value='M'
+            onClick={(v)=>setGender(v)}>Male</option>
+            <option key = 'F' value='F'
+            onClick={(v)=>setGender(v)}>Female</option>
+            <option key = 'null' value={null}
+            onClick={(v)=>setGender(v)}
+            selected>null</option>
+          </select>
           <BirthDate>BirthDate</BirthDate>
           <DatePicker 
             selected={birthDate} 
@@ -93,6 +106,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setJob}
+            placehold = 'input'
           ></Textbox>
         </Group2>
         <Group3>
@@ -104,6 +118,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setEmail}
+            placehold = 'input'
           ></Textbox>
           <Password1>Password</Password1>
           <Textbox
@@ -112,6 +127,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setPassword}
+            placehold = 'input'
           ></Textbox>
           <PasswordRepeat1>Password(repeat)</PasswordRepeat1>
           <Textbox
@@ -120,6 +136,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setPasswordRepeat}
+            placehold = 'input'
           ></Textbox>
           <Name1>Name</Name1>
           <Textbox
@@ -128,6 +145,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setName}
+            placehold = 'input'
           ></Textbox>
           <Pnumber1>Pnumber</Pnumber1>
           <Textbox
@@ -136,6 +154,7 @@ function SignUp(props) {
               alignSelf: "stretch"
             }}
             setValue = {setPnumber}
+            placehold = 'input'
           ></Textbox>
         </Group3>
       </Group4>
@@ -154,7 +173,7 @@ function SignUp(props) {
             height: 36
           }}
           text = 'back'
-          onClick = {backClicked}
+          onClick = {()=>props.setSignup(false)}
         ></Button>
       </Group>
     </Container>

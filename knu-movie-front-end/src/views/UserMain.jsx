@@ -11,8 +11,11 @@ import Button from "../components/Button";
 import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
 import UserAccountView from "./UserAccountView";
+import MyRatingView from "./MyRatingView";
+import DeleteUserView from "./DeleteUserView";
+import UserMovieView from "./UserMovieView";
 
-export default function UserMain({ logoutButtonClicked }) {
+export default function UserMain({ logoutButtonClicked}) {
     const [item, setItem] = useState(null);
     const [resultset, setResultset] = useState([
         {
@@ -37,7 +40,8 @@ export default function UserMain({ logoutButtonClicked }) {
                      <Home 
                      setItem = {setItem}
                      resultset = {resultset}
-                     setResultset = {setResultset}/>
+                     setResultset = {setResultset}
+                     logoutButtonClicked = {logoutButtonClicked}/>
                  </Route>
                  <Route path="/user-account">
                     <UserAccount />
@@ -49,7 +53,8 @@ export default function UserMain({ logoutButtonClicked }) {
                     <UserMoviePage item = {item}/>
                 </Route>
                 <Route path="/delete-accout">
-                    <DeleteAccount />
+                    <DeleteAccount 
+                    logoutButtonClicked = {logoutButtonClicked}/>
                  </Route>
             </Switch>
         </Router>
@@ -61,6 +66,12 @@ function Home(props) {
     return (
         <Group2>
         <Group>
+        <Button
+            onClick = {()=>{
+                props.logoutButtonClicked();
+            }}
+            text = 'Sign out'
+        ></Button>
         <Link 
                 to="/delete-accout"
                 style={{
@@ -151,19 +162,20 @@ function UserAccount() {
 
 function MyRatings() {
     return (
-        <h2>MyRatings</h2>
+        <MyRatingView/>
     );
 }
 
 function UserMoviePage(props) {
     return (
-    <h2>props.item.title</h2>
+    <UserMovieView/>
     );
 }
 
-function DeleteAccount() {
+function DeleteAccount({logoutButtonClicked}) {
     return (
-        <h2>DeleteAccount</h2>
+        <DeleteUserView
+        logoutButtonClicked = {logoutButtonClicked}/>
     );
 }
 
