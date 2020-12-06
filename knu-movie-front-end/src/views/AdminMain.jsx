@@ -94,7 +94,7 @@ class UploadMovie extends React.Component {
       e.preventDefault();
       const url = 'http://localhost:8080/admin/upload-movie?id=admin1&password=admin'
       const data = {
-        "title_id":"tt0000600",
+        "titleId":"tt0000600",
         "title":"test",
         "region":"KR",
         "runtime":"90",

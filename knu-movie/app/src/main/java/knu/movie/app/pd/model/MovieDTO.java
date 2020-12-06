@@ -6,7 +6,7 @@ import java.util.List;
 import knu.movie.app.pd.interfaces.DTO;
 
 public class MovieDTO implements DTO {
-    private String title_id;
+    private String titleId;
     private String title;
     private	String region;
     private String runtime;
@@ -25,7 +25,7 @@ public class MovieDTO implements DTO {
 
     public MovieDTO(MovieDTO a)
     {
-        this.title_id = a.title_id;
+        this.titleId = a.titleId;
         this.title = a.title;
         this.region = a.region;
         this.runtime = a.runtime;
@@ -39,8 +39,8 @@ public class MovieDTO implements DTO {
         this.type = a.type;
     }
 
-    public MovieDTO(String title_id, String title, String region, String runtime, String startYear, Integer total, String numVotes, Integer num, Double avg, ArrayList<String> genreList, String type, ArrayList<String> actorList){
-        this.title_id = title_id;
+    public MovieDTO(String titleId, String title, String region, String runtime, String startYear, Integer total, String numVotes, Integer num, Double avg, ArrayList<String> genreList, String type, ArrayList<String> actorList){
+        this.titleId = titleId;
         this.title = title;
         this.region = region;
         this.runtime = runtime;
@@ -55,7 +55,7 @@ public class MovieDTO implements DTO {
     }
 
     public String getTitleId(){
-        return this.title_id;
+        return this.titleId;
     }
 
     public String getTitle(){
@@ -92,8 +92,8 @@ public class MovieDTO implements DTO {
         return this.actorList;
     }
 
-    public void setTitleId(String title_id){
-        this.title_id = title_id;
+    public void setTitleId(String titleId){
+        this.titleId = titleId;
     }
     public void setTitle(String title){
         this.title = title;
