@@ -125,7 +125,7 @@ public class AppApplication {
 		@RequestBody AccountDTO changed
 	) {
 		Result result = services.authenticationService.changeAccountInfo(id, password, changed);
-		if (result == Result.success) return new ResponseEntity<String>(result.toString()HttpStatus.OK);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
