@@ -39,7 +39,9 @@ function App() {
         loggedIn && !isAdmin && (
           <UserMain 
           logoutButtonClicked={logoutButtonClicked}
-          setLoggedin={setLoggedIn} />
+          setId={setId}
+          setPassword={setPassword}
+          setIsAdmin={setIsAdmin} />
         )
       }
       {
