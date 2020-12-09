@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
 import Button from "./Button";
+import Form from "./Form";
 import DatePicker from "react-datepicker";
 
 
@@ -9,42 +10,58 @@ require('react-datepicker/dist/react-datepicker.css')
 
 function SignUp(props) {
   const axios = require('axios');
-
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [passwordRepeat, setPasswordRepeat] = useState(null);
-  const [name, setName] = useState(null);
-  const [pnumber, setPnumber] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [birthDate, setBirthDate] = useState(null);
-  const [job, setJob] = useState(null);
-
+  const mandatoryform = {
+    format : {
+      'email':'string',
+      'password':'string', 
+      'passwordRepeat':'string',
+      'name':'string',
+      'pnumber':'string',
+    },
+    form : {},
+  };
+  for (const item of Object.keys(mandatoryform.format)) {
+    mandatoryform.form[item] = null;
+  }
+  const optionalform = {
+    format : {
+      'address':'string',
+      'gender':'gender',
+      'birthDate':'date',
+      'job':'string'
+    },
+    form : {},
+  };
+  for (const item of Object.keys(optionalform.format)) {
+    optionalform.form[item] = null;
+  }
   const submitClicked =()=>{
     const url = 'http://localhost:8080/signup/'
-    if (password != passwordRepeat) return (alert("password incorrect!"));
+    
+    function getFormatDate(date){
+      if (date == null) return null;
+      var year = date.getFullYear();              //yyyy
+      var month = (1 + date.getMonth());          //M
+      month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+      var day = date.getDate();                   //d
+      day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+      return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+    }
+
+    if (mandatoryform.form.password != mandatoryform.form.passwordRepeat) return (alert("password incorrect!"));
 
     try {
-      function getFormatDate(date){
-        if (date == null) return null;
-        var year = date.getFullYear();              //yyyy
-        var month = (1 + date.getMonth());          //M
-        month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
-        var day = date.getDate();                   //d
-        day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
-        return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
-      }
       const BodyJson = JSON.stringify({
-        "address": address,
-        "birth_date": getFormatDate(birthDate),
-        "email_id": email,
-        "gender": gender,
+        "address": optionalform.form.address,
+        "birth_date": getFormatDate(optionalform.form.birthDate),
+        "email_id": mandatoryform.form.email,
+        "gender": optionalform.form.gender,
         "isAdmin": false,
-        "job": job,
+        "job": optionalform.form.job,
         "membership": "basic",
-        "name": name,
-        "password": password,
-        "phone_number": pnumber,
+        "name": mandatoryform.form.name,
+        "password": mandatoryform.form.password,
+        "phone_number": mandatoryform.form.pnumber,
       });
       axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
       .then((response) => {
@@ -61,98 +78,21 @@ function SignUp(props) {
   }
   return (
     <Container {...props}>
-      <Group4>
-        <Group2>
-          <Optional>Optional</Optional>
-          <Address3>Address</Address3>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setAddress}
-            placehold = 'input'
-          ></Textbox>
-          <Gender>Gender</Gender>
-          <select
-           style={{
-            height: 43,
-            backgroundColor: "rgba(224, 224, 230, 1)",
-            margin: 1,
-            width:200,
-          }}>
-            <option key = 'M' value='M'
-            onClick={(v)=>setGender(v)}>Male</option>
-            <option key = 'F' value='F'
-            onClick={(v)=>setGender(v)}>Female</option>
-            <option key = 'null' value={null}
-            onClick={(v)=>setGender(v)}
-            selected>null</option>
-          </select>
-          <BirthDate>BirthDate</BirthDate>
-          <DatePicker 
-            selected={birthDate} 
-            onChange={date => setBirthDate(date)}/>
-          <Job>Job</Job>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setJob}
-            placehold = 'input'
-          ></Textbox>
-        </Group2>
-        <Group3>
-          <Mandatory1>Mandatory</Mandatory1>
-          <Email1>Email</Email1>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setEmail}
-            placehold = 'input'
-          ></Textbox>
-          <Password1>Password</Password1>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setPassword}
-            placehold = 'input'
-          ></Textbox>
-          <PasswordRepeat1>Password(repeat)</PasswordRepeat1>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setPasswordRepeat}
-            placehold = 'input'
-          ></Textbox>
-          <Name1>Name</Name1>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setName}
-            placehold = 'input'
-          ></Textbox>
-          <Pnumber1>Pnumber</Pnumber1>
-          <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setPnumber}
-            placehold = 'input'
-          ></Textbox>
-        </Group3>
-      </Group4>
       <Group>
+        <div
+          style = {subtitle}
+        >mandatory</div>
+        <Form
+        formlist = {mandatoryform}
+        ></Form>
+        <div
+          style = {subtitle}
+          >optionalform</div>
+        <Form
+        formlist = {optionalform}
+        ></Form>
+      </Group>
+      <Group2>
         <Button
           style={{
             width: 100,
@@ -169,7 +109,7 @@ function SignUp(props) {
           text = 'back'
           onClick = {()=>props.setSignup(false)}
         ></Button>
-      </Group>
+      </Group2>
     </Container>
   );
 }
@@ -177,149 +117,25 @@ function SignUp(props) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
-
-const Group4 = styled.div`
-  height: 420px;
+const Group = styled.div`
   flex-direction: row;
   justify-content: space-between;
-  width: 874px;
+  height: auto;
+  width: auto;
   display: flex;
 `;
-
 const Group2 = styled.div`
-  height: 349px;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 437px;
-  display: flex;
-`;
-
-const Optional = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 46px;
-  width: 1366px;
-  height: 55px;
-`;
-
-const Address3 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Gender = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const BirthDate = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Job = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Group3 = styled.div`
-  height: 420px;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 437px;
-  display: flex;
-`;
-
-const Mandatory1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 46px;
-  width: 1366px;
-  height: 55px;
-`;
-
-const Email1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Password1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const PasswordRepeat1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 227px;
-`;
-
-const Name1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Pnumber1 = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  width: 152px;
-`;
-
-const Group = styled.div`
   height: 36px;
   flex-direction: row;
   justify-content: space-between;
   width: 874px;
   display: flex;
 `;
+const subtitle = {
+  'font-size': '30px',
+  'alignSelf': "center"
+}
 
 export default SignUp;
