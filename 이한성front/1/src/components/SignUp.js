@@ -1,9 +1,7 @@
 import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
-import Textbox from "./Textbox";
 import Button from "./Button";
 import Form from "./Form";
-import DatePicker from "react-datepicker";
 
 
 require('react-datepicker/dist/react-datepicker.css')
@@ -84,12 +82,14 @@ function SignUp(props) {
         >mandatory</div>
         <Form
         formlist = {mandatoryform}
+        fDirec = 'column'
         ></Form>
         <div
           style = {subtitle}
           >optionalform</div>
         <Form
         formlist = {optionalform}
+        fDirec = 'column'
         ></Form>
       </Group>
       <Group2>
@@ -113,7 +113,6 @@ function SignUp(props) {
     </Container>
   );
 }
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -123,7 +122,7 @@ const Group = styled.div`
   flex-direction: row;
   justify-content: space-between;
   height: auto;
-  width: auto;
+  width: 100%;
   display: flex;
 `;
 const Group2 = styled.div`

@@ -46,8 +46,8 @@ const Container = styled.div`
 
 const ScrollArea = styled.div`
   overflow-y: scroll;
-  width: 1366px;
-  height: 774px;
+  height: 100%;
+  flex : 1;
   flex-direction: column;
   justify-content: space-between;
   display: flex;
