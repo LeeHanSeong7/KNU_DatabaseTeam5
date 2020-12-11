@@ -12,90 +12,82 @@ function SearchBar(props) {
   const [conditioninfo,setCondition] = useState({});
 
   const condiForm = {
-    'movieID':null,
-    'Maxyear':'date',
-    'Minyear':'date',
-    'Maxtime':'number',
-    'Mintime':'number',
-    'Maxaver': null,
-    'Minaver': null,
-    'genre': {
-      'All' : null,
-      'Action':'Action',
-      'Comedy':'Comedy',
-      'Fantasy':'Fantasy',
-      'War':'War',
-      'romance':'Romance',
-      'Horror':'Horror',
-      'Animation':'Animation',
-    },
-    'actor':null,
-    'type': {
-      'All' : null,
-      'Movie': 'Movie',
-      'KnuMovieDB Original': 'Original',
-      'TV Series': 'TV Series',
-    },
-    'movieName':null,
-    'region':null
-}
-  
-  const onClick = (e) => {
-    e.preventDefault();
-    const url = 'http://localhost:8080/admin/search-movie?id=admin1&password=admin'
-    console.log(movieName);
-    console.log(conditioninfo);
-    try {
-      let condition = conditioninfo;
-      if(condition["movieID"] === null){
-        condition["movieID"] = ""
-      }
-      if(movieName !== null){
-        condition["movieName"] = movieName
-      }else{
-        condition["movieName"] = "";
-      }
-      if(condition["Maxaver"] === null){
-        condition["Maxaver"] = 10
-      }
-      if(condition["Minaver"] === null){
-        condition["Minaver"] = 0
-      }
-      if(condition["Maxtime"] === null){
-        condition["Maxtime"] = -1
-      }
-      if(condition["Mintime"] === null){
-        condition["Mintime"] = -1
-      }
-      if(condition["genre"] === null){
-        condition["genre"] = ""
-      }
-      if(condition["actor"] === null){
-        condition["actor"] = ""
-      }
-      if(condition["type"] === null){
-        condition["type"] = ""
-      }
+      'MovieID':null,
+      'Maxyear':'date',
+      'Minyear':'date',
+      'Maxtime':'number',
+      'Mintime':'number',
+      'Maxaver': null,
+      'Minaver': null,
+      'genre': {
+        'All' : null,
+        'Action':'Action',
+        'Comedy':'Comedy',
+        'Fantasy':'Fantasy',
+        'War':'War',
+        'romance':'Romance',
+        'Horror':'Horror',
+        'Animation':'Animation',
+      },
+      'actor':null,
+      'type': {
+        'All' : null,
+        'Movie': 'Movie',
+        'KnuMovieDB Original': 'Original',
+        'TV Series': 'TV Series',
+      },
+      'MovieName':null,
+  }
 
-      const BodyJson = JSON.stringify(
-        condition
-      );
-      console.log(BodyJson);
-      const axios = require('axios');
-      axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
+  const searchClicked = ()=>{
+    const axios = require('axios');
+    const url = 'http://localhost:8080/user/search-movie/'
+    function getFormatDate(date){
+      if (date == null) return null;
+      var year = date.getFullYear();              //yyyy
+      var month = (1 + date.getMonth());          //M
+      month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+      var day = date.getDate();                   //d
+      day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+      return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+    }
+    const ParamJson = {
+      "id" : props.userId,
+      "password" : props.userPassword,
+    }
+    const BodyJson = JSON.stringify({
+      "movieID": null,
+      "movieName": (()=>{
+        if (movieName == "") return null
+        else return movieName
+      })(),
+      "Maxyear": getFormatDate(conditioninfo['Maxyear']),
+      "Minyear": getFormatDate(conditioninfo['Minyear']),
+      "Maxaver": null,
+      "Minaver": null,
+      "Maxtime": conditioninfo['Maxtime'],
+      "Mintime": conditioninfo['Mintime'],
+      "genre": conditioninfo['genre'],
+      "actor": null,
+      "type": conditioninfo['type'],
+      "region": null,
+    });
+    try {
+      axios.post(url,BodyJson, {
+        params : ParamJson,
+        headers: {"Content-Type": "Application/json"}})
       .then((response) => {
-        alert('search complete!');
-        console.log('res:'+response.data);
-        //props.setResultset(e.target.value)
-        //props.setResultset = response.data;
+        alert('success');
+        console.log(response.body);
       }).catch((error)=>{
-        console.log('err:' + error);
-        alert(error.response);
+        console.log(error.response);
+        alert('fail');
       })
     }catch(error){
       console.error(error);
     }
   }
+
   return (
     <Container {...props}>
       <Form
@@ -104,6 +96,7 @@ function SearchBar(props) {
         'height' : 'auto',
       }}
       formlist = {condiForm}
+      result = {conditioninfo}
       setResult = {setCondition}
       fDirec = 'row'
       ></Form>
@@ -122,7 +115,7 @@ function SearchBar(props) {
         width = '50px'
         height = '50px'
         text = 'go'
-        onClick = {onClick}/>
+        onClick = {searchClicked}/>
       </Group>
     </Container>
   );
