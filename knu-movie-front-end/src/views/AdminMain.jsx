@@ -69,84 +69,126 @@ function AdminMoviePage() {
     );
 }
 
-class UploadMovie extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        id: '',
-        password: ''
-      };
+function UploadMovie() {
+    const [titleId, setTitleId] = useState(null);
+    const [title, setTitle] = useState(false);
+    const [region, setRegion] = useState(null);
   
-      this.onSubmit = this.onSubmit.bind(this);
-      this.onChange = this.onChange.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    const [runtime, setRuntime] = useState(null);
+    const [startYear, setStartYear] = useState(null);
+    const [genreList, setGenreList] = useState(null);
+    const [actorList, setActorList] = useState(null);
+    const [type, setType] = useState(null);
   
-    onChange(e) {
+    const onChange = (e) => {
       console.log(e.target.name)
       this.setState({
         [e.target.name]: e.target.value
       });
     }
-  
-    onSubmit(e) {
+
+    const onSubmit = (e) => {
       e.preventDefault();
       const url = 'http://localhost:8080/admin/upload-movie?id=admin1&password=admin'
+      
+      let gList = null;
+      if(genreList !== null){
+        gList = genreList.replace(/ /gi, "");
+        gList = gList.split(',');
+      }
+      console.log(gList);
+  
+      let aList = null;
+      if(actorList !== null){
+        aList = actorList.replace(/, /gi, ",");
+        aList = aList.split(',');
+      }
+      console.log(aList);
+  
       const data = {
-        "titleId":"tt0000600",
-        "title":"test",
-        "region":"KR",
-        "runtime":"90",
-        "startYear":"2020",
-        "total":0,
-        "numVotes":"0",
-        "num":0,
-        "avg":0.0,
-        "genreList":["Comedy"],
-        "actorList":["Fred Astaire"],
-        "type":"Movie"
+        "titleId": titleId,
+        "title": title,
+        "region": region,
+        "runtime": runtime,
+        "startYear": startYear,
+        "total": 0,
+        "numVotes": "0",
+        "num": 0,
+        "avg": 0.0,
+        "genreList": gList,
+        "actorList": aList,
+        "type": type
       };
       const BodyJson = JSON.stringify(data);
       console.log(BodyJson);
       console.log(url);
   
-      axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
+      axios.post(url, BodyJson, { headers: { "Content-Type": "Application/json" } })
         .then((response) => {
           alert('Upload complete!');
           console.log(response.body);
-        }).catch((error)=>{
+        }).catch((error) => {
           alert(error.response.data);
           console.log(error.response.data);
-          
         })
   
     }
   
-    handleChange(event) {
+    const handleChange = (event) => {
       this.setState({ value: event.target.value });
     }
   
-    handleSubmit(event) {
+    const handleSubmit = (event) => {
       alert('A id was submitted: ' + this.state.id + '\n A password was submitted: ' + this.state.password);
       event.preventDefault();
     }
   
-    render() {
-      return (
-        <div>
-          <div>id</div>
-          <Textbox
-            setValue={this.state.id}>
-          </Textbox>
-          <div>password</div>
-          <Textbox
-            setValue={this.state.password}>
-          </Textbox>
-          <input type="submit" value="Search" onClick={this.onSubmit}/>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <div>title-id</div>
+        <Textbox
+          setValue={setTitleId}
+          placehold="title-id ex)tt0000500">
+        </Textbox>
+        <div>title</div>
+        <Textbox
+          setValue={setTitle}
+          placehold="title">
+        </Textbox>
+        <div>region</div>
+        <Textbox
+          setValue={setRegion}
+          placehold="region ex)KR">
+        </Textbox>
+        <div>runtime</div>
+        <Textbox
+          setValue={setRuntime}
+          placehold="runtime ex)20">
+        </Textbox>
+        <div>startYear</div>
+        <Textbox
+          setValue={setStartYear}
+          placehold="startYear ex)2020">
+        </Textbox>
+        <div>genreList</div>
+        <Textbox
+          setValue={setGenreList}
+          placehold="Comedy, Action, ...">
+        </Textbox>
+        <div>actorList</div>
+        <Textbox
+          setValue={setActorList}
+          placehold="Bruce Lee, Grace Kelly, ...">
+        </Textbox>
+        <div>type</div>
+        <Textbox
+          setValue={setType}
+          placehold="type ex) Movie">
+        </Textbox>
+        <input type="submit" value="Upload" onClick={onSubmit} />
+      </div>
+    );
+  
   }
 
 
