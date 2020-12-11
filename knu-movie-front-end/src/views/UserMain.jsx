@@ -208,7 +208,6 @@ function Home(props) {
 }
 
 function UserAccount(props) {
-    const [accinfo, setAccinfo] = useState(null);
     return (
         <UserAccountView
         userId={props.userId}

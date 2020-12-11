@@ -70,6 +70,7 @@ function ModifyAccount(props) {
             'job' : 'string',
           }}
           setResult = {setModify}
+          result = {modifyInfo}
           fDirec = 'column'
         ></Form>
         <Button

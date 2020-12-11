@@ -51,6 +51,7 @@ function SignUp(props) {
         "password": mandatoryinfo.password,
         "phone_number": mandatoryinfo.pnumber,
       });
+      console.log(BodyJson);
       axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
       .then((response) => {
         alert('Signup complete!');
@@ -72,6 +73,7 @@ function SignUp(props) {
         >mandatory</div>
         <Form
         formlist = {mandatoryform}
+        result = {mandatoryinfo}
         setResult = {setMandatory}
         fDirec = 'column'
         ></Form>
@@ -80,6 +82,7 @@ function SignUp(props) {
           >optionalform</div>
         <Form
         formlist = {optionalform}
+        result = {optionalinfo}
         setResult = {setOptional}
         fDirec = 'column'
         ></Form>
@@ -114,7 +117,7 @@ const Group2 = styled.div`
   display: flex;
 `;
 const subtitle = {
-  'font-size': '30px',
+  'fontSize': '30px',
   'alignSelf': "center"
 }
 

@@ -1,15 +1,21 @@
-import React, { useState, Component } from "react";
+import React, { useState, Component, cloneElement } from "react";
 import styled, { css } from "styled-components";
 import Textbox from "./Textbox";
+import ReadonlyText from "./ReadonlyText";
 import DatePicker from "react-datepicker";
 
 function Form(props) {
-    const [form,setForm] = useState({});
-    Object.keys(props.formlist).map(item=>{
-        if (form[item] == undefined) 
-            form[item] = null;
-    });
-    props.setResult(form);
+    props.setResult(
+        (()=>{
+            const form = Object.assign(props.result);
+            Object.entries(props.formlist).map(item=>{
+                if (form[item[0]] == undefined) 
+                    form[item[0]] = null;
+            });
+            return Object.assign(form)
+        })()
+    );
+
     const setter = {
       'string' : (target)=>{
         return(
@@ -22,8 +28,13 @@ function Form(props) {
                 alignSelf: "stretch"
                 }}
                 setValue = {(v)=>{
-                    form[target] = v
-                    props.setResult(form)
+                    props.setResult(
+                        ((v)=>{
+                            const form = Object.assign(props.result);
+                            form[target] = v
+                            return Object.assign(form)
+                        })(v)
+                    )
                 }}
                 placehold = {target}
                 ></Textbox>
@@ -41,8 +52,13 @@ function Form(props) {
                 alignSelf: "stretch"
                 }}
                 setValue = {(v)=>{
-                    form[target] = v
-                    props.setResult(form)
+                    props.setResult(
+                        ((v)=>{
+                            const form = Object.assign(props.result);
+                            form[target] = v
+                            return Object.assign(form)
+                        })(v)
+                    )
                 }}
                 placehold = {target}
                 ></Textbox>
@@ -62,8 +78,13 @@ function Form(props) {
                 width:200,
             }}
             onChange = {(event)=>{
-                form[target]=event.target.value
-                props.setResult(form)
+                props.setResult(
+                    ((event)=>{
+                        const form = Object.assign(props.result);
+                        form[target] = event.target.value
+                        return Object.assign(form)
+                    })(event)
+                )
             }}>
                 <option key = 'M' value='M'>Male</option>
                 <option key = 'F' value='F'>Female</option>
@@ -78,12 +99,25 @@ function Form(props) {
             <div style = {item}>
                 <div style = {itemname}
                     >{target}</div>
-                <DatePicker 
-                selected={form[target]} 
+                <DatePicker  
                 onChange={(v)=>{
-                    form[target] = v
-                    props.setResult(form)
-                }}/>
+                    props.setResult(
+                        ((v)=>{
+                            const form = Object.assign(props.result);
+                            form[target] = v
+                            return Object.assign(form)
+                        })(v)
+                    )
+                }}
+                selected={null}
+                />
+                <ReadonlyText
+                style={{
+                    height: 43,
+                    alignSelf: "stretch"
+                }}
+                text = {''}
+                ></ReadonlyText>
             </div>
         )
       },
@@ -99,9 +133,14 @@ function Form(props) {
                     width:'100%',
                 }}
                 onChange = {(event)=>{
-                    form[target]=event.target.value
-                    if (form[target] == "") form[target] = null
-                    props.setResult(form)
+                    props.setResult(
+                        ((event)=>{
+                            const form = Object.assign(props.result);
+                            form[target] = event.target.value
+                            if (form[target] == "") form[target] = null
+                            return Object.assign(form)
+                        })(event)
+                    )
                 }}>
                 {Object.entries(list).map(item=>{
                     return <option key = {[item[1]]} value={[item[1]]}>{item[0]}</option>
@@ -137,9 +176,9 @@ const Container = styled.div`
     width: auto;
 `
 const itemname = {
-    'font-size' : '20px'
+    'fontSize' : '20px'
 }
 const item = {
-    'flex' : '1'
+    'flex' : '1',
 }
 export default Form;

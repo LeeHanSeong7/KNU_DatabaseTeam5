@@ -95,6 +95,7 @@ function SearchBar(props) {
         'height' : 'auto',
       }}
       formlist = {condiForm}
+      result = {conditioninfo}
       setResult = {setCondition}
       fDirec = 'row'
       ></Form>
