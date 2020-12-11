@@ -7,36 +7,45 @@ import MovieItem from "./MovieItem";
 
 function MovieList(props) {
   var i = 0;
-  return (
-    <Container {...props}>
-      <ScrollArea>
-        {props.Resultset.map(item=>{
-          i = i+1;
-          return (<Link 
-            to="/user-movie-page"
-            style={{
-            width: 100,
-            height: 36
-            }}
-            key = {i}>
-            <MovieItem
+  
+  if (props.Resultset != null){
+    return (
+      <Container {...props}>
+        <ScrollArea>
+          {props.Resultset.map(item=>{
+            i = i+1;
+            return (<Link 
+              to="/user-movie-page"
               style={{
-                height: 129,
-                width: 1366
+              width: '100%',
+              height: 129,
               }}
-              index = {i}
-              item = {props.Resultset[i-1]}
-              onClick = {()=>{
-                props.setItem(props.Resultset[i-1])
-              }}
-            ></MovieItem>
-          </Link>
-          )
-        }
-        )}
-      </ScrollArea>
-    </Container>
-  );
+              key = {i}>
+              <MovieItem
+                style={{
+                  height: '100%',
+                  width: '100%',
+                }}
+                index = {i}
+                item = {props.Resultset[i-1]}
+                onClick = {()=>{
+                  props.setItem(props.Resultset[i-1])
+                }}
+              ></MovieItem>
+            </Link>
+            )
+          }
+          )}
+        </ScrollArea>
+      </Container>
+    );
+  }
+  else{
+    return (
+    <Container>
+      <div>loading...</div>
+    </Container>);
+  }
 }
 
 const Container = styled.div`

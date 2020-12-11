@@ -4,11 +4,15 @@ import styled, { css } from "styled-components";
 function MovieItem(props) {
   return (
     <Container {...props}>
-      <Index>{props.index}</Index>
+      <Index>{props.index}. </Index>
       <Image1 src={require("../assets/images/movie-icon.png")}></Image1>
       <Group>
         <Title>{props.item.title}</Title>
-        <Genre>{props.item.genreList.map(genre=>{return " "+genre})}</Genre>
+        <Genre>{(()=>{
+          var str = "genre : "
+          props.item.genreList.map(genre=>{str = str+", "+genre})
+          return str;
+        })()}</Genre>
       </Group>
     </Container>
   );

@@ -14,14 +14,14 @@ function AccountInfo(props) {
   }
   const accountUpdate =()=>{
     const axios = require('axios');
-    const BodyJson = {
+    const ParamJson = {
         "id":props.userId,
         "password":props.userPassword,
     };
-    const url = 'http://localhost:8080//user/account/my-info/'
+    const url = 'http://localhost:8080/user/account/my-info/'
     try {
     axios.get(url,{
-        params:BodyJson,
+        params:ParamJson,
         headers: {"Content-Type": "Application/json"}
     })
     .then((response) => {
