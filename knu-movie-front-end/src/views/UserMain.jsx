@@ -32,6 +32,20 @@ export default function UserMain(props) {
                 actorList:['test','actor'],
                 type:'type',
         },
+        {
+                title_id:'title_id',
+                title:'test',
+                region:'kr',
+                runtime:"7",
+                startYear:'startYear',
+                total:0,
+                numVotes:'numVotes',
+                num:0,
+                avg:7,
+                genreList:['test','genre'],
+                actorList:['test','actor'],
+                type:'type',
+        },
     ]);
     return (
         <Router>

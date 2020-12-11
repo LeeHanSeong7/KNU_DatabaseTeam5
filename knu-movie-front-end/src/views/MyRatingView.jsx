@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import Button from "../components/Button";
 import styled, { css } from "styled-components";
+import StarRatings from 'react-star-ratings';
 
 function MyRatingView(props) {
   const ratingStyle ={
@@ -60,7 +61,13 @@ function MyRatingView(props) {
               >
                 <div style = {ratingStyle}>{i}.</div>
                 <div style = {ratingStyle}>{'<title>'} : {item.movieTitle}</div>
-                <div style = {ratingStyle}>rating : {item.rating}</div>
+                <div style = {ratingStyle}>rating : </div>
+                <StarRatings
+                  rating={item.rating}
+                  starEmptyColor="orange"
+                  starRatedColor="red"
+                  numberOfStars={10}
+                  name='rating'/>
               </div>
             )
           }

@@ -1,17 +1,21 @@
-import React, { Component } from "react";
+import React, { useState,  Component } from "react";
 import styled, { css } from "styled-components";
 import ReadonlyText from "../components/ReadonlyText";
 import Button from "../components/Button";
+import StarRatings from 'react-star-ratings';
 import {
     Link,
 } from "react-router-dom";
 
 function UserMovieView(props) {
+  const [stars, setStars] = useState(props.item.rating)
   const subtitleStyle = {
-    'font-size' : '25px'
+    'font-size' : '25px',
+    'display' : 'flex',
+    'flex-direction' : 'row',
   }
   const textStyle = {
-    height: 43,
+    height: 45,
     alignSelf: "stretch"
   }
   return (
@@ -48,7 +52,7 @@ function UserMovieView(props) {
           text = {(()=>{
             var str = "";
             props.item.genreList.map((item)=>{
-              str = str+", "+item;
+              str = str+' \''+item+'\'';
             });
             return str;
           })()}
@@ -60,15 +64,25 @@ function UserMovieView(props) {
           text = {(()=>{
             var str = "";
             props.item.actorList.map((item)=>{
-              str = str+", "+item;
+              str = str+' \''+item+'\'';
             });
             return str;
           })()}
         ></ReadonlyText>
+        <div style = {subtitleStyle}>{'give rate : '} 
+          <StarRatings
+            rating={stars}
+            starEmptyColor="orange"
+            starRatedColor="red"
+            numberOfStars={10}
+            changeRating={setStars}
+            name='rating'/>
+            <Button
+            width = '50px'
+            height = '50px' 
+            text = 'submit'/>
+          </div>
       </Group>
-      <div>
-        give rate
-      </div>
       <Link to="/">
         <Button
         width = '75px'

@@ -18,7 +18,7 @@ function MovieList(props) {
               to="/user-movie-page"
               style={{
               width: '100%',
-              height: 129,
+              height: 100,
               }}
               key = {i}>
               <MovieItem
@@ -27,9 +27,9 @@ function MovieList(props) {
                   width: '100%',
                 }}
                 index = {i}
-                item = {props.Resultset[i-1]}
+                item = {item}
                 onClick = {()=>{
-                  props.setItem(props.Resultset[i-1])
+                  props.setItem(item)
                 }}
               ></MovieItem>
             </Link>
@@ -58,7 +58,7 @@ const ScrollArea = styled.div`
   height: 100%;
   width : 100%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   display: flex;
 `;
 

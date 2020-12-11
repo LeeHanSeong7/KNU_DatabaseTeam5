@@ -10,7 +10,7 @@ function MovieItem(props) {
         <Title>{props.item.title}</Title>
         <Genre>{(()=>{
           var str = "genre : "
-          props.item.genreList.map(genre=>{str = str+", "+genre})
+          props.item.genreList.map(genre=>{str = str+' \''+genre+'\''})
           return str;
         })()}</Genre>
       </Group>
@@ -29,7 +29,7 @@ const Index = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 36px;
+  font-size: 35px;
   align-self: center;
   margin: 10px;
   text-align: right;
@@ -58,7 +58,7 @@ const Title = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 54px;
+  font-size: 50px;
   align-self: stretch;
 `;
 
@@ -67,7 +67,7 @@ const Genre = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 32px;
+  font-size: 25px;
   align-self: stretch;
 `;
 
