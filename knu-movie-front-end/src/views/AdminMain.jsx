@@ -9,9 +9,30 @@ import {
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Textbox from '../components/Textbox'
+import styled, { css } from "styled-components";
+import Button from "../components/Button";
+import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar";
 
 export default function AdminMain({ logoutButtonClicked }) {
     let history = useHistory();
+    const [item, setItem] = useState(null);
+    const [resultset, setResultset] = useState([
+        {
+                title_id:'title_id',
+                title:'title',
+                region:'region',
+                runtime:'runtime',
+                startYear:'startYear',
+                total:0,
+                numVotes:'numVotes',
+                num:0,
+                avg:0,
+                genreList:['test','genre'],
+                actorList:['test','actor'],
+                type:'type',
+        },
+    ]);
     return (
 
         <Router>
@@ -43,7 +64,11 @@ export default function AdminMain({ logoutButtonClicked }) {
                         <Home />
                     </Route>
                     <Route path="/admin-movie-page">
-                        <AdminMoviePage />
+                        <AdminMoviePage 
+                        setItem = {setItem}
+                        resultset = {resultset}
+                        setResultset = {setResultset}
+                        />
                     </Route>
                     <Route path="/rating-list">
                         <RatingList />
@@ -63,9 +88,62 @@ function Home() {
     );
 }
 
-function AdminMoviePage() {
+function AdminMoviePage(props) {
+    const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    `;
+    const Buttonset = styled.div`
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: flex-end;
+    background : grey;
+    height : 7vh;
+    width: 100vw;
+    display: flex;
+    `;
+    const searchStyle = {
+        alignSelf: "flex-start",
+        borderWidth: 0,
+        borderColor: "#000000",
+        borderStyle: "solid",
+        height: 'auto', 
+        width: 'calc(100vw - 2px)',
+    }
+    const movieListStyle = {
+        alignSelf: "stretch",
+        borderWidth: 0,
+        borderColor: "grey",
+        borderStyle: "solid",
+        flex : 1,
+        width: '100vw',
+    }
+    const buttonStyle = {
+        'justify-content': 'center',
+        'flex' : 1,
+        'background' : 'orange',
+        'flex-direction': 'column',
+        'margin-right': '3px',
+        'margin-left': '3px',
+        'text-align': 'center',
+        'align-items': 'center',
+    }
+    
     return (
-        <h2>adminMoviePage</h2>
+        
+        <Container>
+            <SearchBar
+            style={searchStyle}
+            setResultset = {props.setResultset}
+            ></SearchBar>
+            <MovieList
+            style={movieListStyle}
+            Resultset = {props.resultset}
+            setItem = {props.setItem}
+            ></MovieList>
+        </Container>
     );
 }
 

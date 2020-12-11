@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Properties;
 
@@ -320,9 +321,9 @@ public class DefaultMovieService implements MovieService{
                 }
             }
         }
-        
-
-        return Result.withValue(hashMovies);
+        List<MovieDTO> list = new ArrayList<MovieDTO>(hashMovies.values());
+        return Result.withValue(list);
+        // return Result.withValue(hashMovies);
     }
 
     // rate를 여기에 두는게 맞는진 모르겠는데 그냥 여기 둠. 그리고 2. rate 할 때 제목 받은걸로
