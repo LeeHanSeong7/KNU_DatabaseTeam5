@@ -68,23 +68,15 @@ function LoginComponent(props) {
           </Group3>
           <Group4>
             <Button
-              style={{
-                flex: 1,
-                height: 36,
-                width: 100
-              }}
+              height = '36px'
+              width = '100px'
               text = 'Sign in'
               onClick = {SigninClicked}
             ></Button>
             <Button2Filler></Button2Filler>
               <Button
-                style={{
-                  flex: 1,
-                 height: 36,
-                 width: 100
-                }}
-               text = 'Sign up'
-               onClick = {signupClicked}
+              text = 'Sign up'
+              onClick = {signupClicked}
               ></Button>
           </Group4>
         </Group5>
@@ -144,6 +136,7 @@ const Group4 = styled.div`
   height: 36px;
   width: 375px;
   flex-direction: row;
+  justify-content: 'space-between';
   display: flex;
 `;
 

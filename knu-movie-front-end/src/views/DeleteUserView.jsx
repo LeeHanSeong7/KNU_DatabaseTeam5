@@ -2,21 +2,24 @@ import React, { useState, Component, useEffect } from "react";
 import {
     Link,
 } from "react-router-dom";
-import Textbox from "../components/Textbox";
 import Button from "../components/Button";
+import Form from "../components/Form";
 import styled, { css } from "styled-components";
 
 function DeleteUserView(props) {
-  const [password, setPassword] = useState(null);
-  const [Repeat, setRepeeat] = useState(null);
+  const [passinfo, setPassinfo] = useState({});
   
   const submitClicked=()=>{
+    if (passinfo.password == null) {
+      alert('give password!');
+      return;
+    }
     const axios = require('axios');
     const url = 'http://localhost:8080//user/account/delete/'
     const BodyJson = {
       "id":props.userId,
-      "password":password,
-      "re-password":Repeat,
+      "password":passinfo.password,
+      "re-password":passinfo.password2,
     };
     try {
       axios.delete(url,{
@@ -28,7 +31,7 @@ function DeleteUserView(props) {
         props.logoutButtonClicked();
         console.log(response.body);
       }).catch((error)=>{
-        alert(error.response);
+        alert(error.response.data);
         console.log(error.response);
       })
     }catch(error){
@@ -37,44 +40,43 @@ function DeleteUserView(props) {
   }
   return (
     <Container {...props}>
+      <div style = {{
+        'font-size' : '250%',
+        'text-align': 'center',
+        background : 'red'
+        }}>Delete Account</div>
+      <div
+      style = {{
+        margin : '10px'
+      }}>
+        <Form
+        style = {{
+          'flex' : '1',
+          'height' : 'auto',
+        }}
+        formlist = {{
+          'password' : 'string',
+          'password2' : 'string'
+        }}
+        setResult = {setPassinfo}
+        fDirec = 'column'
+        ></Form>
+        <Link to="/">
+        <Button
+            style={{
+              width: 100,
+              height: 36,
+            }}
+            text = 'Submit'
+            onClick = {submitClicked}
+          ></Button>
+        </Link>
+      </div>
       <Link to="/">
-        <div
-        style={
-          {
-            width:50,
-            height:50,
-          }
-        }>
-          back
-        </div>
-      </Link>
-      <div>password</div>
-      <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setPassword}
-            placehold = 'input'
-      ></Textbox>
-      <div>password(repeat)</div>
-      <Textbox
-            style={{
-              height: 43,
-              alignSelf: "stretch"
-            }}
-            setValue = {setRepeeat}
-            placehold = 'input'
-      ></Textbox>
-      <Link to="/">=
-      <Button
-          style={{
-            width: 100,
-            height: 36
-          }}
-          text = 'Submit'
-          onClick = {submitClicked}
-        ></Button>
+        <Button
+        width = '75px'
+        height = '35px' 
+        text = 'back'/>
       </Link>
     </Container>
   );
@@ -83,15 +85,6 @@ function DeleteUserView(props) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ScrollArea = styled.div`
-  overflow-y: scroll;
-  width: 1366px;
-  height: 700px;
-  flex-direction: column;
-  justify-content: space-between;
-  display: flex;
 `;
 
 export default DeleteUserView;

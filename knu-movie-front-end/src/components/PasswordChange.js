@@ -1,48 +1,60 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
-import PasswordText from "./PasswordText";
+import Form from "./Form";
 import Button from "./Button";
 
 function PasswordChange(props) {
+  const [changeinfo, setChangeinfo] = useState({});
+  const submitClicked = ()=>{
+    if (changeinfo['New Password'] == null) {
+      alert('give password!');
+      return;
+    }
+    else if (changeinfo['New Password'] != changeinfo['New Password(repeat)']){
+      alert('new passwords is not same!');
+      return;
+    }
+    const axios = require('axios');
+    const url = 'http://localhost:8080/user/account/change-password/'
+    try {
+      const ParamJson = {
+        "id" : props.userId,
+        "password" : props.userPassword,
+        "changed" : changeinfo['New Password'],
+      }
+      axios.get(url, {
+        params : ParamJson,
+        headers: {"Content-Type": "Application/json"}})
+      .then((response) => {
+        alert('Password changed!');
+        console.log('res:'+response.body);
+      }).catch((error)=>{
+        console.log(error.response);
+        //alert(error.response.data);
+      })
+    }catch(error){
+      console.error(error);
+    }
+  }
   return (
     <Container {...props}>
-      <Group>
-        <CurrentPassword>Current Password</CurrentPassword>
-        <PasswordText
-          style={{
-            height: 43,
-            alignSelf: "stretch"
-          }}
-        ></PasswordText>
-        <NewPassword>New Password</NewPassword>
-        <PasswordText
-          style={{
-            height: 43,
-            alignSelf: "stretch"
-          }}
-        ></PasswordText>
-        <NewPasswordRepeat>New Password(repeat)</NewPasswordRepeat>
-        <PasswordText
-          style={{
-            height: 43,
-            alignSelf: "stretch"
-          }}
-        ></PasswordText>
-      </Group>
-      <Group1>
-        <Button
-          style={{
-            width: 100,
-            height: 36
-          }}
-        ></Button>
-        <Button
-          style={{
-            width: 100,
-            height: 36
-          }}
-        ></Button>
-      </Group1>
+      <Form
+        style = {{
+          'flex' : '1',
+          'height' : 'auto',
+        }}
+        formlist = {{
+          'Current Password' : 'string',
+          'New Password' : 'string',
+          'New Password(repeat)' : 'string',
+        }}
+        setResult = {setChangeinfo}
+        fDirec = 'column'
+      ></Form>
+      <Button
+        text = 'submit'
+        onClick = {submitClicked}
+      ></Button>
     </Container>
   );
 }
@@ -51,52 +63,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
-
-const Group = styled.div`
-  height: 356px;
-  flex-direction: column;
-  justify-content: space-between;
-  align-self: stretch;
-  display: flex;
-`;
-
-const CurrentPassword = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  align-self: stretch;
-`;
-
-const NewPassword = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  align-self: stretch;
-`;
-
-const NewPasswordRepeat = styled.span`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  color: #121212;
-  font-size: 25px;
-  height: 30px;
-  align-self: stretch;
-`;
-
-const Group1 = styled.div`
-  height: 36px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-self: stretch;
-  display: flex;
 `;
 
 export default PasswordChange;

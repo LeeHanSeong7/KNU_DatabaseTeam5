@@ -1,23 +1,30 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 
-function Button({text , onClick}) {
+function Button({text , onClick, color , width , height}) {
+  if (color == undefined) color = 'orange';
+  if (height == undefined) height = '36px';
+  if (width == undefined) width = '100px';
   return (
     <Container
-    onClick = {onClick}>
+    onClick = {onClick}
+    color = {color}
+    width = {width}
+    height = {height}>
       <Text>{text}</Text>
     </Container>
   );
 }
 
 const Container = styled.button`
+  width : ${(props)=> props.width};
+  height : ${(props)=> props.height};
   display: flex;
-  background-color: #3F51B5;
+  background-color: ${(props)=> props.color};
   justify-content: center;
   align-items: center;
   flex-direction: row;
   border-radius: 2px;
-  min-width: 88px;
   padding-left: 16px;
   padding-right: 16px;
   box-shadow: 0px 1px 5px  0.35px #000 ;

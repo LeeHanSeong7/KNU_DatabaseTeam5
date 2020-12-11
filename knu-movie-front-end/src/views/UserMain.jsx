@@ -68,98 +68,126 @@ export default function UserMain(props) {
 
 function Home(props) {
     let history = useHistory();
+    const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    `;
+    const Buttonset = styled.div`
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: flex-end;
+    background : grey;
+    height : 7vh;
+    width: 100vw;
+    display: flex;
+    `;
+    const searchStyle = {
+        alignSelf: "flex-start",
+        borderWidth: 0,
+        borderColor: "#000000",
+        borderStyle: "solid",
+        height: 'auto', 
+        width: 'calc(100vw - 2px)',
+    }
+    const movieListStyle = {
+        alignSelf: "stretch",
+        borderWidth: 0,
+        borderColor: "grey",
+        borderStyle: "solid",
+        flex : 1,
+        width: '100vw',
+    }
+    const buttonStyle = {
+        'justify-content': 'center',
+        'flex' : 1,
+        'background' : 'orange',
+        'flex-direction': 'column',
+        'margin-right': '3px',
+        'margin-left': '3px',
+        'text-align': 'center',
+        'align-items': 'center',
+    }
     return (
-        <Group2>
-        <Group>
-        <Button
-            onClick = {()=>{
-                props.logoutButtonClicked();
-            }}
-            text = 'Sign out'
-        ></Button>
-        <Link 
-                to="/delete-accout"
-                style={{
-                width: 100,
-                height: 36
-                }}>
-            <Button
-                text = 'delete Account'
-            ></Button>
-        </Link>
-          <Button
-            style={{
-              width: 100,
-              height: 36
-            }}
-            text = 'Movie Recommand'
-            onClick ={()=>{
-                props.setResultset([
-                    {
-                            title_id:'rec',
-                            title:'rec',
-                            region:'region',
-                            runtime:'runtime',
-                            startYear:'startYear',
-                            total:0,
-                            numVotes:'numVotes',
-                            num:0,
-                            avg:0,
-                            genreList:['test','genre'],
-                            actorList:['test','actor'],
-                            type:'type',
-                    },
-                ]);
-            }}
-          ></Button>
-        <Link 
-                to="/my-ratings"
-                style={{
-                width: 100,
-                height: 36
-                }}>
-            <Button
-                text = 'My Rating'
-            ></Button>
-        </Link>
-        <Link 
-                to="/user-account"
-                style={{
-                width: 100,
-                height: 36
-                }}>
-            <Button
-                text = 'My Account'
-            ></Button>
-        </Link>
-        </Group>
-        <SearchBar
-          style={{
-            alignSelf: "stretch",
-            borderWidth: 1,
-            borderColor: "#000000",
-            flex: 0.13,
-            borderStyle: "solid"
-          }}
-          setResultset = {props.setResultset}
-        ></SearchBar>
-        <MovieList
-          style={{
-            alignSelf: "stretch",
-            borderWidth: 1,
-            borderColor: "#000000",
-            height: 283,
-            flex: 0.79,
-            borderStyle: "solid"
-          }}
-          Resultset = {props.resultset}
-          setItem = {props.setItem}
-        ></MovieList>
-      </Group2>
+        <Container>
+            <SearchBar
+            style={searchStyle}
+            setResultset = {props.setResultset}
+            ></SearchBar>
+            <MovieList
+            style={movieListStyle}
+            Resultset = {props.resultset}
+            setItem = {props.setItem}
+            ></MovieList>
+            <Buttonset>
+                    <div
+                        style = {buttonStyle}
+                        onClick = {()=>{
+                            props.logoutButtonClicked();
+                        }}>
+                        <Button
+                        width = '100%'
+                        height = '100%'
+                        text = 'Sign out'/>
+                    </div>
+                    <Link
+                        style = {buttonStyle}
+                        to="/delete-accout">
+                        <Button
+                        width = '100%'
+                        height = '100%'
+                        text = 'delete Account'/>
+                    </Link>
+                    <div
+                        style = {buttonStyle}
+                        onClick ={()=>{
+                            props.setResultset([
+                                {
+                                        title_id:'rec',
+                                        title:'rec',
+                                        region:'region',
+                                        runtime:'runtime',
+                                        startYear:'startYear',
+                                        total:0,
+                                        numVotes:'numVotes',
+                                        num:0,
+                                        avg:0,
+                                        genreList:['test','genre'],
+                                        actorList:['test','actor'],
+                                        type:'type',
+                                },
+                            ]);
+                        }}>
+                        <Button
+                        width = '100%'
+                        height = '100%'
+                        text = 'Recommand'/>
+                    </div>
+                    <Link
+                        style = {buttonStyle}
+                        to="/my-ratings">
+                        <Button
+                        width = '100%'
+                        height = '100%'
+                        text = 'My Rating'/>
+                    </Link>
+                    <Link 
+                        style = {buttonStyle}
+                        to="/user-account">
+                        <Button
+                        width = '100%'
+                        height = '100%'
+                        text = 'My Account'/>
+                    </Link>
+            </Buttonset>
+        </Container>
     );
+    
 }
 
 function UserAccount(props) {
+    const [accinfo, setAccinfo] = useState(null);
     return (
         <UserAccountView
         userId={props.userId}
@@ -187,23 +215,3 @@ function DeleteAccount(props) {
         userId = {props.userId}/>
     );
 }
-
-
-//usermain
-const Group2 = styled.div`
-  display: flex;
-  width: 1366px;
-  height: 768px;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const Group = styled.div`
-  flex-direction: row;
-  justify-content: space-between;
-  align-self: stretch;
-  flex: 0.07999999999999997 1 0%;
-  display: flex;
-`;
-
-//end usermain

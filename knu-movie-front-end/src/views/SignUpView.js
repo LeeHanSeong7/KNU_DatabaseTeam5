@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
+import Button from "../components/Button";
 import SignUp from "../components/SignUp";
 
 function SignUpView({setSignup}) {
   return (
-    <Group6>
+    <Group>
       <SignUpInfomation>Sign up Infomation</SignUpInfomation>
       <SignUp
         style={{
@@ -14,27 +15,35 @@ function SignUpView({setSignup}) {
         }}
         setSignup = {setSignup}
       ></SignUp>
-    </Group6>
+      <Button
+      width = '75px'
+      height = '35px' 
+      text = 'back'
+      onClick = {()=>setSignup(false)}
+      />
+    </Group>
   );
 }
 
-const Group6 = styled.div`
+const Group = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   height: 100vh;
   width: 100vw;
 `;
 
 const SignUpInfomation = styled.span`
+  background-color: lightblue;
   font-family: Roboto;
   font-style: normal;
-  font-weight: 400;
   color: #121212;
   font-size: 50px;
   text-align: center;
   align-self: center;
+  height: auto;
+  width: 100%;
 `;
 
 export default SignUpView;
