@@ -9,30 +9,21 @@ require('react-datepicker/dist/react-datepicker.css')
 function SignUp(props) {
   const axios = require('axios');
   const mandatoryform = {
-    format : {
-      'email':'string',
-      'password':'string', 
-      'passwordRepeat':'string',
-      'name':'string',
-      'pnumber':'string',
-    },
-    form : {},
+    'email':'string',
+    'password':'string', 
+    'passwordRepeat':'string',
+    'name':'string',
+    'pnumber':'string',
   };
-  for (const item of Object.keys(mandatoryform.format)) {
-    mandatoryform.form[item] = null;
-  }
+  const [mandatoryinfo,setMandatory] = useState({});
   const optionalform = {
-    format : {
-      'address':'string',
-      'gender':'gender',
-      'birthDate':'date',
-      'job':'string'
-    },
-    form : {},
-  };
-  for (const item of Object.keys(optionalform.format)) {
-    optionalform.form[item] = null;
+    'address':'string',
+    'gender':'gender',
+    'birthDate':'date',
+    'job':'string'
   }
+  const [optionalinfo,setOptional] = useState({});
+
   const submitClicked =()=>{
     const url = 'http://localhost:8080/signup/'
     
@@ -46,21 +37,22 @@ function SignUp(props) {
       return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
     }
 
-    if (mandatoryform.form.password != mandatoryform.form.passwordRepeat) return (alert("password incorrect!"));
+    if (mandatoryinfo.password != mandatoryinfo.passwordRepeat) return (alert("password incorrect!"));
 
     try {
       const BodyJson = JSON.stringify({
-        "address": optionalform.form.address,
-        "birth_date": getFormatDate(optionalform.form.birthDate),
-        "email_id": mandatoryform.form.email,
-        "gender": optionalform.form.gender,
+        "address": optionalinfo.address,
+        "birth_date": getFormatDate(optionalinfo.birthDate),
+        "email_id": mandatoryinfo.email,
+        "gender": optionalinfo.gender,
         "isAdmin": false,
-        "job": optionalform.form.job,
+        "job": optionalinfo.job,
         "membership": "basic",
-        "name": mandatoryform.form.name,
-        "password": mandatoryform.form.password,
-        "phone_number": mandatoryform.form.pnumber,
+        "name": mandatoryinfo.name,
+        "password": mandatoryinfo.password,
+        "phone_number": mandatoryinfo.pnumber,
       });
+      console.log(BodyJson)
       axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
       .then((response) => {
         alert('Signup complete!');
@@ -82,6 +74,7 @@ function SignUp(props) {
         >mandatory</div>
         <Form
         formlist = {mandatoryform}
+        setResult = {setMandatory}
         fDirec = 'column'
         ></Form>
         <div
@@ -89,6 +82,7 @@ function SignUp(props) {
           >optionalform</div>
         <Form
         formlist = {optionalform}
+        setResult = {setOptional}
         fDirec = 'column'
         ></Form>
       </Group>

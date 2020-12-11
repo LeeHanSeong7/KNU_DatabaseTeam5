@@ -8,9 +8,8 @@ require('react-datepicker/dist/react-datepicker.css')
 
 function SearchBar(props) {
   const [movieName, setMovieName] = useState(null);
-
-  const condiList = {
-    format : {
+  const [conditioninfo,setCondition] = useState({});
+  const condiForm = {
       'MovieID':null,
       'Maxyear':'date',
       'Minyear':'date',
@@ -19,6 +18,7 @@ function SearchBar(props) {
       'Maxaver': null,
       'Minaver': null,
       'genre': {
+        'All' : null,
         'Action':'Action',
         'Comedy':'Comedy',
         'Fantasy':'Fantasy',
@@ -29,27 +29,24 @@ function SearchBar(props) {
       },
       'actor':null,
       'type': {
+        'All' : null,
         'Movie': 'Movie',
         'KnuMovieDB Original': 'Original',
         'TV Series': 'TV Series',
       },
       'MovieName':null,
-    },
-    form : {},
-  }
-  for (const item of Object.keys(condiList.format)) {
-    condiList.form[item] = null;
   }
   return (
     <Container {...props}>
       <Form
-      formlist = {condiList}
-      fDirec = 'row'
       style = {{
         'flex' : '1',
         'height' : 'auto',
-      }}>
-      </Form>
+      }}
+      formlist = {condiForm}
+      setResult = {setCondition}
+      fDirec = 'row'
+      ></Form>
       <Group>
         <Textbox
           style={{
@@ -70,6 +67,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width : 100vw;
 `;
 
 const Group = styled.div`

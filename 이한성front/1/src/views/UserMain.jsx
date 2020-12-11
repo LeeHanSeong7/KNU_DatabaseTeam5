@@ -72,37 +72,47 @@ function Home(props) {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width : 100%;
-    height : 100%;
+    height: 100vh;
     `;
     const Buttonset = styled.div`
     flex-direction: row;
     justify-content: space-between;
-    align-self: stretch;
+    align-self: flex-end;
     background : grey;
-    height : auto;
+    height : 7vh;
+    width: 100vw;
     display: flex;
     `;
     const searchStyle = {
-        alignSelf: "stretch",
-        borderWidth: 1,
+        alignSelf: "flex-start",
+        borderWidth: 0,
         borderColor: "#000000",
         borderStyle: "solid",
         height: 'auto', 
+        width: 'calc(100vw - 2px)',
     }
     const movieListStyle = {
         alignSelf: "stretch",
-        borderWidth: 1,
-        borderColor: "#000000",
-        height:'1000',
-        borderStyle: "solid"
+        borderWidth: 0,
+        borderColor: "grey",
+        borderStyle: "solid",
+        flex : 1,
+        width: '100vw',
+    }
+    const buttonStyle = {
+        'justify-content': 'center',
+        'flex' : 1,
+        'background' : 'orange',
+        'flex-direction': 'column',
+        // 'margin-top': '3px',
+        // 'margin-bottom': '3px',
+        'margin-right': '3px',
+        'margin-left': '3px',
+        'text-align': 'center',
+        'align-items': 'center',
     }
     return (
-        <Container
-        style = {{
-            'flex' : '1',
-          }}
-        >
+        <Container>
             <SearchBar
             style={searchStyle}
             setResultset = {props.setResultset}
@@ -113,28 +123,20 @@ function Home(props) {
             setItem = {props.setItem}
             ></MovieList>
             <Buttonset>
-                    <Button
+                    <div
+                        style = {buttonStyle}
                         onClick = {()=>{
                             props.logoutButtonClicked();
-                        }}
-                        text = 'Sign out'
-                    ></Button>
-                    <Link 
-                            to="/delete-accout"
-                            style={{
-                            width: 100,
-                            height: 36
-                            }}>
-                        <Button
-                            text = 'delete Account'
-                        ></Button>
+                        }}>
+                        <div style = {{background : 'red'}}>Sign out</div>
+                    </div>
+                    <Link
+                        style = {buttonStyle}
+                        to="/delete-accout">
+                        <div style = {{background : 'red'}}>delete Account</div>
                     </Link>
-                    <Button
-                        style={{
-                        width: 100,
-                        height: 36
-                        }}
-                        text = 'Movie Recommand'
+                    <div
+                        style = {buttonStyle}
                         onClick ={()=>{
                             props.setResultset([
                                 {
@@ -152,27 +154,18 @@ function Home(props) {
                                         type:'type',
                                 },
                             ]);
-                        }}
-                    ></Button>
-                    <Link 
-                            to="/my-ratings"
-                            style={{
-                            width: 100,
-                            height: 36
-                            }}>
-                        <Button
-                            text = 'My Rating'
-                        ></Button>
+                        }}>
+                        <div style = {{background : 'red'}}>Movie Recommand</div>
+                    </div>
+                    <Link
+                        style = {buttonStyle}
+                        to="/my-ratings">
+                        <div style = {{background : 'red'}}>My Rating</div>
                     </Link>
                     <Link 
-                            to="/user-account"
-                            style={{
-                            width: 100,
-                            height: 36
-                            }}>
-                        <Button
-                            text = 'My Account'
-                        ></Button>
+                        style = {buttonStyle}
+                        to="/user-account">
+                        <div style = {{background : 'red'}}>My Account</div>
                     </Link>
             </Buttonset>
         </Container>

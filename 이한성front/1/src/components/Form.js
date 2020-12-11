@@ -4,9 +4,11 @@ import Textbox from "./Textbox";
 import DatePicker from "react-datepicker";
 
 function Form(props) {
-    var fDirec = props.fDirec;
-    if (fDirec != 'row')
-        fDirec = 'column';
+    const [form,setForm] = useState({});
+    Object.keys(props.formlist).map(item=>{
+        if (form[item] == undefined) 
+            form[item] = null;
+    });
     const setter = {
       'string' : (target)=>{
         return(
@@ -18,8 +20,9 @@ function Form(props) {
                 height: 43,
                 alignSelf: "stretch"
                 }}
-                setValue = {(e)=>{
-                    props.formlist.form[target] = e
+                setValue = {(v)=>{
+                    form[target] = v
+                    props.setResult(form)
                 }}
                 placehold = {target}
                 ></Textbox>
@@ -36,8 +39,9 @@ function Form(props) {
                 height: 43,
                 alignSelf: "stretch"
                 }}
-                setValue = {(e)=>{
-                    props.formlist.form[target] = e
+                setValue = {(v)=>{
+                    form[target] = v
+                    props.setResult(form)
                 }}
                 placehold = {target}
                 ></Textbox>
@@ -55,13 +59,14 @@ function Form(props) {
                 backgroundColor: "rgba(224, 224, 230, 1)",
                 margin: 1,
                 width:200,
+            }}
+            onChange = {(event)=>{
+                form[target]=event.target.value
+                props.setResult(form)
             }}>
-                <option key = 'M' value='M'
-                onClick={(v)=>props.formlist.form[target]=v}>Male</option>
-                <option key = 'F' value='F'
-                onClick={(v)=>props.formlist.form[target]=v}>Female</option>
+                <option key = 'M' value='M'>Male</option>
+                <option key = 'F' value='F'>Female</option>
                 <option key = 'null' value={null}
-                onClick={(v)=>props.formlist.form[target]=v}
                 selected>null</option>
             </select>
           </div>
@@ -73,8 +78,11 @@ function Form(props) {
                 <div style = {itemname}
                     >{target}</div>
                 <DatePicker 
-                selected={props.formlist.form[target]} 
-                onChange={(v)=>props.formlist.form[target]=v}/>
+                selected={form[target]} 
+                onChange={(v)=>{
+                    form[target] = v
+                    props.setResult(form)
+                }}/>
             </div>
         )
       },
@@ -88,9 +96,14 @@ function Form(props) {
                     backgroundColor: "rgba(224, 224, 230, 1)",
                     margin: 1,
                     width:'100%',
+                }}
+                onChange = {(event)=>{
+                    form[target]=event.target.value
+                    if (form[target] == "") form[target] = null
+                    props.setResult(form)
                 }}>
                 {Object.entries(list).map(item=>{
-                    return <option key = {item[1]} value={item[1]}>{item[0]}</option>
+                    return <option key = {[item[1]]} value={[item[1]]}>{item[0]}</option>
                 })}
                 </select>
             </div>
@@ -99,9 +112,9 @@ function Form(props) {
     }
     return (
         <Container {...props}
-        fDirec = {fDirec}>
+        fDirec = {props.fDirec}>
             {
-                Object.entries(props.formlist.format).map(item=>{
+                Object.entries(props.formlist).map(item=>{
                     if (item[1] == null) return;
                     else if (item[1].constructor == Object){
                         return setter['list'](item[0],item[1]);
