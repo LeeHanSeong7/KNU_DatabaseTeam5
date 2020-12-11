@@ -419,51 +419,56 @@ public class DefaultMovieService implements MovieService{
             e.printStackTrace();
         } 
 
-        if(movieDTO.getGenreList().size() > 0){
-            for(String genre : movieDTO.getGenreList()){
-                sql = "INSERT INTO MOVIE_HAS_GENRE VALUES('"+movieDTO.getTitleId()+"', '"+genre+"')";
-                try {
-                    PreparedStatement ppst = connection.prepareStatement(sql);
-                    int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
-                    else {
-                        connection.commit();
-                    }
-        
-                } catch (Exception e)  {
-                    e.printStackTrace();
-                } 
+        if(movieDTO.getGenreList() != null){
+            if(movieDTO.getGenreList().size() > 0){
+                for(String genre : movieDTO.getGenreList()){
+                    sql = "INSERT INTO MOVIE_HAS_GENRE VALUES('"+movieDTO.getTitleId()+"', '"+genre+"')";
+                    try {
+                        PreparedStatement ppst = connection.prepareStatement(sql);
+                        int r = ppst.executeUpdate();
+                        if (r != 1) return Result.withError(MovieError.unknown);
+                        else {
+                            connection.commit();
+                        }
+            
+                    } catch (Exception e)  {
+                        e.printStackTrace();
+                    } 
+                }
             }
         }
-        if(movieDTO.getActorList().size() > 0){
-            for(String actor : movieDTO.getActorList()){
-                sql = "SELECT Actor_id FROM ACTOR WHERE name = '"+actor+"'";
-                String actor_id = "";
-                try {
-                    PreparedStatement ppst = connection.prepareStatement(sql);
-                    ResultSet rs = ppst.executeQuery();
-                    rs.next();
-                    actor_id = rs.getString(1);
-        
-                } catch (Exception e)  {
-                    e.printStackTrace();
-                    return Result.withError(MovieError.noActors);
-                } 
-
-                sql = "INSERT INTO MOVIE_CAST_ACTOR VALUES ( '"+movieDTO.getTitleId()+"', '"+actor_id+"' )";
-                try {
-                    PreparedStatement ppst = connection.prepareStatement(sql);
-                    int r = ppst.executeUpdate();
-                    if (r != 1) return Result.withError(MovieError.unknown);
-                    else {
-                        connection.commit();
-                    }
-        
-                } catch (Exception e)  {
-                    e.printStackTrace();
-                } 
+        if(movieDTO.getActorList() != null){
+            if(movieDTO.getActorList().size() > 0){
+                for(String actor : movieDTO.getActorList()){
+                    sql = "SELECT Actor_id FROM ACTOR WHERE name = '"+actor+"'";
+                    String actor_id = "";
+                    try {
+                        PreparedStatement ppst = connection.prepareStatement(sql);
+                        ResultSet rs = ppst.executeQuery();
+                        rs.next();
+                        actor_id = rs.getString(1);
+            
+                    } catch (Exception e)  {
+                        e.printStackTrace();
+                        return Result.withError(MovieError.noActors);
+                    } 
+    
+                    sql = "INSERT INTO MOVIE_CAST_ACTOR VALUES ( '"+movieDTO.getTitleId()+"', '"+actor_id+"' )";
+                    try {
+                        PreparedStatement ppst = connection.prepareStatement(sql);
+                        int r = ppst.executeUpdate();
+                        if (r != 1) return Result.withError(MovieError.unknown);
+                        else {
+                            connection.commit();
+                        }
+            
+                    } catch (Exception e)  {
+                        e.printStackTrace();
+                    } 
+                }
             }
         }
+        
         return Result.success;
     }
 
