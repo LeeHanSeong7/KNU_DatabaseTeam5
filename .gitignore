@@ -19,3 +19,4 @@
 knu-movie/src/config/db.properties
 
 knu-movie/.vscode/settings.json
+knu-movie/app/src/main/java/knu/movie/app/config/db.properties
