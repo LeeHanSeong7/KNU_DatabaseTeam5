@@ -5,6 +5,9 @@ import ReadonlyText from "./ReadonlyText";
 import DatePicker from "react-datepicker";
 
 function Form(props) {
+    const [max , setMax] = useState(null)
+    const [min , setMin] = useState(null)
+    const [birth , setBirth] = useState(null)
     props.setResult(
         (()=>{
             const form = Object.assign(props.result);
@@ -113,8 +116,18 @@ function Form(props) {
                             return Object.assign(form)
                         })(v)
                     )
+                    if (target == 'Maxyear') setMax(v)
+                    else if (target == 'Minyear') setMin(v)
+                    else if (target == 'birthDate') setBirth(v)
+                    else if (target == 'birth_date') setBirth(v)
                 }}
-                selected={null}
+                selected={(()=>{
+                    if (target == 'Maxyear') return max
+                    else if (target == 'Minyear') return min
+                    else if (target == 'birthDate') return birth
+                    else if (target == 'birth_date') return birth
+                    else return null
+                })()}
                 />
                 <ReadonlyText
                 style={{
