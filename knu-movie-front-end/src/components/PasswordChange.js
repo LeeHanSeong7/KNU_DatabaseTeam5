@@ -19,7 +19,7 @@ function PasswordChange(props) {
     try {
       const ParamJson = {
         "id" : props.userId,
-        "password" : props.userPassword,
+        "password" : changeinfo['Current Password'],
         "changed" : changeinfo['New Password'],
       }
       axios.get(url, {
@@ -30,7 +30,7 @@ function PasswordChange(props) {
         console.log('res:'+response.body);
       }).catch((error)=>{
         console.log(error.response);
-        //alert(error.response.data);
+        alert(error.response.data);
       })
     }catch(error){
       console.error(error);
