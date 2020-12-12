@@ -125,6 +125,7 @@ function SearchBar(props) {
             borderWidth: 1,
             borderColor: "#000000",
             borderStyle: "solid",
+            background : "rgba(216, 234, 247, 1)",
             flex: 1
           }}
           placehold = 'give Movie name here'

@@ -14,6 +14,7 @@ import UserAccountView from "./UserAccountView";
 import MyRatingView from "./MyRatingView";
 import DeleteUserView from "./DeleteUserView";
 import UserMovieView from "./UserMovieView";
+import LogoImage from "../assets/images/ui_logo.jpg"
 
 export default function UserMain(props) {
     const [item, setItem] = useState(null);
@@ -79,6 +80,7 @@ function Home(props) {
         borderWidth: 0,
         borderColor: "#000000",
         borderStyle: "solid",
+        background : 'lightblue',
         height: 'auto', 
         'z-index' : '1',
         width: 'calc(100vw - 2px)',
@@ -97,13 +99,19 @@ function Home(props) {
         'background' : 'orange',
         'flex-direction': 'column',
         'flex-wrap': 'wrap',
-        'margin-right': '3px',
-        'margin-left': '3px',
+        'margin-right': '1px',
+        'margin-left': '1px',
         'text-align': 'center',
         'align-items': 'center',
     }
     return (
         <Container>
+            {/* <img src = {LogoImage}
+                style = {{
+                    width : '200px',
+                    height : '30px',
+                }}>
+            </img> */}
             <SearchBar
             style={searchStyle}
             userId={props.userId}

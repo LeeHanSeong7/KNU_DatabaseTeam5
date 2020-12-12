@@ -118,7 +118,8 @@ const Email = styled.span`
   font-family: Roboto;
   font-style: normal;
   font-weight: 400;
-  color: rgba(215,215,215,1);
+  color: #121212;
+  //color: rgba(215,215,215,1);
   font-size: 35px;
   text-align: left;
 `;
@@ -127,7 +128,8 @@ const Password2 = styled.span`
   font-family: Roboto;
   font-style: normal;
   font-weight: 400;
-  color: rgba(194,194,194,1);
+  color: #121212;
+  //color: rgba(194,194,194,1);
   font-size: 35px;
   text-align: left;
 `;

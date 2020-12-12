@@ -14,7 +14,7 @@ function UserAccountView(props) {
   const titleStyle = {
     'font-size' : '250%',
     'text-align': 'center',
-    background : 'red'
+    background : 'lightblue'
   }
   return (
     <div>

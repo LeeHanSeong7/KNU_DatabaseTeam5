@@ -62,7 +62,7 @@ function UserMovieView(props) {
       <div style = {{
         'font-size' : '250%',
         'text-align': 'center',
-        background : 'red'
+        background : 'lightblue'
       }}>{props.item.title}</div>
       <Group>
         <div style = {subtitleStyle}>average rating</div>
@@ -111,8 +111,8 @@ function UserMovieView(props) {
         <div style = {subtitleStyle}>{'give rate : '} 
           <StarRatings
             rating={stars}
-            starEmptyColor="orange"
-            starRatedColor="red"
+            starEmptyColor="lightblue"
+            starRatedColor="rgba(87, 113, 229, 1)"
             numberOfStars={10}
             changeRating={setStars}
             name='rating'/>

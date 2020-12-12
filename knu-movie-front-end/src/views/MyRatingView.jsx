@@ -43,7 +43,7 @@ function MyRatingView(props) {
         <div style = {{
           'font-size' : '250%',
           'text-align': 'center',
-          background : 'red'
+          background : 'lightblue'
         }}>My Rating List</div>
         <ScrollArea>
           {itemList.map(item=>{
@@ -64,8 +64,8 @@ function MyRatingView(props) {
                 <div style = {ratingStyle}>rating : </div>
                 <StarRatings
                   rating={item.rating}
-                  starEmptyColor="orange"
-                  starRatedColor="red"
+                  starEmptyColor="lightblue"
+                  starRatedColor="rgba(87, 113, 229, 1)"
                   numberOfStars={10}
                   name='rating'/>
               </div>
@@ -89,7 +89,7 @@ function MyRatingView(props) {
       <div style = {{
         'font-size' : '250%',
         'text-align': 'center',
-        background : 'red'
+        background : 'lightblue'
       }}>My Rating List</div>
       <ScrollArea>
         <div style = {ratingStyle}> No data... </div>
@@ -111,7 +111,7 @@ const Container = styled.div`
 const ScrollArea = styled.div`
   alignSelf: flex-start;
   border-width: 1;
-  border-color: #000000;
+  border-color: lightblue;
   border-style: solid;
   overflow-y: scroll;
   flex : 0.95;

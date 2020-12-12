@@ -43,7 +43,7 @@ function DeleteUserView(props) {
       <div style = {{
         'font-size' : '250%',
         'text-align': 'center',
-        background : 'red'
+        background : 'lightblue'
         }}>Delete Account</div>
       <div
       style = {{

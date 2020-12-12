@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
 import LoginComponent from "../components/LoginComponent";
 import SignUpView from "./SignUpView";
+import LogoImage from "../assets/images/ui_logo.jpg"
 
 function LoginView(props) {
   const [isSignup, setSignUp] = useState(false);
@@ -19,7 +20,7 @@ function LoginView(props) {
     return (
       <Container {...props}>
           <Group>
-            <Image src={require("../assets/images/ui_logo.jpg")}></Image>
+            <Image src={LogoImage}></Image>
             <LoginComponent
               style={{
                 width: 487,

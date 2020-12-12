@@ -1,11 +1,12 @@
 import React, { useState, Component } from "react";
 import styled, { css } from "styled-components";
+import MovieIcon from "../assets/images/movie-icon.png"
 
 function MovieItem(props) {
   return (
     <Container {...props}>
       <Index>{props.index}. </Index>
-      <Image1 src={require("../assets/images/movie-icon.png")}></Image1>
+      <Image1 src={MovieIcon}></Image1>
       <Group>
         <Title>{'<'}{props.item.title}{'>'}</Title>
         <Genre>{(()=>{
@@ -36,7 +37,7 @@ const Index = styled.span`
 `;
 
 const Image1 = styled.img`
-  width: 100%;
+  width: 96px;
   height: 96px;
   align-self: center;
   margin: 10px;
