@@ -16,7 +16,7 @@ public class AccountDTO implements DTO {
     private String name;
     private String address;
     private String gender;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a z")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date birth_date;
     private String job;
     private String membership;
