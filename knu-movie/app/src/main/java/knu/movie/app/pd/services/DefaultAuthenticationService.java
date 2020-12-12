@@ -108,16 +108,22 @@ public class DefaultAuthenticationService implements AuthenticationService {
         if (!password.equals(re_password)) return Result.withError(AuthError.rePasswordDifferent);
         if (!id.equals(loggedInAcounts.get(id).getEmail_id())) return Result.withError(AuthError.idNotLoggedIn);
         if (!password.equals(loggedInAcounts.get(id).getPassword())) return Result.withError(AuthError.passwordWrong);
-        String sql = "DELETE FROM ACCOUNT WHERE email_id='" + id + "'";
+        
+        String sql = "DELETE FROM rating WHERE account_email_id='" + id + "'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
+            sql = "DELETE FROM ACCOUNT WHERE email_id='" + id + "'";
+            ppst = connection.prepareStatement(sql);
+            r = ppst.executeUpdate();
             if (r == 1) {
                 ppst.close();
                 loggedInAcounts.remove(id);
                 connection.commit();
                 return Result.success;
-            } 
+            } else {
+                connection.rollback();
+            }
             ppst.close();
         } catch (Exception e)  {
             e.printStackTrace();
