@@ -59,6 +59,7 @@ function DeleteUserView(props) {
           'password2' : 'string'
         }}
         setResult = {setPassinfo}
+        result = {passinfo}
         fDirec = 'column'
         ></Form>
         <Link to="/">

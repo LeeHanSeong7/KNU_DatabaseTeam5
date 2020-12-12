@@ -4,11 +4,15 @@ import styled, { css } from "styled-components";
 function MovieItem(props) {
   return (
     <Container {...props}>
-      <Index>{props.index}</Index>
+      <Index>{props.index}. </Index>
       <Image1 src={require("../assets/images/movie-icon.png")}></Image1>
       <Group>
-        <Title>{props.item.title}</Title>
-        <Genre>{props.item.genreList.map(genre=>{return " "+genre})}</Genre>
+        <Title>{'<'}{props.item.title}{'>'}</Title>
+        <Genre>{(()=>{
+          var str = "genre : "
+          props.item.genreList.map(genre=>{str = str+' \''+genre+'\''})
+          return str;
+        })()}</Genre>
       </Group>
     </Container>
   );
@@ -25,7 +29,7 @@ const Index = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 36px;
+  font-size: 15px;
   align-self: center;
   margin: 10px;
   text-align: right;
@@ -43,7 +47,7 @@ const Group = styled.div`
   width: 1366px;
   height: 103px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-self: center;
   margin: 10px;
   display: flex;
@@ -54,7 +58,7 @@ const Title = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 54px;
+  font-size: 25px;
   align-self: stretch;
 `;
 
@@ -63,7 +67,8 @@ const Genre = styled.span`
   font-style: normal;
   font-weight: 400;
   color: #121212;
-  font-size: 32px;
+  text-size-adjust: auto;
+  margin : 10px;
   align-self: stretch;
 `;
 

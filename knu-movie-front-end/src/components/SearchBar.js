@@ -10,7 +10,6 @@ require('react-datepicker/dist/react-datepicker.css')
 function SearchBar(props) {
   const [movieName, setMovieName] = useState(null);
   const [conditioninfo,setCondition] = useState({});
-
   const condiForm = {
       'MovieID':null,
       'Maxyear':'date',
@@ -38,10 +37,28 @@ function SearchBar(props) {
       },
       'MovieName':null,
   }
-
   const searchClicked = ()=>{
     const axios = require('axios');
     const url = 'http://localhost:8080/user/search-movie/'
+
+    const defaultValues = {
+      "movieID": '',
+      "movieName": '',
+      "Maxyear": null,
+      "Minyear": null,
+      "Maxaver": 10,
+      "Minaver": 0,
+      "Maxtime": -1,
+      "Mintime": -1,
+      "genre": '',
+      "actor": '',
+      "type": '',
+      "region": null,
+    }
+    const setDefault =(v)=>{
+      if (conditioninfo[v] == null || conditioninfo[v] == undefined) return defaultValues[v];
+      else return conditioninfo[v];
+    }
     function getFormatDate(date){
       if (date == null) return null;
       var year = date.getFullYear();              //yyyy
@@ -56,32 +73,34 @@ function SearchBar(props) {
       "password" : props.userPassword,
     }
     const BodyJson = JSON.stringify({
-      "movieID": null,
+      "movieID": setDefault('movieID'),
       "movieName": (()=>{
-        if (movieName == "") return null
-        else return movieName
+        if (movieName == null) return defaultValues['movieName'];
+        else return movieName;
       })(),
-      "Maxyear": getFormatDate(conditioninfo['Maxyear']),
-      "Minyear": getFormatDate(conditioninfo['Minyear']),
-      "Maxaver": null,
-      "Minaver": null,
-      "Maxtime": conditioninfo['Maxtime'],
-      "Mintime": conditioninfo['Mintime'],
-      "genre": conditioninfo['genre'],
-      "actor": null,
-      "type": conditioninfo['type'],
-      "region": null,
+      "Maxyear": getFormatDate(setDefault('Maxyear')),
+      "Minyear": getFormatDate(setDefault('Minyear')),
+      "Maxaver": setDefault('Maxaver'),
+      "Minaver": setDefault('Minaver'),
+      "Maxtime": setDefault('Maxtime'),
+      "Mintime": setDefault('Mintime'),
+      "genre": setDefault('genre'),
+      "actor": setDefault('actor'),
+      "type": setDefault('type'),
+      "region": setDefault('region'),
     });
     try {
       axios.post(url,BodyJson, {
         params : ParamJson,
         headers: {"Content-Type": "Application/json"}})
       .then((response) => {
-        alert('success');
-        console.log(response.body);
+        console.log(response);
+        props.setResultset(
+          Object.values(response.data)
+        );
       }).catch((error)=>{
         console.log(error.response);
-        alert('fail');
+        alert(error.response);
       })
     }catch(error){
       console.error(error);

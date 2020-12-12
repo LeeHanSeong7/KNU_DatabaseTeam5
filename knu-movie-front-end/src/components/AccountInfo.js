@@ -14,14 +14,14 @@ function AccountInfo(props) {
   }
   const accountUpdate =()=>{
     const axios = require('axios');
-    const BodyJson = {
+    const ParamJson = {
         "id":props.userId,
         "password":props.userPassword,
     };
-    const url = 'http://localhost:8080//user/account/my-info/'
+    const url = 'http://localhost:8080/user/account/my-info/'
     try {
     axios.get(url,{
-        params:BodyJson,
+        params:ParamJson,
         headers: {"Content-Type": "Application/json"}
     })
     .then((response) => {
@@ -92,7 +92,7 @@ function AccountInfo(props) {
             height: 43,
             alignSelf: "stretch"
           }}
-          text = {getFormatDate(props.accinfo.birth_date)}
+          text = {props.accinfo['birth_date']}
         ></ReadonlyText>
         <Gender>Gender</Gender>
         <ReadonlyText
@@ -110,7 +110,10 @@ function AccountInfo(props) {
     props.setupdated(false);
     return (
     <Container>
-      <div>loading...</div>
+      <div style = {{
+      'font-size' : '25px',
+      margin : '15px'
+      }}> No data... </div>
     </Container>);
   }
 }

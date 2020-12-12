@@ -22,23 +22,23 @@ function ModifyAccount(props) {
       if (modifyInfo[val] == "" || modifyInfo[val] == null) return props.accinfo[val]
       else return modifyInfo[val]
     }
+    const ParamJson = {
+      "id" : props.userId,
+      "password" : props.userPassword,
+    }
+    const BodyJson = JSON.stringify({
+      "address": getDefault('address'),
+      "birth_date": getFormatDate(getDefault('birth_date')),
+      "email_id": null,
+      "gender": getDefault('gender'),
+      "isAdmin": props.accinfo['isAdmin'],
+      "job": getDefault('job'),
+      "membership": props.accinfo['membership'],
+      "name": getDefault('name'),
+      "password": null,
+      "phone_number": getDefault('phone_number'),
+    });
     try {
-      const ParamJson = {
-        "id" : props.userId,
-        "password" : props.userPassword,
-      }
-      const BodyJson = JSON.stringify({
-        "address": getDefault('address'),
-        "birth_date": getFormatDate(getDefault('birth_date')),
-        "email_id": null,
-        "gender": getDefault('gender'),
-        "isAdmin": props.accinfo['isAdmin'],
-        "job": getDefault('job'),
-        "membership": props.accinfo['membership'],
-        "name": getDefault('name'),
-        "password": null,
-        "phone_number": getDefault('phone_number'),
-      });
       axios.post(url,BodyJson, {
         params : ParamJson,
         headers: {"Content-Type": "Application/json"}})
@@ -70,6 +70,7 @@ function ModifyAccount(props) {
             'job' : 'string',
           }}
           setResult = {setModify}
+          result = {modifyInfo}
           fDirec = 'column'
         ></Form>
         <Button

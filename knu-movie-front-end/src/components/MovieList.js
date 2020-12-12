@@ -7,36 +7,45 @@ import MovieItem from "./MovieItem";
 
 function MovieList(props) {
   var i = 0;
-  return (
-    <Container {...props}>
-      <ScrollArea>
-        {props.Resultset.map(item=>{
-          i = i+1;
-          return (<Link 
-            to="/user-movie-page"
-            style={{
-            width: 100,
-            height: 36
-            }}
-            key = {i}>
-            <MovieItem
+  
+  if (props.Resultset != null){
+    return (
+      <Container {...props}>
+        <ScrollArea>
+          {props.Resultset.map(item=>{
+            i = i+1;
+            return (<Link 
+              to="/user-movie-page"
               style={{
-                height: 129,
-                width: 1366
+              width: '100%',
+              height: 100,
               }}
-              index = {i}
-              item = {props.Resultset[i-1]}
-              onClick = {()=>{
-                props.setItem(props.Resultset[i-1])
-              }}
-            ></MovieItem>
-          </Link>
-          )
-        }
-        )}
-      </ScrollArea>
-    </Container>
-  );
+              key = {i}>
+              <MovieItem
+                style={{
+                  height: '100%',
+                  width: '100%',
+                }}
+                index = {i}
+                item = {item}
+                onClick = {()=>{
+                  props.setItem(item)
+                }}
+              ></MovieItem>
+            </Link>
+            )
+          }
+          )}
+        </ScrollArea>
+      </Container>
+    );
+  }
+  else{
+    return (
+    <Container>
+      <div>loading...</div>
+    </Container>);
+  }
 }
 
 const Container = styled.div`
@@ -46,10 +55,10 @@ const Container = styled.div`
 
 const ScrollArea = styled.div`
   overflow-y: scroll;
-  height: 100%;
+  flex : 1;
   width : 100%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   display: flex;
 `;
 

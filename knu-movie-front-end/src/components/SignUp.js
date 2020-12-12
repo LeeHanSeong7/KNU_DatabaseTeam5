@@ -36,6 +36,12 @@ function SignUp(props) {
       return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
     }
 
+    var triger = false;
+    Object.keys(mandatoryinfo).map((item)=>{
+      if (mandatoryinfo[item] == null) triger = true
+    })
+    if (triger == true) return alert(("please fill all mandatory infomation!"))
+      
     if (mandatoryinfo.password != mandatoryinfo.passwordRepeat) return (alert("password incorrect!"));
 
     try {
@@ -51,6 +57,7 @@ function SignUp(props) {
         "password": mandatoryinfo.password,
         "phone_number": mandatoryinfo.pnumber,
       });
+      console.log(BodyJson);
       axios.post(url,BodyJson, {headers: {"Content-Type": "Application/json"}})
       .then((response) => {
         alert('Signup complete!');
@@ -72,6 +79,7 @@ function SignUp(props) {
         >mandatory</div>
         <Form
         formlist = {mandatoryform}
+        result = {mandatoryinfo}
         setResult = {setMandatory}
         fDirec = 'column'
         ></Form>
@@ -80,6 +88,7 @@ function SignUp(props) {
           >optionalform</div>
         <Form
         formlist = {optionalform}
+        result = {optionalinfo}
         setResult = {setOptional}
         fDirec = 'column'
         ></Form>
@@ -114,7 +123,7 @@ const Group2 = styled.div`
   display: flex;
 `;
 const subtitle = {
-  'font-size': '30px',
+  'fontSize': '30px',
   'alignSelf': "center"
 }
 

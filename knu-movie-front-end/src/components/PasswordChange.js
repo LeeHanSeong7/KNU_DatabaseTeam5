@@ -49,6 +49,7 @@ function PasswordChange(props) {
           'New Password(repeat)' : 'string',
         }}
         setResult = {setChangeinfo}
+        result = {changeinfo}
         fDirec = 'column'
       ></Form>
       <Button

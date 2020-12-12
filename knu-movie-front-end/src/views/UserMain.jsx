@@ -17,40 +17,28 @@ import UserMovieView from "./UserMovieView";
 
 export default function UserMain(props) {
     const [item, setItem] = useState(null);
-    const [resultset, setResultset] = useState([
-        {
-                title_id:'title_id',
-                title:'title',
-                region:'region',
-                runtime:'runtime',
-                startYear:'startYear',
-                total:0,
-                numVotes:'numVotes',
-                num:0,
-                avg:0,
-                genreList:['test','genre'],
-                actorList:['test','actor'],
-                type:'type',
-        },
-    ]);
+    const [resultset, setResultset] = useState([]);
     return (
         <Router>
             <Switch>
                  <Route exact path="/">
-                     <Home 
-                     setItem = {setItem}
-                     resultset = {resultset}
-                     setResultset = {setResultset}
-                     logoutButtonClicked = {props.logoutButtonClicked}/>
+                    <Home 
+                    setItem = {setItem}
+                    resultset = {resultset}
+                    setResultset = {setResultset}
+                    logoutButtonClicked = {props.logoutButtonClicked}
+                    userId={props.userId}
+                    userPassword={props.userPassword}/>
                  </Route>
                  <Route path="/user-account">
                     <UserAccount      
                         userId={props.userId}
-                        userPassword={props.userPassword}
-                    />
+                        userPassword={props.userPassword}/>
                 </Route>
                  <Route path="/my-ratings">
-                    <MyRatings />
+                    <MyRatings 
+                        userId={props.userId}
+                        userPassword={props.userPassword}/>
                  </Route>
                 <Route path="/user-movie-page">
                     <UserMoviePage item = {item}/>
@@ -71,16 +59,17 @@ function Home(props) {
     const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    //justify-content: flex-start;
     height: 100vh;
+    width: 100vw;
     `;
     const Buttonset = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-self: flex-end;
     background : grey;
-    height : 7vh;
-    width: 100vw;
+    height : 50px;
+    width: 100%;
     display: flex;
     `;
     const searchStyle = {
@@ -89,6 +78,7 @@ function Home(props) {
         borderColor: "#000000",
         borderStyle: "solid",
         height: 'auto', 
+        'z-index' : '1',
         width: 'calc(100vw - 2px)',
     }
     const movieListStyle = {
@@ -96,14 +86,15 @@ function Home(props) {
         borderWidth: 0,
         borderColor: "grey",
         borderStyle: "solid",
+        height : '5px',
         flex : 1,
-        width: '100vw',
     }
     const buttonStyle = {
         'justify-content': 'center',
         'flex' : 1,
         'background' : 'orange',
         'flex-direction': 'column',
+        'flex-wrap': 'wrap',
         'margin-right': '3px',
         'margin-left': '3px',
         'text-align': 'center',
@@ -113,6 +104,8 @@ function Home(props) {
         <Container>
             <SearchBar
             style={searchStyle}
+            userId={props.userId}
+            userPassword={props.userPassword}
             setResultset = {props.setResultset}
             ></SearchBar>
             <MovieList
@@ -187,7 +180,6 @@ function Home(props) {
 }
 
 function UserAccount(props) {
-    const [accinfo, setAccinfo] = useState(null);
     return (
         <UserAccountView
         userId={props.userId}
@@ -196,15 +188,24 @@ function UserAccount(props) {
     );
 }
 
-function MyRatings() {
+function MyRatings(props) {
     return (
-        <MyRatingView/>
+        <MyRatingView
+        style = {{
+            display: 'flex',
+            'flex-direction': 'column',
+            'justify-content': 'flex-start',
+            height: '100vh',
+        }}
+        userId={props.userId}
+        userPassword={props.userPassword}/>
     );
 }
 
 function UserMoviePage(props) {
     return (
-    <UserMovieView/>
+    <UserMovieView
+    item  = {props.item}/>
     );
 }
 
