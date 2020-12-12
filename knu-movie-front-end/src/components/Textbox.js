@@ -2,7 +2,10 @@ import React, {useState, Component } from "react";
 import styled, { css } from "styled-components";
 
 function Textbox(props) {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState((()=>{
+    if (props.initValue == undefined) return ""
+    else return props.initValue
+  })())
 
   const onChangeField = e => {
     setInput(e.target.value);

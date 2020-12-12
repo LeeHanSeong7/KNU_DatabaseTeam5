@@ -39,15 +39,15 @@ function UserMovieView(props) {
         headers: {"Content-Type": "Application/json"}})
       .then((response) => {
         console.log(response);
+        alert("Rating complete");
       }).catch((error)=>{
         console.log(error.response);
-        alert(error.response);
+        alert(error.response.data.error);
       })
     }catch(error){
       console.error(error);
     }
   }
-
   const subtitleStyle = {
     'font-size' : '25px',
     'display' : 'flex',
