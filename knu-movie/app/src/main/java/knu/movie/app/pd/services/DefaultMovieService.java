@@ -908,8 +908,6 @@ public class DefaultMovieService implements MovieService{
         List<String> titles = ratingList.stream().filter(i-> i.rating >= max).map(i->i.movieTitle).collect(Collectors.toList());
         // 내가 가장 평점을 많이 준 영화의 목록
         List<MovieDTO> likedMovies = movies.values().stream().filter(i->titles.contains(i.getTitle())).collect(Collectors.toList());
-        // 내가 가장 평점을 많이 준 영화의 장르 목록
-        Set<String> genres = likedMovies.stream().flatMap(i->i.getGenreList().stream()).collect(Collectors.toSet());
         // 내가 가장 평점을 많이 준 영화의 배우 목록
         Set<String> actors = likedMovies.stream().flatMap(i->i.getActorList().stream()).collect(Collectors.toSet());
         // 내가 안 본 영화 목록
@@ -917,9 +915,9 @@ public class DefaultMovieService implements MovieService{
         if (result == Result.failure) return result;
         movies = (HashMap<String, MovieDTO>)result.getValue();
         // 좋아하는 배우 영화 목록
-        Map<String, MovieDTO>selected = movies.values().stream().filter(i-> i.getActorList().stream().anyMatch(actor->actors.contains(actor))).collect(Collectors.toMap(MovieDTO::getTitleId, Function.identity()));
-        // 좋아하는 장르 영화 목록
-        //movies = movies.values().stream().filter(i->i.get)
+        Map<String, MovieDTO>selected = movies.values().stream()
+                            .filter(i-> i.getActorList().stream().anyMatch(actor->actors.contains(actor)))
+                            .collect(Collectors.toMap(MovieDTO::getTitleId, Function.identity()));
         return Result.withValue(selected);
     }
     
