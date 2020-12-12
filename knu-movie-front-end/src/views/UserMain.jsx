@@ -104,6 +104,24 @@ function Home(props) {
         'text-align': 'center',
         'align-items': 'center',
     }
+    const recommandClicked = ()=>{
+        const axios = require('axios');
+        const url = 'http://localhost:8080/recommand-movie/'
+        try {
+            axios.get(url,{
+                params:{
+                    'id':props.userId,
+                    'password':props.userPassword,
+                }
+            }).then((response) => {
+                console.log(response);
+                props.setResultset(Object.values(response.data))
+            })
+        } catch(error){
+        console.error(error);
+        }
+    }
+
     return (
         <Container>
             {/* <img src = {LogoImage}
@@ -144,24 +162,7 @@ function Home(props) {
                     </Link>
                     <div
                         style = {buttonStyle}
-                        onClick ={()=>{
-                            props.setResultset([
-                                {
-                                        title_id:'rec',
-                                        title:'rec',
-                                        region:'region',
-                                        runtime:'runtime',
-                                        startYear:'startYear',
-                                        total:0,
-                                        numVotes:'numVotes',
-                                        num:0,
-                                        avg:0,
-                                        genreList:['test','genre'],
-                                        actorList:['test','actor'],
-                                        type:'type',
-                                },
-                            ]);
-                        }}>
+                        onClick ={recommandClicked}>
                         <Button
                         width = '100%'
                         height = '100%'
