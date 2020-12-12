@@ -117,7 +117,7 @@ const ScrollArea = styled.div`
   flex : 0.95;
   width : calc(100%-2px);
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   
   display: flex;
 `;

@@ -9,6 +9,45 @@ import {
 
 function UserMovieView(props) {
   const [stars, setStars] = useState(props.item.rating)
+
+  const doRating = ()=>{
+    const axios = require('axios');
+    const url = 'http://localhost:8080/user/rate-movie/'
+
+    const ParamJson = {
+      "id" : props.userId,
+      "password" : props.userPassword,
+      "stars" : stars,
+    }
+    const conditions = {
+      "movieID": props.item['titleId'],
+      "movieName": '',
+      "Maxyear": null,
+      "Minyear": null,
+      "Maxaver": 10,
+      "Minaver": 0,
+      "Maxtime": -1,
+      "Mintime": -1,
+      "genre": '',
+      "actor": '',
+      "type": '',
+      "region": null,
+    }
+    try {
+      axios.post(url,conditions, {
+        params : ParamJson,
+        headers: {"Content-Type": "Application/json"}})
+      .then((response) => {
+        console.log(response);
+      }).catch((error)=>{
+        console.log(error.response);
+        alert(error.response);
+      })
+    }catch(error){
+      console.error(error);
+    }
+  }
+
   const subtitleStyle = {
     'font-size' : '25px',
     'display' : 'flex',
@@ -80,7 +119,8 @@ function UserMovieView(props) {
             <Button
             width = '50px'
             height = '50px' 
-            text = 'submit'/>
+            text = 'submit'
+            onClick = {doRating}/>
           </div>
       </Group>
       <Link to="/">

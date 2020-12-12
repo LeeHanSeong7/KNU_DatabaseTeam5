@@ -332,7 +332,7 @@ public class DefaultMovieService implements MovieService{
     {
         String sql = "INSERT INTO RATING VALUES( " +
         "'"+condition.movieID+"','"+authService.getloggedInAccountInfo(id, password).getEmail_id()+"',"+String.valueOf(stars)+")";
-
+        System.err.println(sql);
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();

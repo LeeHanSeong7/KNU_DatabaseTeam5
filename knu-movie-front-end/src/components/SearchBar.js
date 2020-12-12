@@ -39,7 +39,7 @@ function SearchBar(props) {
   }
   const searchClicked = ()=>{
     const axios = require('axios');
-    const url = 'http://localhost:8080/user/search-movie/'
+    const url = 'http://localhost:8080/search-movie/'
 
     const defaultValues = {
       "movieID": '',

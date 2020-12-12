@@ -41,7 +41,10 @@ export default function UserMain(props) {
                         userPassword={props.userPassword}/>
                  </Route>
                 <Route path="/user-movie-page">
-                    <UserMoviePage item = {item}/>
+                    <UserMoviePage 
+                    item = {item}
+                    userId={props.userId}
+                    userPassword={props.userPassword}/>
                 </Route>
                 <Route path="/delete-accout">
                     <DeleteAccount 
@@ -53,7 +56,6 @@ export default function UserMain(props) {
         </Router>
     )
 }
-
 function Home(props) {
     let history = useHistory();
     const Container = styled.div`
@@ -205,7 +207,9 @@ function MyRatings(props) {
 function UserMoviePage(props) {
     return (
     <UserMovieView
-    item  = {props.item}/>
+    item  = {props.item}
+    userId={props.userId}
+    userPassword={props.userPassword}/>
     );
 }
 
