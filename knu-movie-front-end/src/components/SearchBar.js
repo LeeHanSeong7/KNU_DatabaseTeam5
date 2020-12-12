@@ -32,7 +32,7 @@ function SearchBar(props) {
       'type': {
         'All' : null,
         'Movie': 'Movie',
-        'KnuMovieDB Original': 'Original',
+        'Original': 'KnuMovieDB Original',
         'TV Series': 'TV Series',
       },
       'MovieName':null,
