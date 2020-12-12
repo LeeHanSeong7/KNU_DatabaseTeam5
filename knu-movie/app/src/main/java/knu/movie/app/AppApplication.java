@@ -76,7 +76,7 @@ public class AppApplication {
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
-	@PostMapping("/user/search-movie")
+	@PostMapping("/search-movie")
 	public ResponseEntity<HashMap<String, MovieDTO>> uSearchMovie(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
@@ -154,17 +154,6 @@ public class AppApplication {
 		else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 
-	@PostMapping("/admin/search-movie")
-	public ResponseEntity<List<MovieDTO>> adminSearchMovie(
-		@RequestParam(value="id") String id,
-		@RequestParam(value="password") String password,
-		@RequestBody MovieSearchConditionDTO condition
-	) {
-		Result result = services.movieService.searchMoiveByCondition(id, password, condition);
-		if (result == Result.success) return new ResponseEntity<List<MovieDTO>>((List<MovieDTO>)result.getValue(), HttpStatus.OK);
-		else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	}
-
 	@PostMapping("/admin/upload-movie")
 	public ResponseEntity<String> uploadMovie(
 		@RequestParam(value="id") String id,
@@ -172,6 +161,29 @@ public class AppApplication {
 		@RequestBody MovieDTO movie
 	) {
 		Result result = services.movieService.movieUpload(movie);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
+	}
+
+	@DeleteMapping("/admin/delete-movie")
+	public ResponseEntity<String> deleteMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
+		@RequestParam(value="title_id") String titleId
+	) {
+		Result result = services.movieService.movieDelete(titleId);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
+	}
+
+	@GetMapping("/admin/update-movie")
+	public ResponseEntity<String> updateMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
+		@RequestParam(value="before") MovieDTO before,
+		@RequestParam(value="changed") MovieDTO changed
+	) {
+		Result result = services.movieService.updateMovie(before, changed);
 		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
