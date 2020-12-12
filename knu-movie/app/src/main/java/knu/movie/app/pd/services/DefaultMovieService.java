@@ -10,15 +10,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.Properties;
+import java.util.Set;
 
 import knu.movie.app.config.AppConfig;
 import knu.movie.app.pd.interfaces.AuthenticationService;
 import knu.movie.app.pd.interfaces.MovieService;
+import knu.movie.app.pd.interfaces.RatingService;
 import knu.movie.app.pd.model.MovieDTO;
 import knu.movie.app.pd.model.MovieGenreDTO;
 import knu.movie.app.pd.model.MovieSearchConditionDTO;
+import knu.movie.app.pd.model.MyRatingVO;
 import knu.movie.app.pd.utils.DB;
 import knu.movie.app.pd.utils.Result;
 import knu.movie.app.pd.utils.Error;
@@ -28,10 +34,12 @@ public class DefaultMovieService implements MovieService{
     private ArrayList<MovieDTO> movieDTOList = new ArrayList<MovieDTO>();
     String region;
     private AuthenticationService authService;
+    private RatingService ratingService;
 
-    public DefaultMovieService(AppConfig appConfig, AuthenticationService authenticationService) {
+    public DefaultMovieService(AppConfig appConfig, AuthenticationService authenticationService, RatingService ratingService) {
         this.region = appConfig.REGION;
         this.authService = authenticationService;
+        this.ratingService = ratingService;
     }
 
     public void setConnection(Connection connection) {
@@ -321,8 +329,194 @@ public class DefaultMovieService implements MovieService{
                 }
             }
         }
-        List<MovieDTO> list = new ArrayList<MovieDTO>(hashMovies.values());
-        // return Result.withValue(list);
+        //List<MovieDTO> list = new ArrayList<MovieDTO>(hashMovies.values());
+        //return Result.withValue(list);
+        return Result.withValue(hashMovies);
+    }
+
+    public Result searchAllMovie() {
+        MovieSearchConditionDTO condition = MovieSearchConditionDTO.fillWithDefault();
+
+        HashMap<String, MovieDTO> hashMovies = new HashMap<String, MovieDTO>();
+
+        String sql = "with exceptRating AS( "+
+            "SELECT * " +
+            "FROM MOVIE " +
+            ")";
+
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+
+        if(condition.Minaver == 0){
+            sql += ", rated AS( " +
+                "select * " +
+                "from exceptRating " +
+                "where num_votes != 0 " +
+                "), afterRate AS( " +
+                "(SELECT M.title_id " +
+                "FROM MOVIE M " +
+                "where M.num_votes = 0) " + 
+                "UNION " +
+                "(select title_id " +
+                "from rated " +
+                "where rated.total_rating/rated.num_votes <= " + String.valueOf(condition.Maxaver) + ") " +
+                ") "; 
+        }else {
+            sql += ", rated AS( " +
+                "select * " +
+                "from exceptRating " +
+                "where num_votes != 0 " +
+                "), afterRate AS( " +
+                "select title_id " +
+                "from rated " +
+                "where rated.total_rating/rated.num_votes >= "+String.valueOf(condition.Minaver)+" AND rated.total_rating/rated.num_votes <= "+String.valueOf(condition.Maxaver)+" " +
+                ") ";
+        }
+        
+        sql +=  ", condition AS( " +
+        "SELECT M.TITLE_ID, M.runtime, M.start_year, M.total_rating, M.num_votes, M.type, V.title, V.region " +
+        "FROM ((afterRate A join MOVIE M on M.TITLE_ID = A.TITLE_ID) join VERSION V on M.TITLE_ID = V.MOVIE_Title_id) " +
+        "WHERE M.TITLE_ID IS NOT NULL ";
+        
+        if(condition.Minyear != null && condition.Maxyear != null){
+            sql += "AND Start_year BETWEEN TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') AND TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
+        }else if(condition.Minyear != null && condition.Maxyear == null){
+            sql += "AND Start_year >= TO_DATE('"+format1.format(condition.Minyear)+"', 'YYYY-MM-DD') ";
+        }else if(condition.Minyear == null && condition.Maxyear != null){
+            sql += "AND Start_year <= TO_DATE('"+format1.format(condition.Maxyear)+"', 'YYYY-MM-DD') ";
+        }
+
+        if(condition.Mintime != -1){
+            sql += "AND M.runtime >= " + String.valueOf(condition.Mintime) + " ";
+        }
+        if(condition.Maxtime != -1){
+            sql += "AND M.runtime <= " + String.valueOf(condition.Maxtime) + " ";
+        }
+        if(!condition.movieID.equals("")){
+            sql += "AND M.TITLE_ID = '" + condition.movieID + "' ";
+        }
+        if(!condition.type.equals("")){
+            String[] type = condition.type.split(", ");
+            sql += "AND (LOWER(M.type) LIKE LOWER('" + type[0] + "%') ";
+            for(int i=1;i<type.length;i++){
+                sql += "OR LOWER(M.type) LIKE LOWER('" + type[i] + "%') ";
+            }
+            sql += ") ";
+        }
+        if(condition.region != null){
+            sql += "AND V.Region = '"+condition.region+"' ";
+        }else{
+            sql += "AND V.Region = '"+this.region+"' ";
+        }
+        
+        if(!condition.movieName.equals("")){
+            sql += "AND LOWER(V.title) LIKE LOWER('%" + condition.movieName + "%') ";
+        }
+        sql += ") ";
+        String first_sql="";
+        first_sql = sql +
+        "SELECT TITLE_ID, runtime, start_year, total_rating, num_votes, type, title, region " +
+        "FROM condition ";
+
+        try {
+            PreparedStatement ppst = connection.prepareStatement(first_sql);
+            ResultSet rs = ppst.executeQuery();
+
+            while(rs.next()) {
+                String title_id = rs.getString(1);
+				String title = rs.getString(7);
+				String region = rs.getString(8);
+                String runtime = rs.getString(2);
+                String startYear = rs.getString(3);
+                int total  = rs.getInt(4);
+                String numVotes = rs.getString(5);
+                int num = rs.getInt(5);
+                String type = rs.getString(6);
+                String genre = "";
+                double avg = 0;
+                String avgRating = "0";
+                MovieDTO movieDTO;
+                ArrayList<String> genreList = new ArrayList<String>();
+                ArrayList<String> actorList = new ArrayList<String>();
+                
+                if(num == 0){
+                    avgRating = "0";
+                }else{
+                    avg = ((double)total/num);
+                    avgRating = String.valueOf(avg);
+                }
+                movieDTO = new MovieDTO(title_id, title, region, runtime, startYear, total, numVotes, num, avg, genreList, type ,actorList);
+                hashMovies.put(title_id, movieDTO);
+            }     
+            rs.close();
+
+        } catch (Exception e)  {
+            e.printStackTrace();
+            return Result.withError(MovieError.unknown);
+        }
+        String second_sql = "";
+        second_sql = sql +
+        "SELECT TITLE_ID, G.GENRE_Genre_id " +
+        "FROM condition M join MOVIE_HAS_GENRE G on M.TITLE_ID = G.MOVIE_Title_id";
+
+        try {
+            //System.out.println(second_sql);
+            PreparedStatement ppst = connection.prepareStatement(second_sql);
+            ResultSet rs = ppst.executeQuery();
+
+            while(rs.next()) {
+                String title_id = rs.getString(1);
+				String genre = rs.getString(2);
+                MovieDTO movieDTO;
+                movieDTO = hashMovies.get(title_id);
+                movieDTO.getGenreList().add(genre);
+            }
+            rs.close();
+        } catch (Exception e)  {
+            e.printStackTrace();
+            return Result.withError(MovieError.unknown);
+        } 
+
+        String third_sql = "";
+        third_sql = sql +
+        "SELECT TITLE_ID, A.name " +
+        "FROM (condition M join MOVIE_CAST_ACTOR C on M.TITLE_ID = C.MOVIE_Title_id) join ACTOR A on A.Actor_id = C.ACTOR_Actor_id ";
+
+        try {
+            //System.out.println(second_sql);
+            PreparedStatement ppst = connection.prepareStatement(third_sql);
+            ResultSet rs = ppst.executeQuery();
+
+            while(rs.next()) {
+                String title_id = rs.getString(1);
+				String name = rs.getString(2);
+                MovieDTO movieDTO;
+                movieDTO = hashMovies.get(title_id);
+                movieDTO.getActorList().add(name);
+            }
+            rs.close();
+        } catch (Exception e)  {
+            e.printStackTrace();
+            return Result.withError(MovieError.unknown);
+        }
+        Iterator<Entry<String, MovieDTO>> entries = hashMovies.entrySet().iterator();
+        while(entries.hasNext()){
+            Entry<String, MovieDTO> entry = entries.next();
+            //System.out.println("[Key]:" + entry.getKey() + " [Value]:" +  entry.getValue());
+            MovieDTO item = entry.getValue();
+            if(condition.genre != ""){
+                if(item.getGenreList().contains(condition.genre) == false){
+                    entries.remove();
+                    continue;
+                }
+            }
+            if(condition.actor != ""){
+                if(item.getActorList().contains(condition.actor) == false){
+                    entries.remove();
+                }
+            }
+        }
+        //List<MovieDTO> list = new ArrayList<MovieDTO>(hashMovies.values());
+        //return Result.withValue(list);
         return Result.withValue(hashMovies);
     }
 
@@ -332,7 +526,7 @@ public class DefaultMovieService implements MovieService{
     {
         String sql = "INSERT INTO RATING VALUES( " +
         "'"+condition.movieID+"','"+authService.getloggedInAccountInfo(id, password).getEmail_id()+"',"+String.valueOf(stars)+")";
-        System.err.println(sql);
+
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
@@ -694,4 +888,39 @@ public class DefaultMovieService implements MovieService{
         } 
         return Result.withError(MovieError.unknown);
     }
+
+    @Override
+    public Result recommandMovie(String id, String password) {
+        MovieSearchConditionDTO condition = MovieSearchConditionDTO.fillWithDefault();
+        Result result = searchAllMovie();
+        if (result == Result.failure) return result;
+        // 모든 영상 목록
+        HashMap<String, MovieDTO> movies = (HashMap<String, MovieDTO>)result.getValue();
+        result = ratingService.getMyRatingList(id, password);
+        if (result == Result.failure) return result;
+        List<MyRatingVO> ratingList = (List<MyRatingVO>)result.getValue();
+        Double temp = 0.0;
+        for (int i = 0; i < ratingList.size(); i++) 
+            if (ratingList.get(i).rating > temp) 
+                temp = ratingList.get(i).rating;
+        final Double max = temp;
+        // 내가 가장 평점을 많이 준 영화 제목들
+        List<String> titles = ratingList.stream().filter(i-> i.rating >= max).map(i->i.movieTitle).collect(Collectors.toList());
+        // 내가 가장 평점을 많이 준 영화의 목록
+        List<MovieDTO> likedMovies = movies.values().stream().filter(i->titles.contains(i.getTitle())).collect(Collectors.toList());
+        // 내가 가장 평점을 많이 준 영화의 장르 목록
+        Set<String> genres = likedMovies.stream().flatMap(i->i.getGenreList().stream()).collect(Collectors.toSet());
+        // 내가 가장 평점을 많이 준 영화의 배우 목록
+        Set<String> actors = likedMovies.stream().flatMap(i->i.getActorList().stream()).collect(Collectors.toSet());
+        // 내가 안 본 영화 목록
+        result = searchMoiveByCondition(id, password, condition);
+        if (result == Result.failure) return result;
+        movies = (HashMap<String, MovieDTO>)result.getValue();
+        // 좋아하는 배우 영화 목록
+        Map<String, MovieDTO>selected = movies.values().stream().filter(i-> i.getActorList().stream().anyMatch(actor->actors.contains(actor))).collect(Collectors.toMap(MovieDTO::getTitleId, Function.identity()));
+        // 좋아하는 장르 영화 목록
+        //movies = movies.values().stream().filter(i->i.get)
+        return Result.withValue(selected);
+    }
+    
 }

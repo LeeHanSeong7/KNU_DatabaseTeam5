@@ -7,6 +7,7 @@ import knu.movie.app.pd.model.MovieSearchConditionDTO;
 import knu.movie.app.pd.utils.Result;
 
 public interface MovieService {
+    Result recommandMovie(String id, String password);
     Result viewWholeVideo();
     Result searchMoiveByCondition(String id, String password, MovieSearchConditionDTO condition);
     Result rateMovie(String id, String password, MovieSearchConditionDTO condition, double stars);

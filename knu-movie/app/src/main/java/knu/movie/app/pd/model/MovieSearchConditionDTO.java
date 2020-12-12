@@ -45,7 +45,7 @@ public class MovieSearchConditionDTO {
 		this.type = type;
 		this.region = region;
 	}
-	public MovieSearchConditionDTO fillWithDefault() {
+	public static MovieSearchConditionDTO fillWithDefault() {
 		return new MovieSearchConditionDTO("","",
 				null,
 				null,

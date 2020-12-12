@@ -87,6 +87,16 @@ public class AppApplication {
 		else return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 
+	@GetMapping("/recommand-movie")
+	public ResponseEntity<HashMap<String, MovieDTO>> recommandMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password
+	) {
+		Result result = services.movieService.recommandMovie(id, password);
+		if (result == Result.success) return new ResponseEntity<HashMap<String, MovieDTO>>((HashMap<String, MovieDTO>)result.getValue(), HttpStatus.OK);
+		else return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+	}
+
 	@GetMapping("/user/my-ratings")
 	public ResponseEntity<List<MyRatingVO>> myRatings(
 		@RequestParam(value="id") String id,

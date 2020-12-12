@@ -56,4 +56,10 @@ public class StubMovieService implements MovieService{
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public Result recommandMovie(String id, String password) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
