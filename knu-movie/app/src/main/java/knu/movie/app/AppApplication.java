@@ -176,4 +176,16 @@ public class AppApplication {
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
+	@PostMapping("/user/rate-movie")
+	public ResponseEntity<String> rateMovie(
+		@RequestParam(value="id") String id,
+		@RequestParam(value="password") String password,
+		@RequestParam(value="stars") Double stars,
+		@RequestBody MovieSearchConditionDTO condition
+	) {
+		Result result = services.movieService.rateMovie(id, password, condition, stars);
+		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
+	}
+
 }
