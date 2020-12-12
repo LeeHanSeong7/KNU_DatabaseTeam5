@@ -24,7 +24,7 @@ import knu.movie.app.pd.model.MyRatingVO;
 import knu.movie.app.pd.model.RatingVOList;
 import knu.movie.app.pd.utils.Result;
 
-@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:3001" })
 @SpringBootApplication
 @RestController
 public class AppApplication {
@@ -186,17 +186,17 @@ public class AppApplication {
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
 
-	@GetMapping("/admin/update-movie")
+	@PostMapping("/admin/update-movie")
 	public ResponseEntity<String> updateMovie(
 		@RequestParam(value="id") String id,
 		@RequestParam(value="password") String password,
-		@RequestParam(value="before") MovieDTO before,
-		@RequestParam(value="changed") MovieDTO changed
+		@RequestBody List<MovieDTO> list
 	) {
-		Result result = services.movieService.updateMovie(before, changed);
+		Result result = services.movieService.updateMovie(list.get(0), list.get(1));
 		if (result == Result.success) return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
 		else return new ResponseEntity<String>(result.getError().getDescription(), HttpStatus.BAD_REQUEST);
 	}
+
 
 	@PostMapping("/user/rate-movie")
 	public ResponseEntity<String> rateMovie(

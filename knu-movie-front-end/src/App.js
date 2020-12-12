@@ -32,7 +32,9 @@ function App() {
     <div>
       {
         loggedIn && isAdmin && (  
-          <AdminMain logoutButtonClicked={logoutButtonClicked} />
+          <AdminMain logoutButtonClicked={logoutButtonClicked}
+          userId={id}
+          userPassword={password} />
         )
       }
       {

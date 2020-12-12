@@ -573,7 +573,7 @@ public class DefaultMovieService implements MovieService{
         if(movieDTO.getStartYear()==null){
             sql+=", null, 0, 0)";
         }else{
-            sql+=", TO_DATE('"+String.valueOf(movieDTO.getStartYear().substring(0, 3))+"', 'yyyy'), 0, 0)";
+            sql+=", TO_DATE('"+String.valueOf(movieDTO.getStartYear().substring(0, 4))+"', 'yyyy'), 0, 0)";
         }
 
         try {
