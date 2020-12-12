@@ -322,8 +322,8 @@ public class DefaultMovieService implements MovieService{
             }
         }
         List<MovieDTO> list = new ArrayList<MovieDTO>(hashMovies.values());
-        return Result.withValue(list);
-        // return Result.withValue(hashMovies);
+        // return Result.withValue(list);
+        return Result.withValue(hashMovies);
     }
 
     // rate를 여기에 두는게 맞는진 모르겠는데 그냥 여기 둠. 그리고 2. rate 할 때 제목 받은걸로
