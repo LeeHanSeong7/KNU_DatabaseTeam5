@@ -77,7 +77,7 @@ public class DefaultRatingService implements RatingService {
     }
 
 
-    private enum RatingError implements Error {
+    public enum RatingError implements Error {
         movieNotFound(1, "Movie is not in DB. "),
         noResultWithGivenCondition(2, "Can't find Results with Given Condition."),
         connectionError(1004, "Connection Error. ");
