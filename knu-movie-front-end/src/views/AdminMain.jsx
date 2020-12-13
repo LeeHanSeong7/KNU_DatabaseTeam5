@@ -173,7 +173,14 @@ function UploadMovie() {
     const [genreList, setGenreList] = useState(null);
     const [actorList, setActorList] = useState(null);
     const [type, setType] = useState(null);
-  
+   
+    const typeList = {
+        'All' : null,
+        'Movie': 'Movie',
+        'Original': 'KnuMovieDB Original',
+        'TV Series': 'TV Series',
+    }
+
     const onChange = (e) => {
       console.log(e.target.name)
       this.setState({
@@ -275,10 +282,21 @@ function UploadMovie() {
           placehold="Bruce Lee, Grace Kelly, ...">
         </Textbox>
         <div>type</div>
-        <Textbox
-          setValue={setType}
-          placehold="type ex) Movie">
-        </Textbox>
+        <select
+                style={{
+                    height: 43,
+                    backgroundColor: "rgba(224, 224, 230, 1)",
+                    margin: 1,
+                    width:'100%',
+                }}
+                onChange = {(event)=>{
+                    if (event.target.value == "") setType(null)
+                    return setType(event.target.value)
+                }}>
+                {Object.entries(typeList).map(item=>{
+                    return <option key = {[item[1]]} value={[item[1]]}>{item[0]}</option>
+                })}
+        </select>
         <input type="submit" value="Upload" onClick={onSubmit} />
       </div>
     );

@@ -17,6 +17,15 @@ function AdminMovieView(props) {
     const [type, setType] = useState(null);
 
     const [stars, setStars] = useState(props.item.rating)
+    
+    const typeList = {
+        'All' : null,
+        'Movie': 'Movie',
+        'Original': 'KnuMovieDB Original',
+        'TV Series': 'TV Series',
+      }
+
+
     const subtitleStyle = {
         'font-size': '25px',
         'display': 'flex',
@@ -56,11 +65,6 @@ function AdminMovieView(props) {
         const axios = require('axios');
         const url = 'http://localhost:8080/admin/update-movie?id=admin1&password=admin'
 
-        let releseYear = null;
-        if(startYear !== null){
-            releseYear = startYear.substring(0,10);
-        }
-        
         const gList = [genreList];
         const aList = [actorList];
         const data = [
@@ -84,7 +88,7 @@ function AdminMovieView(props) {
                 region: props.item.region,
                 title: title,
                 runtime: runtime,
-                startYear: releseYear,
+                startYear: startYear,
                 genreList: gList,
                 actorList: aList,
                 type: type,
@@ -94,20 +98,6 @@ function AdminMovieView(props) {
                 avg: props.item.avg
             }            
         ]
-        // const data = {
-        //     "titleId": titleId,
-        //     "title": title,
-        //     "region": region,
-        //     "runtime": runtime,
-        //     "startYear": startYear,
-        //     "total": 0,
-        //     "numVotes": "0",
-        //     "num": 0,
-        //     "avg": 0.0,
-        //     "genreList": gList,
-        //     "actorList": aList,
-        //     "type": type
-        //   };
           const BodyJson = JSON.stringify(data);
           console.log(BodyJson);
           console.log(url);
@@ -121,62 +111,6 @@ function AdminMovieView(props) {
               console.log(error.response);
               console.log(error);
             })
-
-        // try {
-        //     const before = JSON.stringify({ 
-        //         title_id: props.item.titleId, 
-        //         region: props.item.region,
-        //         title: null, //props.item.title,
-        //         region: props.item.region,
-        //         runtime: props.item.runtime,
-        //         startYear: "2020",//props.item.startYear,
-        //         total: props.item.total,
-        //         numVotes: props.item.numVotes,
-        //         num: props.item.num,
-        //         avg: props.item.avg,
-        //         genreList: props.item.genreList,
-        //         actorList: props.item.actorList,
-        //         type: props.item.type
-        //     });
-        //     const changed = JSON.stringify({
-        //         title_id: props.item.titleId,
-        //         region: props.item.region,
-        //         title: title,
-        //         runtime: runtime,
-        //         startYear: startYear,
-        //         genreList: genreList,
-        //         actorList: actorList,
-        //         type: type,
-        //         total: props.item.total,
-        //         numVotes: props.item.numVotes,
-        //         num: props.item.num,
-        //         avg: props.item.avg
-        //     });
-        //     const ParamJson = {
-        //         "id": "admin1",
-        //         "password": "admin",
-        //         "before": before,
-        //         "changed": changed
-        //     };
-        //     let u = new URLSearchParams(ParamJson);
-        //     console.log(u);
-
-        //     axios.get(url, {
-        //         params: u,
-        //         headers: { "Content-Type": "Application/json" }
-        //     })
-        //         .then((response) => {
-        //             alert('Update complete!');
-        //             console.log('res:' + response.body);
-        //         }).catch((error) => {
-        //             console.log(error.response);
-        //             console.log(error);
-        //             console.log(u);
-        //             alert(error.response);
-        //         })
-        // } catch (error) {
-        //     console.error(error);
-        // }
     }
 
     return (
@@ -215,11 +149,28 @@ function AdminMovieView(props) {
                     initValue={props.item.startYear}>
                 </Textbox>
                 <div style={subtitleStyle}>movie type</div>
-                <Textbox
+                
+                <ReadonlyText
                     style={textStyle}
-                    setValue={setType}
-                    initValue={props.item.type}>
-                </Textbox>
+                    text = {props.item.type}
+                ></ReadonlyText>
+                <select
+                style={{
+                    height: 43,
+                    backgroundColor: "rgba(224, 224, 230, 1)",
+                    margin: 1,
+                    width:'100%',
+                }}
+                onChange = {(event)=>{
+                    if (event.target.value == "") setType(null)
+                    return setType(event.target.value)
+                }}>
+                {Object.entries(typeList).map(item=>{
+                    return <option key = {[item[1]]} value={[item[1]]}>{item[0]}</option>
+                })}
+                </select>
+
+
                 <div style={subtitleStyle}>genre</div>
                 <Textbox
                     style={textStyle}
