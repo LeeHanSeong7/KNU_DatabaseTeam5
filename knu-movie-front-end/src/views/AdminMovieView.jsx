@@ -74,7 +74,13 @@ function AdminMovieView(props) {
         console.log(gList);
         let aList = null;
         if(actorList !== null){
-            aList = actorList.split("'");
+            aList = [];
+            let splitStr = actorList.split("'");
+            for(let i=0;i<splitStr.length;i++){
+                if(splitStr[i] !== " " && splitStr[i] !== ""){
+                    aList.push(splitStr[i]);
+                }
+            }
         }
         console.log(aList);
         let releaseYear = null;
