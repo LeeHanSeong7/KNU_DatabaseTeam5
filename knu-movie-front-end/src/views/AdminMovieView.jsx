@@ -65,8 +65,18 @@ function AdminMovieView(props) {
         const axios = require('axios');
         const url = 'http://localhost:8080/admin/update-movie?id=admin1&password=admin'
 
-        const gList = [genreList];
-        const aList = [actorList];
+        let gList = null;
+        if(genreList !== null){
+            gList = genreList.replace(/'/gi, "");
+            gList = gList.trim();
+            gList = gList.split(" ");
+        }
+        console.log(gList);
+        let aList = null;
+        if(actorList !== null){
+            aList = actorList.split("'");
+        }
+        console.log(aList);
         const data = [
             {
                 titleId: props.item.titleId, 
