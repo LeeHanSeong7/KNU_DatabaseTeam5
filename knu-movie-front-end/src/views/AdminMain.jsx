@@ -9,9 +9,31 @@ import {
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import Textbox from '../components/Textbox'
+import styled, { css } from "styled-components";
+import Button from "../components/Button";
+import AdminMovieList from "../components/AdminMovieList";
+import SearchBar from "../components/SearchBar";
+import AdminMovieView from "./AdminMovieView";
 
-export default function AdminMain({ logoutButtonClicked }) {
+export default function AdminMain({ logoutButtonClicked, userId, userPassword }) {
     let history = useHistory();
+    const [item, setItem] = useState(null);
+    const [resultset, setResultset] = useState([
+        // {
+                // title_id:'title_id',
+                // title:'title',
+                // region:'region',
+                // runtime:'runtime',
+                // startYear:'startYear',
+                // total:0,
+                // numVotes:'numVotes',
+                // num:0,
+                // avg:0,
+                // genreList:['test','genre'],
+                // actorList:['test','actor'],
+                // type:'type',
+        // },
+    ]);
     return (
 
         <Router>
@@ -27,7 +49,7 @@ export default function AdminMain({ logoutButtonClicked }) {
                             <Link to="/">메인 메뉴</Link>
                         </li>
                         <li>
-                            <Link to="/admin-movie-page">영화 검색</Link>
+                            <Link to="/admin-search">영화 검색</Link>
                         </li>
                         <li>
                             <Link to="/rating-list">평점 확인</Link>
@@ -42,8 +64,14 @@ export default function AdminMain({ logoutButtonClicked }) {
                     <Route exact path="/">
                         <Home />
                     </Route>
-                    <Route path="/admin-movie-page">
-                        <AdminMoviePage />
+                    <Route path="/admin-search">
+                        <AdminSearch
+                        userId={userId}
+                        userPassword={userPassword}
+                        setItem = {setItem}
+                        Resultset = {resultset}
+                        setResultset = {setResultset}
+                        />
                     </Route>
                     <Route path="/rating-list">
                         <RatingList />
@@ -51,6 +79,10 @@ export default function AdminMain({ logoutButtonClicked }) {
                     <Route path="/upload-movie">
                         <UploadMovie />
                     </Route>
+                    <Route path="/admin-movie-page">
+                        <AdminMoviePage item = {item}/>
+                    </Route>
+
                 </Switch>
             </div>
         </Router>
@@ -63,9 +95,71 @@ function Home() {
     );
 }
 
-function AdminMoviePage() {
+function AdminSearch(props) {
+    const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    `;
+    const Buttonset = styled.div`
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: flex-end;
+    background : grey;
+    height : 7vh;
+    width: 100vw;
+    display: flex;
+    `;
+    const searchStyle = {
+        alignSelf: "flex-start",
+        borderWidth: 0,
+        borderColor: "#000000",
+        borderStyle: "solid",
+        height: 'auto', 
+        width: 'calc(100vw - 2px)',
+    }
+    const movieListStyle = {
+        alignSelf: "stretch",
+        borderWidth: 0,
+        borderColor: "grey",
+        borderStyle: "solid",
+        flex : 1,
+        width: '100vw',
+    }
+    const buttonStyle = {
+        'justify-content': 'center',
+        'flex' : 1,
+        'background' : 'orange',
+        'flex-direction': 'column',
+        'margin-right': '3px',
+        'margin-left': '3px',
+        'text-align': 'center',
+        'align-items': 'center',
+    }
+    
     return (
-        <h2>adminMoviePage</h2>
+        
+        <Container>
+            <SearchBar
+            style={searchStyle}
+            setResultset = {props.setResultset}
+            userId={props.userId}
+            userPassword={props.userPassword}
+            ></SearchBar>
+            <AdminMovieList
+            style={movieListStyle}
+            Resultset = {props.Resultset}
+            setItem = {props.setItem}
+            ></AdminMovieList>
+        </Container>
+    );
+}
+
+function AdminMoviePage(props) {
+    return (
+    <AdminMovieView
+    item  = {props.item}/>
     );
 }
 

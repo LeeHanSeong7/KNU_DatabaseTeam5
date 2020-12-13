@@ -27,6 +27,7 @@ function PasswordChange(props) {
         headers: {"Content-Type": "Application/json"}})
       .then((response) => {
         alert('Password changed!');
+        props.setPassword(changeinfo['New Password'])
         console.log('res:'+response.body);
       }).catch((error)=>{
         console.log(error.response);

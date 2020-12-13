@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.Properties;
@@ -35,6 +37,7 @@ public class DefaultMovieService implements MovieService{
     String region;
     private AuthenticationService authService;
     private RatingService ratingService;
+    private final Lock lock = new ReentrantLock();
 
     public DefaultMovieService(AppConfig appConfig, AuthenticationService authenticationService, RatingService ratingService) {
         this.region = appConfig.REGION;
@@ -524,21 +527,40 @@ public class DefaultMovieService implements MovieService{
     // condition 만들어서 search 하고 그 중에 선택 해서 여기 condition에 title_id 채워서 입력 인자로 넣어줘
     public Result rateMovie(String id, String password, MovieSearchConditionDTO condition, double stars)
     {
+        
         String sql = "INSERT INTO RATING VALUES( " +
         "'"+condition.movieID+"','"+authService.getloggedInAccountInfo(id, password).getEmail_id()+"',"+String.valueOf(stars)+")";
 
+        lock.lock();
+        try {
+            PreparedStatement ppst = connection.prepareStatement(sql);
+            int r = ppst.executeUpdate();
+            if (r != 1) {
+                lock.unlock();
+                return Result.withError(MovieError.unknown);
+            }
+        } catch (Exception e)  {
+            e.printStackTrace();
+            lock.unlock();
+        } 
+
+        sql="UPDATE MOVIE " +
+            "SET num_votes = num_votes + 1, total_rating = total_rating + "+String.valueOf(stars)+" " +
+            "WHERE title_id = '"+condition.movieID+"'";
         try {
             PreparedStatement ppst = connection.prepareStatement(sql);
             int r = ppst.executeUpdate();
             if (r != 1) return Result.withError(MovieError.unknown);
             else {
                 connection.commit();
+                lock.unlock();
                 return Result.success;
             }
-
         } catch (Exception e)  {
             e.printStackTrace();
-        } 
+            lock.unlock();
+        }
+        lock.unlock();
         return Result.withError(MovieError.unknown);
     }
 
@@ -573,7 +595,7 @@ public class DefaultMovieService implements MovieService{
         if(movieDTO.getStartYear()==null){
             sql+=", null, 0, 0)";
         }else{
-            sql+=", TO_DATE('"+String.valueOf(movieDTO.getStartYear().substring(0, 3))+"', 'yyyy'), 0, 0)";
+            sql+=", TO_DATE('"+String.valueOf(movieDTO.getStartYear().substring(0, 4))+"', 'yyyy'), 0, 0)";
         }
 
         try {

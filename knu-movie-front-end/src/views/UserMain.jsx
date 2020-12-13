@@ -34,7 +34,8 @@ export default function UserMain(props) {
                  <Route path="/user-account">
                     <UserAccount      
                         userId={props.userId}
-                        userPassword={props.userPassword}/>
+                        userPassword={props.userPassword}
+                        setPassword = {props.setPassword}/>
                 </Route>
                  <Route path="/my-ratings">
                     <MyRatings 
@@ -195,6 +196,7 @@ function UserAccount(props) {
         <UserAccountView
         userId={props.userId}
         userPassword={props.userPassword}
+        setPassword = {props.setPassword}
         />
     );
 }
