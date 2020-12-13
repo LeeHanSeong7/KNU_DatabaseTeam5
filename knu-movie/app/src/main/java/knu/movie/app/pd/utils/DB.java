@@ -2,6 +2,7 @@ package knu.movie.app.pd.utils;
 
 import knu.movie.app.pd.interfaces.DTO;
 import knu.movie.app.pd.model.AccountDTO;
+import knu.movie.app.pd.model.MovieActorDTO;
 import knu.movie.app.pd.model.MovieDTO;
 import knu.movie.app.pd.model.MovieGenreDTO;
 
@@ -184,6 +185,11 @@ public class DB {
                     MovieGenreDTO mg = (MovieGenreDTO) dto;
                     return ((mg.titleId==null ? "NULL, ":VARCHAR(mg.titleId, OPTION.NOT_NULL) + ", ") + 
                             (mg.genreId==null ? "NULL, ":VARCHAR(mg.genreId, OPTION.NOT_NULL))
+                            );
+                case MOVIE_CAST_ACTOR:
+                    MovieActorDTO mac = (MovieActorDTO) dto;
+                    return ((mac.titleId==null ? "NULL, ":VARCHAR(mac.titleId, OPTION.NOT_NULL) + ", ") + 
+                            (mac.actorId==null ? "NULL, ":VARCHAR(mac.actorId, OPTION.NOT_NULL))
                             );
                 default:
                     break;

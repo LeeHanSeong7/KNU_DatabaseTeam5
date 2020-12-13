@@ -23,6 +23,7 @@ import knu.movie.app.config.AppConfig;
 import knu.movie.app.pd.interfaces.AuthenticationService;
 import knu.movie.app.pd.interfaces.MovieService;
 import knu.movie.app.pd.interfaces.RatingService;
+import knu.movie.app.pd.model.MovieActorDTO;
 import knu.movie.app.pd.model.MovieDTO;
 import knu.movie.app.pd.model.MovieGenreDTO;
 import knu.movie.app.pd.model.MovieSearchConditionDTO;
@@ -853,6 +854,9 @@ public class DefaultMovieService implements MovieService{
     private boolean shouldUpdateGenre(MovieDTO m) {
         return m.getGenreList() != null;
     }
+    private boolean shouldUpdateActor(MovieDTO m) {
+        return m.getActorList() != null;
+    }
     @Override
     public Result updateMovie(MovieDTO before, MovieDTO changed) {
         try {
@@ -884,9 +888,7 @@ public class DefaultMovieService implements MovieService{
                 //System.out.println(sql);
                 ppst = connection.prepareStatement(sql);
                 r = ppst.executeUpdate();
-                if (r == 0) {
-                    throw new Exception();
-                }
+                //
                 changed.getGenreList().forEach(genre -> {
                     try {
                         String s = "INSERT INTO MOVIE_HAS_GENRE " + 
@@ -897,6 +899,37 @@ public class DefaultMovieService implements MovieService{
                         if (rr == 0) {
                             throw new Exception();
                         }
+                    } catch (Exception e) {
+                        Result.withError(MovieError.unknown);
+                    }
+                });
+            }
+
+            if (shouldUpdateActor(changed)) {
+                sql = "DELETE FROM MOVIE_CAST_ACTOR WHERE MOVIE_TITLE_ID='" + before.getTitleId() + "'";
+                //System.out.println(sql);
+                ppst = connection.prepareStatement(sql);
+                r = ppst.executeUpdate();
+                //
+                changed.getActorList().forEach(actor -> {
+                    try {
+                        String sel = "SELECT * FROM ACTOR WHERE name='" + actor + "'";
+                        PreparedStatement pp1 = connection.prepareStatement(sel);
+                        ResultSet rs = pp1.executeQuery();
+                        if (rs.next()) {
+                            String actorId = rs.getString(1);
+                            String s = "INSERT INTO MOVIE_CAST_ACTOR " + 
+                            "VALUES ( "+ DB.TABLE.valueFormOf("MOVIE_CAST_ACTOR", new MovieActorDTO(before.getTitleId(), actorId)) +" )";
+                            //System.out.println(s);
+                            PreparedStatement pp = connection.prepareStatement(s);
+                            int rr = pp.executeUpdate();
+                            if (rr == 0) {
+                                throw new Exception();
+                            }
+                        } else {
+                            Result.withError(MovieError.noActors);
+                        }
+                        
                     } catch (Exception e) {
                         Result.withError(MovieError.unknown);
                     }
