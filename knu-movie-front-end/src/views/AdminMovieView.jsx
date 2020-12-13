@@ -77,6 +77,10 @@ function AdminMovieView(props) {
             aList = actorList.split("'");
         }
         console.log(aList);
+        let releaseYear = null;
+        if(startYear !== null){
+            releaseYear = startYear.substring(0,10);
+        }
         const data = [
             {
                 titleId: props.item.titleId, 
@@ -98,7 +102,7 @@ function AdminMovieView(props) {
                 region: props.item.region,
                 title: title,
                 runtime: runtime,
-                startYear: startYear,
+                startYear: releaseYear,
                 genreList: gList,
                 actorList: aList,
                 type: type,
