@@ -27,6 +27,7 @@ import knu.movie.app.pd.model.MovieDTO;
 import knu.movie.app.pd.model.MovieGenreDTO;
 import knu.movie.app.pd.model.MovieSearchConditionDTO;
 import knu.movie.app.pd.model.MyRatingVO;
+import knu.movie.app.pd.services.DefaultRatingService.RatingError;
 import knu.movie.app.pd.utils.DB;
 import knu.movie.app.pd.utils.Result;
 import knu.movie.app.pd.utils.Error;
@@ -917,9 +918,16 @@ public class DefaultMovieService implements MovieService{
         Result result = searchAllMovie();
         if (result == Result.failure) return result;
         // 모든 영상 목록
-        HashMap<String, MovieDTO> movies = (HashMap<String, MovieDTO>)result.getValue();
+        Map<String, MovieDTO> movies = (HashMap<String, MovieDTO>)result.getValue();
         result = ratingService.getMyRatingList(id, password);
-        if (result == Result.failure) return result;
+        // 평가 항목이 없는 유저일 경우 평점 8 이상 영화 보여줌
+        if (result == Result.failure) {
+            if (result.getError() != RatingError.noResultWithGivenCondition) return result;
+            movies = movies.values().stream()
+                    .filter(i->i.getAvg() >= 8.0)
+                    .collect(Collectors.toMap(MovieDTO::getTitleId, Function.identity()));
+            return Result.withValue(movies);
+        } 
         List<MyRatingVO> ratingList = (List<MyRatingVO>)result.getValue();
         Double temp = 0.0;
         for (int i = 0; i < ratingList.size(); i++) 
@@ -942,5 +950,6 @@ public class DefaultMovieService implements MovieService{
                             .collect(Collectors.toMap(MovieDTO::getTitleId, Function.identity()));
         return Result.withValue(selected);
     }
+
     
 }
