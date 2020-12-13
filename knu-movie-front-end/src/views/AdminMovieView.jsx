@@ -56,6 +56,11 @@ function AdminMovieView(props) {
         const axios = require('axios');
         const url = 'http://localhost:8080/admin/update-movie?id=admin1&password=admin'
 
+        let releseYear = null;
+        if(startYear !== null){
+            releseYear = startYear.substring(0,10);
+        }
+        
         const gList = [genreList];
         const aList = [actorList];
         const data = [
@@ -79,7 +84,7 @@ function AdminMovieView(props) {
                 region: props.item.region,
                 title: title,
                 runtime: runtime,
-                startYear: startYear,
+                startYear: releseYear,
                 genreList: gList,
                 actorList: aList,
                 type: type,
