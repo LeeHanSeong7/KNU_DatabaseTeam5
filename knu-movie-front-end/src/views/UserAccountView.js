@@ -43,6 +43,7 @@ function UserAccountView(props) {
               userPassword={props.userPassword}
               accinfo = {accinfo}
               setAccinfo = {setAccinfo}
+              setPassword = {props.setPassword}
             ></PasswordChange>
           </ItemStyle>
           <ItemStyle>

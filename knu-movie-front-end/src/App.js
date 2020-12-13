@@ -43,6 +43,7 @@ function App() {
           logoutButtonClicked={logoutButtonClicked}
           userId={id}
           userPassword={password}
+          setPassword={setPassword}
           setIsAdmin={setIsAdmin} />
         )
       }
